@@ -17,9 +17,6 @@
 		<td>${u.uid}
 		<td>${u.uname}
 		<td>${u.upass}
-		<td>${u.head}
-		<td>${u.regtime}
-		<td>${u.gender}
 </c:forEach>
 
 </table>
