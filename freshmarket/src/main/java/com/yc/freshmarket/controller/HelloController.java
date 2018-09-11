@@ -9,8 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.yc.freshmarket.TblUserDao;
 import com.yc.freshmarket.domain.TblUser;
+import com.yc.freshmarket.domain.TblUserDao;
 
 @Controller
 @EnableAutoConfiguration

@@ -1,9 +1,7 @@
-package com.yc.freshmarket;
+package com.yc.freshmarket.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-
-import com.yc.freshmarket.domain.TblUser;
 
 /**
  * TblUser 实体类
