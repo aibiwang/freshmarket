@@ -1,5 +1,7 @@
 package com.yc.freshmarket.domain;
-
+/**
+ * 用户实体
+ */
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
