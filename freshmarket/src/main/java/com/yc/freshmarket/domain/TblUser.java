@@ -1,6 +1,6 @@
 package com.yc.freshmarket.domain;
 /**
- * 用户实体
+ * 用户实体类
  */
 import javax.persistence.Column;
 import javax.persistence.Entity;
