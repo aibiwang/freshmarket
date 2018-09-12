@@ -4,7 +4,6 @@
 <!-- 头部 -->
 <%@ include file="header.jsp"%>
 
-
 	<div class="search_bar clearfix">
 		<a href="index.html" class="logo fl"><img src="images/logo.png"></a>
 		<div class="search_con fl">
@@ -12,7 +11,7 @@
 			<input type="button" class="input_btn fr" name="" value="搜索">
 		</div>
 		<div class="guest_cart fr">
-			<a href="#" class="cart_name fl">我的购物车</a>
+			<a href="cart.jsp" class="cart_name fl">我的购物车</a>
 			<div class="goods_count fl" id="show_count">1</div>
 		</div>
 	</div>
@@ -74,7 +73,12 @@
 				<li>
 					<h4><a href="#">草莓</a></h4>
 					<a href="#"><img src="images/goods/goods003.jpg"></a>
-					<div class="prize">¥ 30.00</div>
+					<div class="prize" style="size: 10px" >¥ 30.00
+					<a href="cart.jsp"><input type="button" value="加购物车"></a>
+					<a href="order.jsp"><input type="button" value="立即购买"></a>
+					</div>
+					
+					
 				</li>
 				<li>
 					<h4><a href="#">葡萄</a></h4>
@@ -94,7 +98,9 @@
 			</ul>
 		</div>
 	</div>
-
+	<div class="list_model" style="height: 50px"><div style="margin-left: 420px;" 
+	class="page" maxshowpageitem="1" pagelistcount="9"  id="page1"> </div></div>
+	
 	<div class="list_model">
 		<div class="list_title clearfix">
 			<h3 class="fl" id="model02">海鲜水产</h3>
@@ -132,6 +138,8 @@
 			</ul>
 		</div>
 	</div>
+	<div class="list_model" style="height: 50px"><div style="margin-left: 420px;" 
+	class="page" maxshowpageitem="1" pagelistcount="9"  id="page2"> </div></div>
 
 	<div class="list_model">
 		<div class="list_title clearfix">
@@ -171,7 +179,8 @@
 			</ul>
 		</div>
 	</div>
-
+<div class="list_model" style="height: 50px"><div style="margin-left: 420px;" 
+	class="page" maxshowpageitem="1" pagelistcount="9"  id="page3"> </div></div>
 	<div class="list_model">
 		<div class="list_title clearfix">
 			<h3 class="fl" id="model04">禽类蛋品</h3>
@@ -210,7 +219,8 @@
 			</ul>
 		</div>
 	</div>
-
+	<div class="list_model" style="height: 50px"><div style="margin-left: 420px;" 
+	class="page" maxshowpageitem="1" pagelistcount="9"  id="page4"> </div></div>
 	<div class="list_model">
 		<div class="list_title clearfix">
 			<h3 class="fl" id="model05">新鲜蔬菜</h3>
@@ -249,7 +259,8 @@
 			</ul>
 		</div>
 	</div>
-
+	<div class="list_model" style="height: 50px"><div style="margin-left: 420px;" 
+	class="page" maxshowpageitem="1" pagelistcount="9"  id="page5"> </div></div>
 	<div class="list_model">
 		<div class="list_title clearfix">
 			<h3 class="fl" id="model06">速冻食品</h3>
@@ -288,11 +299,32 @@
 			</ul>
 		</div>
 	</div>
+	<div class="list_model" style="height: 50px"><div style="margin-left: 420px;" 
+	class="page" maxshowpageitem="1" pagelistcount="9"  id="page6"> </div></div>
+<script type="text/javascript">
+		
+		function tt(dd){
+			//alert(dd);
+		}
+		
+		var GG = {
+			"kk":function(mm){
+			   //alert(mm);
+			}
+		}
+			
 	
-	
-	<script type="text/javascript" src="js/slideshow.js"></script>
-	<script type="text/javascript">
-		BCSlideshow('focuspic');
+
+		$("#page1").initPage(21,1,GG.kk);
+		$("#page2").initPage(31,1,GG.kk);
+		$("#page3").initPage(41,1,GG.kk);
+		$("#page4").initPage(51,1,GG.kk);
+		$("#page5").initPage(61,1,GG.kk);
+		$("#page6").initPage(71,1,GG.kk);  
+	</script>
+
+	<!-- <script type="text/javascript">
+		/* BCSlideshow('focuspic');  */
 		var oFruit = document.getElementById('fruit_more');
 		var oShownum = document.getElementById('show_count');
 
@@ -306,9 +338,7 @@
 		oFruit.onclick = function(){
 			window.location.href = 'list.html';
 		}
-	</script>
-
-
+	</script> -->
 
 <!-- 脚部 -->
 <%@ include file="footer.jsp"%>
