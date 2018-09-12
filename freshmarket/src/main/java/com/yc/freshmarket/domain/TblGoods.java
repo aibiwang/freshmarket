@@ -3,10 +3,17 @@ package com.yc.freshmarket.domain;
 import java.sql.Timestamp;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GeneratorType;
 @Entity	//实体类注解
 @Table(name="tbl_goods")	// 配置表名
 public class TblGoods {
+	@Id	//注解注解
+	@GeneratedValue(strategy=GenerationType.AUTO)	//配置主键值的生成机制	
 	private Integer	goodsId;
 	private String	goodsName;
 	private double	inprice;
