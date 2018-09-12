@@ -1,9 +1,7 @@
-package com.yc;
+package com.yc.freshmarket.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-
-import com.yc.bean.TblUser;
 
 /**
  * TblUser 实体类
@@ -13,14 +11,7 @@ import com.yc.bean.TblUser;
  */
 public interface TblUserDao extends JpaRepository<TblUser, Integer>{
 
-	
-	/**
-	 * 自动生成sql
-	 * @param string
-	 * @param string2
-	 * @return
-	 */
-	TblUser findByUnameAndUpass(String string, String string2);
+	//TblUser findByUnameAndUpass(String string, String string2);
 	
 	
 	/**
@@ -35,5 +26,10 @@ public interface TblUserDao extends JpaRepository<TblUser, Integer>{
 	 */
 	@Query(nativeQuery=true,value="select max(uid) from tbl_user ")
 	Integer findMaxUser(Integer id);
+
+	
+
+
+	TblUser findByUserNameAndUserPwd(String string, String string2);
 
 }
