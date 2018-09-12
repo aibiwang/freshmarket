@@ -41,10 +41,7 @@ public class HelloController {
 		
 		TblUser user = dao.findByUnameAndUpass("k","1");
 		
-		
 		m.addAttribute("user", user);
-		
-		
 		
 		return "allUser";
 	}
