@@ -10,16 +10,16 @@
 <body>
 
 <h1>all user</h1>
-当前的用户名：${user.uname}
+当前的用户名：${user.userName}
 <table>
 <c:forEach items="${list}" var="u">
 	<tr>
-		<td>${u.uid}
-		<td>${u.uname}
-		<td>${u.upass}
-		<td>${u.head}
-		<td>${u.regtime}
-		<td>${u.gender}
+		<td>${u.userId}
+		<td>${u.userName}
+		<td>${u.userPwd}
+		<td>${u.userType}
+		<td>${u.userPhone}
+		<td>${u.userEmail}
 </c:forEach>
 
 </table>

@@ -1,4 +1,4 @@
-package com.yc.springBoot.controller;
+package com.yc.freshmarket.controller;
 
 import javax.annotation.Resource;
 
@@ -9,8 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.yc.TblUserDao;
-import com.yc.bean.TblUser;
+import com.yc.freshmarket.domain.TblUser;
+import com.yc.freshmarket.domain.TblUserDao;
 
 @Controller
 @EnableAutoConfiguration
@@ -39,7 +39,7 @@ public class HelloController {
 	String findAll(Model m){
 		m.addAttribute("list", dao.findAll());
 		
-		TblUser user = dao.findByUnameAndUpass("k","1");
+		TblUser user = dao.findByUserNameAndUserPwd("k","1");
 		
 		
 		m.addAttribute("user", user);

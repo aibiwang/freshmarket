@@ -1,4 +1,4 @@
-package com.yc;
+package com.yc.freshmarket;
 
 
 import org.springframework.boot.SpringApplication;
