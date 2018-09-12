@@ -17,5 +17,8 @@ public interface UserBiz {
 	 */
 	public TblUser login(String name, String pwd);
 
+	public TblUser register(TblUser user);
+
+	public TblUser checkName(String username);
 
 }

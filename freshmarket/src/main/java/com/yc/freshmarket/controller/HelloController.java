@@ -15,10 +15,10 @@ import com.yc.freshmarket.domain.TblUserDao;
 @Controller
 @EnableAutoConfiguration
 public class HelloController {
-	
+	/*
 	@Resource
 	TblUserDao dao;
-	
+	*/
 	@RequestMapping("/hello2")
     @ResponseBody
     String home() {
@@ -35,7 +35,12 @@ public class HelloController {
 		return "/forward/login";
 	}
 	
-	@RequestMapping("/findAll")
+	@RequestMapping("/register")
+	String register(){
+		return "/forward/register";
+	}
+	
+	/*@RequestMapping("/findAll")
 	String findAll(Model m){
 		m.addAttribute("list", dao.findAll());
 		
@@ -47,5 +52,5 @@ public class HelloController {
     public static void main(String[] args) throws Exception {
         SpringApplication.run(HelloController.class, args);
         //运行之后在浏览器中访问：http://localhost:8080/hello
-    }
+    }*/
 }

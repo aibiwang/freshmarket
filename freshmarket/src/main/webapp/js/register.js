@@ -3,7 +3,7 @@ $(function(){
 	var error_name = false;
 	var error_password = false;
 	var error_check_password = false;
-	var error_email = false;
+	var error_phone = false;
 	var error_check = false;
 
 
@@ -19,8 +19,8 @@ $(function(){
 		check_cpwd();
 	});
 
-	$('#email').blur(function() {
-		check_email();
+	$('#phone').blur(function() {
+		check_phone();
 	});
 
 	$('#allow').click(function() {
@@ -68,7 +68,6 @@ $(function(){
 		}		
 	}
 
-
 	function check_cpwd(){
 		var pass = $('#pwd').val();
 		var cpass = $('#cpwd').val();
@@ -87,46 +86,39 @@ $(function(){
 		
 	}
 
-	function check_email(){
-		var re = /^[a-z0-9][\w\.\-]*@[a-z0-9\-]+(\.[a-z]{2,5}){1,2}$/;
+	function check_phone(){
+		var re = /^1[0-9]{10}$/;
 
-		if(re.test($('#email').val()))
+		if(re.test($('#phone').val()))
 		{
-			$('#email').next().hide();
-			error_email = false;
-		}
-		else
+			$('#phone').next().hide();
+			error_phone = false;
+		}else
 		{
-			$('#email').next().html('你输入的邮箱格式不正确')
-			$('#email').next().show();
-			error_check_password = true;
+			$('#phone').next().html('你输入的手机格式不正确')
+			$('#phone').next().show();
+			error_phone  = true;
 		}
 
 	}
 
+	function check(){
+		$('#reg_form').submit(function() {
+			check_user_name();
+			check_pwd();
+			check_cpwd();
+			check_phone();
 
-	$('#reg_form').submit(function() {
-		check_user_name();
-		check_pwd();
-		check_cpwd();
-		check_email();
+			if(error_name == false && error_password == false && error_check_password == false && error_phone == false && error_check == false)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 
-		if(error_name == false && error_password == false && error_check_password == false && error_email == false && error_check == false)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-
-	});
-
-
-
-
-
-
-
+		});
+	}
 
 })

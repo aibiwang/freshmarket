@@ -25,12 +25,22 @@ public class TblGoods {
 	private String	goodsDesc;
 	private Timestamp goodsPutdate;
 	private String	goodsPutstatus;
+	private String goodsPic;
 	
 	@Override
 	public String toString() {
 		return "TblGoods [goodsId=" + goodsId + ", goodsName=" + goodsName + ", inprice=" + inprice + ", saleprice="
 				+ saleprice + ", categoryId=" + categoryId + ", goodsReservenum=" + goodsReservenum + ", goodsDesc="
-				+ goodsDesc + ", goodsPutdate=" + goodsPutdate + ", goodsPutstatus=" + goodsPutstatus + "]";
+				+ goodsDesc + ", goodsPutdate=" + goodsPutdate + ", goodsPutstatus=" + goodsPutstatus + ", goodsPic="
+				+ goodsPic + "]";
+	}
+
+	public String getGoodsPic() {
+		return goodsPic;
+	}
+
+	public void setGoodsPic(String goodsPic) {
+		this.goodsPic = goodsPic;
 	}
 
 	public Integer getGoodsId() {
