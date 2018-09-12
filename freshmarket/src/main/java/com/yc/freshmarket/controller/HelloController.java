@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+<<<<<<< HEAD
 import com.yc.freshmarket.domain.TblUser;
 import com.yc.freshmarket.domain.TblUserDao;
 
@@ -40,6 +41,39 @@ public class HelloController {
 		m.addAttribute("list", dao.findAll());
 		
 		TblUser user = dao.findByUserNameAndUserPwd("k","1");
+=======
+import com.yc.freshmarket.TblUserDao;
+import com.yc.freshmarket.domain.TblUser;
+
+@Controller
+@EnableAutoConfiguration
+public class HelloController {
+	
+	@Resource
+	TblUserDao dao;
+	
+	@RequestMapping("/hello2")
+    @ResponseBody
+    String home() {
+        return "Hello ,spring boot!666";
+    }
+
+	@RequestMapping("/hello")
+	String hello(){
+		return "hello";
+	}
+	
+	@RequestMapping("/login")
+	String login(){
+		return "/forward/login";
+	}
+	
+	@RequestMapping("/findAll")
+	String findAll(Model m){
+		m.addAttribute("list", dao.findAll());
+		
+		TblUser user = dao.findByUnameAndUpass("k","1");
+>>>>>>> branch 'master' of https://github.com/aibiwang/freshmarket.git
 		
 		
 		m.addAttribute("user", user);
