@@ -1,29 +1,29 @@
 package com.yc.freshmarket.domain;
-
-import javax.persistence.*;
+/**
+ * 用户实体类
+ */
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity	//实体类注解
 @Table(name="tbl_user")	// 配置表名
 public class TblUser {
 
 	@Id	//注解注解
-	@GeneratedValue(strategy=GenerationType.AUTO)	//配置主键值的生成机制
+	@GeneratedValue(strategy=GenerationType.AUTO)	//配置主键值的生成机制	
 	private Integer userId;
-//	@Column
-	private String	userName;
-	private String	userPwd;
-	private String	userType;
-	private String	userPhone;
-	private String	userEmail;
-	private String	userAddr;
-	private Integer	cartId;
-	
-	@Override
-	public String toString() {
-		return "TblUser [userId=" + userId + ", userName=" + userName + ", userPwd=" + userPwd + ", userType="
-				+ userType + ", userPhone=" + userPhone + ", userEmail=" + userEmail + ", userAddr=" + userAddr
-				+ ", cartId=" + cartId + "]";
-	}
+	@Column
+	private String userName;
+	private String userPwd;
+	private String userType;
+	private String userPhone;
+	private String userEmail;
+	private String userAddr;
+	private Integer cartId;
 	
 	public Integer getUserId() {
 		return userId;
@@ -73,5 +73,5 @@ public class TblUser {
 	public void setCartId(Integer cartId) {
 		this.cartId = cartId;
 	}
-	
+
 }

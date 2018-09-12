@@ -39,13 +39,8 @@ public class HelloController {
 	String findAll(Model m){
 		m.addAttribute("list", dao.findAll());
 		
-		TblUser user = dao.findByUnameAndUpass("k","1");
-		
-		
+		TblUser user = dao.findByUserNameAndUserPwd("k","1");
 		m.addAttribute("user", user);
-		
-		
-		
 		return "allUser";
 	}
 	
