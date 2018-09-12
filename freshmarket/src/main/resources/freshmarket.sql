@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50558
 File Encoding         : 65001
 
-Date: 2018-09-11 19:13:45
+Date: 2018-09-12 10:52:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -38,12 +38,12 @@ CREATE TABLE `tbl_goods` (
   `goods_id` int(11) NOT NULL AUTO_INCREMENT,
   `goods_name` varchar(255) DEFAULT NULL,
   `inprice` double(10,0) DEFAULT NULL,
-  `salePrice` double(10,0) DEFAULT NULL,
+  `saleprice` double(10,0) DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
   `goods_reservenum` int(255) DEFAULT NULL,
   `goods_desc` varchar(255) DEFAULT NULL,
-  `goods_putDate` date DEFAULT NULL,
-  `goods_putStatus` varchar(255) DEFAULT NULL,
+  `goods_putdate` date DEFAULT NULL,
+  `goods_putstatus` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`goods_id`),
   KEY `category_id` (`category_id`),
   CONSTRAINT `category_id` FOREIGN KEY (`category_id`) REFERENCES `tbl_category` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -82,10 +82,10 @@ DROP TABLE IF EXISTS `tbl_order`;
 CREATE TABLE `tbl_order` (
   `order_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
-  `order_totalPrice` decimal(10,0) DEFAULT NULL,
-  `receiverAddr` varchar(255) DEFAULT NULL,
-  `receiverName` varchar(255) DEFAULT NULL,
-  `receiverPhone` varchar(255) DEFAULT NULL,
+  `order_totalprice` double(10,0) DEFAULT NULL,
+  `receiver_addr` varchar(255) DEFAULT NULL,
+  `receiver_name` varchar(255) DEFAULT NULL,
+  `receiver_phone` varchar(255) DEFAULT NULL,
   `payment` varchar(255) DEFAULT NULL,
   `order_meno` int(11) DEFAULT NULL,
   `order_date` datetime DEFAULT NULL,
@@ -108,8 +108,8 @@ CREATE TABLE `tbl_orderitem` (
   `orderItem_id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) DEFAULT NULL,
   `goods_id` int(11) DEFAULT NULL,
-  `goodsCount` int(255) DEFAULT NULL,
-  `orderItem_TotalPrice` double DEFAULT NULL,
+  `goodscount` int(255) DEFAULT NULL,
+  `orderItem_totalprice` double DEFAULT NULL,
   PRIMARY KEY (`orderItem_id`),
   KEY `item_order_id` (`order_id`),
   KEY `item_goods_id` (`goods_id`),

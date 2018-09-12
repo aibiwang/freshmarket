@@ -14,18 +14,12 @@
 <table>
 <c:forEach items="${list}" var="u">
 	<tr>
-<<<<<<< HEAD
 		<td>${u.userId}
 		<td>${u.userName}
 		<td>${u.userPwd}
 		<td>${u.userType}
 		<td>${u.userPhone}
 		<td>${u.userEmail}
-=======
-		<td>${u.uid}
-		<td>${u.uname}
-		<td>${u.upass}
->>>>>>> branch 'master' of https://github.com/aibiwang/freshmarket.git
 </c:forEach>
 
 </table>
