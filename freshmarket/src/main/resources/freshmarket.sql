@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50558
 File Encoding         : 65001
 
-Date: 2018-09-12 10:52:10
+Date: 2018-09-12 12:00:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -143,12 +143,14 @@ CREATE TABLE `tbl_picture` (
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_shopcart`;
 CREATE TABLE `tbl_shopcart` (
+  `cartitem_id` int(11) NOT NULL AUTO_INCREMENT,
   `cart_id` int(11) NOT NULL,
   `goods_id` int(11) NOT NULL,
   `goodscount` double DEFAULT NULL,
-  PRIMARY KEY (`cart_id`,`goods_id`),
-  KEY `goods_id` (`goods_id`),
-  CONSTRAINT `goods_id` FOREIGN KEY (`goods_id`) REFERENCES `tbl_goods` (`goods_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  PRIMARY KEY (`cartitem_id`),
+  KEY `cart_id` (`cart_id`),
+  KEY `cart_goods_id` (`goods_id`),
+  CONSTRAINT `cart_goods_id` FOREIGN KEY (`goods_id`) REFERENCES `tbl_goods` (`goods_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cart_id` FOREIGN KEY (`cart_id`) REFERENCES `tbl_user` (`cart_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
