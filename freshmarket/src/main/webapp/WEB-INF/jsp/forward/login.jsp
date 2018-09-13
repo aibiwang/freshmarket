@@ -42,7 +42,5 @@
 		</div>
 	</div>
 
-
-
 <!-- 脚部 -->
 <%@ include file="footer.jsp"%>

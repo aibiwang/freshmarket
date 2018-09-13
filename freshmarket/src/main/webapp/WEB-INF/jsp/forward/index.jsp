@@ -71,14 +71,12 @@
 			<div class="goods_banner fl"><img src="images/banner01.jpg"></div>
 			<ul class="goods_list fl">
 				<li>
-					<h4><a href="#">草莓</a></h4>
-					<a href="#"><img src="images/goods/goods003.jpg"></a>
+					<h4><a href="detail">草莓</a></h4>
+					<a href="detail"><img src="images/goods/goods003.jpg"></a>
 					<div class="prize" style="size: 10px" >¥ 30.00
-					<a href="cart.jsp"><input type="button" value="加购物车"></a>
-					<a href="order.jsp"><input type="button" value="立即购买"></a>
+					<a href="cart"><input type="button" value="加购物车"></a>
+					<a href="order"><input type="button" value="立即购买"></a>
 					</div>
-					
-					
 				</li>
 				<li>
 					<h4><a href="#">葡萄</a></h4>

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.yc.freshmarket.domain.TblUser;
 import com.yc.freshmarket.service.UserBiz;
-import com.yc.freshmarket.service.UserBizImpl;
 import com.yc.freshmarket.utils.SHA;
 
 @Controller
@@ -38,7 +37,7 @@ public class UserController {
 		pwd = SHA.applySha256(pwd);
 		TblUser user = userBiz.login(username, pwd);
 		if(user!=null){								//登录成功
-			session.setAttribute("user", user);
+			session.setAttribute("loginedUser", user);
 			return "/forward/user_center_info";
 		}else{										//登录失败
 			model.addAttribute("msg", "用户名或密码错误");
@@ -46,6 +45,14 @@ public class UserController {
 		}
 	}
 	
+	@RequestMapping("loginout.do")
+	public String loginOut(HttpSession session){
+		if(session.getAttribute("loginedUser")!=null){
+			session.removeAttribute("loginedUser");
+			return "/forward/login";
+		}
+		return "/forward/index";
+	}
 	/**
 	 * 组测试检验用户名是否已经存在
 	 * @param username
