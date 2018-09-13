@@ -59,11 +59,6 @@ public class HelloController {
 		return "/forward/detail";
 	}
 
-	//商品详情
-	@RequestMapping("/index")
-	String index(){
-		return "/forward/index";
-	}
 	//物流图
 	@RequestMapping("/logistics")
 	String logistics(){

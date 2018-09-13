@@ -28,6 +28,17 @@ public class GoodsBizImpl implements GoodsBiz{
 	@Override
 	public TblGoods findTblGoodsBygoodsId(Integer goodsId) {
 		return tblGoodsDao.findOne(goodsId);
+
+
+	}
+	
+	@Override
+	public void addGoos(TblGoods tblGoods) {
+		
+	/*	dao.addGoos(tblGoods.getGoodsName(),tblGoods.getInprice(),
+				tblGoods.getSaleprice(),tblGoods.getCategoryId(),
+				tblGoods.getGoodsReservenum(),tblGoods.getGoodsDesc(),tblGoods.getGoodsPic());*/
+		
 	}
 
 }
