@@ -88,7 +88,7 @@ $(function(){
 	}
 
 	function check_email(){
-		var re = /^[a-z0-9][\w\.\-]*@[a-z0-9\-]+(\.[a-z]{2,5}){1,2}$/;
+		var re = /^1[3|4|5|7|8|9][0-9]\d{8}$/;
 
 		if(re.test($('#email').val()))
 		{

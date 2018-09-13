@@ -33,8 +33,9 @@ public class UserBizImpl implements UserBiz{
 		Random rd = new Random();
 		int cartId = rd.nextInt(10000000)+100000;
 		user.setCartId(cartId);
-//		 int result = dao.regester(user);
-		 System.out.println(dao.save(user));
+		user.setUserAddr("我是地球人");
+		user.setUserType("普通用户");
+		user.setUserMoney(0.00);
 		return dao.save(user);
 	}
 
@@ -45,6 +46,21 @@ public class UserBizImpl implements UserBiz{
 			return user;
 		}
 		return null;
+	}
+
+	@Override
+	public TblUser updatePhone(TblUser user) {
+		return dao.saveAndFlush(user);
+	}
+
+	@Override
+	public TblUser updatePwd(TblUser user) {
+		return dao.saveAndFlush(user);
+	}
+
+	@Override
+	public TblUser updateAddr(TblUser user) {
+		return dao.saveAndFlush(user);
 	}
 
 }
