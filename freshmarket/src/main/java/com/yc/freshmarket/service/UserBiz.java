@@ -17,8 +17,39 @@ public interface UserBiz {
 	 */
 	public TblUser login(String name, String pwd);
 
+	/**
+	 * 注册
+	 * @param user
+	 * @return
+	 */
 	public TblUser register(TblUser user);
 
+	/**
+	 * 检验用户名是否可用
+	 * @param username
+	 * @return
+	 */
 	public TblUser checkName(String username);
+
+	/**
+	 * 修改手机号
+	 * @param user
+	 * @return
+	 */
+	public TblUser updatePhone(TblUser user);
+
+	/**
+	 * 修改用户密码
+	 * @param user
+	 * @return
+	 */
+	public TblUser updatePwd(TblUser user);
+
+	/**
+	 * 修改地址
+	 * @param user
+	 * @return
+	 */
+	public TblUser updateAddr(TblUser user);
 
 }

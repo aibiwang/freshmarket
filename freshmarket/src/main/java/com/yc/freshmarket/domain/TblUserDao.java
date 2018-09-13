@@ -1,6 +1,7 @@
 package com.yc.freshmarket.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 /**
@@ -29,5 +30,9 @@ public interface TblUserDao extends JpaRepository<TblUser, Integer>{
 	
 	@Query(nativeQuery=true,value="select * from tbl_user where tbl_user.user_name=?1 ")
 	TblUser findByUserName(String username);
-
+	
+	/*@Modifying  //更新语句
+	@Query(nativeQuery=true,value="update tbl_user set tbl_user.user_phone=?1 where tbl_user.user_id=?2 ")
+	int updateUserPhone(String phone, Integer userid);
+*/
 }

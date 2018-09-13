@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @EnableAutoConfiguration
 public class HelloController {
-	
+
 	/**
 	 * 测试添加商品
 	 */
@@ -64,4 +64,5 @@ public class HelloController {
 	String logistics(){
 		return "/forward/logistics";
 	}
+
 }

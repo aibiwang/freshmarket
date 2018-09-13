@@ -27,6 +27,15 @@ function checkName(){/* 检验用户名是否存在 */
 		}
 	});
 }
+
+function check_phone() {
+	var re = /^1[3|4|5|7|8|9][0-9]\d{8}$/;
+	if (re.test($('#phone').val())) {
+	} else {
+		alert('你输入的手机格式不正确')
+	}
+}
+
 function check(){
 	
 		var pass = $('#pwd').val();
@@ -73,6 +82,12 @@ function check(){
 							class="error_tip">提示信息</span>
 						</li>
 						<li>
+							<label>手机号码:</label> 
+							<input type="text" name="phone"
+							id="phone" onblur="check_phone()"> 
+							<span class="error_tip">提示信息</span>
+						</li>
+						<li>
 							<label>密码:</label> 
 							<input type="password" name="pwd"
 							id="pwd"> 
@@ -82,12 +97,6 @@ function check(){
 							<label>确认密码:</label> 
 							<input type="password" name="cpwd"
 							id="cpwd"> 
-							<span class="error_tip">提示信息</span>
-						</li>
-						<li>
-							<label>手机号码:</label> 
-							<input type="text" name="phone"
-							id="phone"> 
 							<span class="error_tip">提示信息</span>
 						</li>
 						<li class="agreement">
