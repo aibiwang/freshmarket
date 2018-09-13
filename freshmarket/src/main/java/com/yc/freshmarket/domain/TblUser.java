@@ -24,7 +24,14 @@ public class TblUser {
 	private String userEmail;
 	private String userAddr;
 	private Integer cartId;
+	private Double userMoney;
 	
+	public Double getUserMoney() {
+		return userMoney;
+	}
+	public void setUserMoney(Double userMoney) {
+		this.userMoney = userMoney;
+	}
 	public Integer getUserId() {
 		return userId;
 	}

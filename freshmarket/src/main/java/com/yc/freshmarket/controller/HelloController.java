@@ -30,10 +30,20 @@ public class HelloController {
 		return "hello";
 	}
 	
+	/**
+	 * 测试添加商品
+	 */
+	@RequestMapping("/TgoodsAdd.do")
+	String goodsAdd(){
+		return "/back/picture-add";
+	}
+	
+	
+/*	
 	@RequestMapping("/login")
 	String login(){
 		return "/forward/login";
-	}
+	}*/
 	
 	@RequestMapping("/findAll")
 	String findAll(Model m){

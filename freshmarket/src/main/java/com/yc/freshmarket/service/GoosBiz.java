@@ -1,5 +1,7 @@
 package com.yc.freshmarket.service;
 
+import com.yc.freshmarket.domain.TblGoods;
+
 /**
  * GoosBiz			商品接口
  * @author liu-pc
@@ -7,4 +9,5 @@ package com.yc.freshmarket.service;
  */
 public interface GoosBiz {
 
+	public void addGoos(TblGoods tblGoods);
 }
