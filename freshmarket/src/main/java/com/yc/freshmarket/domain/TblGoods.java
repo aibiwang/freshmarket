@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 @Entity	//实体类注解
 @Table(name="tbl_goods")	// 配置表名
 public class TblGoods {

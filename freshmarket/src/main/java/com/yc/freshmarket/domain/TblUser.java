@@ -81,5 +81,12 @@ public class TblUser {
 		this.cartId = cartId;
 	}
 	
+	@Override
+	public String toString() {
+		return "TblUser [userId=" + userId + ", userName=" + userName + ", userPwd=" + userPwd + ", userType="
+				+ userType + ", userPhone=" + userPhone + ", userEmail=" + userEmail + ", userAddr=" + userAddr
+				+ ", cartId=" + cartId + ", userMoney=" + userMoney + "]";
+	}
+
 	
 }

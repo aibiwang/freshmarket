@@ -11,16 +11,7 @@ import org.springframework.data.jpa.repository.Query;
  */
 public interface TblUserDao extends JpaRepository<TblUser, Integer>{
 
-	
-	/**
-	 * 自动生成sql
-	 * @param string
-	 * @param string2
-	 * @return
-	 */
 	//TblUser findByUnameAndUpass(String string, String string2);
-	
-	
 	/**
 	 * 
 	 * JpQl、HQl:from TblUser where uid=?
@@ -34,9 +25,9 @@ public interface TblUserDao extends JpaRepository<TblUser, Integer>{
 	@Query(nativeQuery=true,value="select max(uid) from tbl_user ")
 	Integer findMaxUser(Integer id);
 
-	
-
-
 	TblUser findByUserNameAndUserPwd(String string, String string2);
+	
+	@Query(nativeQuery=true,value="select * from tbl_user where tbl_user.user_name=?1 ")
+	TblUser findByUserName(String username);
 
 }

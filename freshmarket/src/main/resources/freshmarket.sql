@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50558
 File Encoding         : 65001
 
-Date: 2018-09-12 12:00:40
+Date: 2018-09-12 12:54:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -164,17 +164,18 @@ CREATE TABLE `tbl_shopcart` (
 DROP TABLE IF EXISTS `tbl_user`;
 CREATE TABLE `tbl_user` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(255) DEFAULT NULL,
-  `user_pwd` varchar(255) DEFAULT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `user_pwd` varchar(255) NOT NULL,
   `user_type` varchar(255) DEFAULT '普通用户',
   `user_phone` varchar(255) NOT NULL,
-  `user_email` varchar(255) NOT NULL,
+  `user_email` varchar(255) DEFAULT NULL,
   `user_addr` varchar(255) DEFAULT NULL,
   `cart_id` int(11) NOT NULL,
   PRIMARY KEY (`user_id`),
   KEY `cart_id` (`cart_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tbl_user
 -- ----------------------------
+INSERT INTO `tbl_user` VALUES ('1', 'k', '1', '普通用户', '12', '12', '21', '21');

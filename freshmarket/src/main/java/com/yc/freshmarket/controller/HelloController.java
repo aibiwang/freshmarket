@@ -1,34 +1,13 @@
 package com.yc.freshmarket.controller;
 
-import javax.annotation.Resource;
-
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.yc.freshmarket.domain.TblUser;
-import com.yc.freshmarket.domain.TblUserDao;
 
 @Controller
 @EnableAutoConfiguration
 public class HelloController {
-	
-	@Resource
-	TblUserDao dao;
-	
-	@RequestMapping("/hello2")
-    @ResponseBody
-    String home() {
-        return "Hello ,spring boot!666";
-    }
-
-	@RequestMapping("/hello")
-	String hello(){
-		return "hello";
-	}
 	
 	/**
 	 * 测试添加商品
@@ -38,24 +17,49 @@ public class HelloController {
 		return "/back/picture-add";
 	}
 	
-	
-/*	
 	@RequestMapping("/login")
 	String login(){
 		return "/forward/login";
-	}*/
-	
-	@RequestMapping("/findAll")
-	String findAll(Model m){
-		m.addAttribute("list", dao.findAll());
-		
-		TblUser user = dao.findByUserNameAndUserPwd("k","1");
-		m.addAttribute("user", user);
-		return "allUser";
 	}
-	
-    public static void main(String[] args) throws Exception {
-        SpringApplication.run(HelloController.class, args);
-        //运行之后在浏览器中访问：http://localhost:8080/hello
-    }
+
+	@RequestMapping("/register")
+	String register(){
+		return "/forward/register";
+	}
+
+	//我的订单
+	@RequestMapping("/user_center_order")
+	String user_center_order(){
+		return "/forward/user_center_order";
+	}
+
+	//用户中心
+	@RequestMapping("/user_center_info")
+	String user_center_info(){
+		return "/forward/user_center_info";
+	}
+
+	//用户购物车
+	@RequestMapping("/cart")
+	String cart(){
+		return "/forward/cart";
+	}
+
+	//用户地址
+	@RequestMapping("/user_center_site")
+	String user_center_site(){
+		return "/forward/user_center_site";
+	}
+
+	//商品详情
+	@RequestMapping("/detail")
+	String detail(){
+		return "/forward/detail";
+	}
+
+	//商品详情
+	@RequestMapping("/index")
+	String index(){
+		return "/forward/index";
+	}
 }
