@@ -3,11 +3,8 @@
 
 <!-- 头部 -->
 <%@ include file="header.jsp"%>
-
-
-
 	<div class="search_bar clearfix">
-		<a href="index.html" class="logo fl"><img src="images/logo.png"></a>
+		<a href="index.html" class="logo fl"><img src="images/logoforward.png"></a>
 		<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;用户中心</div>
 		<div class="search_con fr">
 			<input type="text" class="input_text fl" name="" placeholder="搜索商品">
@@ -19,9 +16,9 @@
 		<div class="left_menu_con clearfix">
 			<h3>用户中心</h3>
 			<ul>
-				<li><a href="user_center_info.html">· 个人信息</a></li>
-				<li><a href="user_center_order.html" class="active">· 全部订单</a></li>
-				<li><a href="user_center_site.html">· 收货地址</a></li>
+				<li><a href="user_center_info">· 个人信息</a></li>
+				<li><a href="user_center_order" class="active">· 全部订单</a></li>
+				<li><a href="user_center_site">· 收货地址</a></li>
 			</ul>
 		</div>
 		<div class="right_content clearfix">
@@ -80,7 +77,7 @@
 							</td>
 							<td width="15%">33.60元</td>
 							<td width="15%">已付款</td>
-							<td width="15%"><a href="#" class="oper_btn">查看物流</a></td>
+							<td width="15%"><a href="logistics" class="oper_btn">查看物流</a></td>
 						</tr>
 					</tbody>
 				</table>

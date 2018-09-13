@@ -5,26 +5,8 @@
 <!-- 头部 -->
 <%@ include file="header.jsp"%>
 
-<%
-
-TblUser user = new TblUser();
-user.setCartId(11);
-user.setUserAddr("湖南工学院");
-user.setUserEmail("2312312@qq.com");
-user.setUserId(1);
-user.setUserName("jam");
-user.setUserPhone("15846352436");
-user.setUserPwd("aaa");
-user.setUserType("普通用户");
-
-session.setAttribute("loginedUser", user);
-session.removeAttribute("loginedUser");
-%>
-
-
-
 	<div class="search_bar clearfix">
-		<a href="index.html" class="logo fl"><img src="images/logo.png"></a>
+		<a href="index.html" class="logo fl"><img src="images/logoforward.png"></a>
 		<div class="search_con fl">
 			<input type="text" class="input_text fl" name="" placeholder="搜索商品">
 			<input type="button" class="input_btn fr" name="" value="搜索">
@@ -101,6 +83,7 @@ session.removeAttribute("loginedUser");
 					<div class="prize" style="size: 10px" >¥ ${g.saleprice}/kg
 					<a href="cart.jsp"><input type="button" value="加购物车"></a>
 					<a href="buy.do?goodsId=${g.goodsId}"><input type="button" onclick="script:if(${loginedUser==null}){alert('请先登录')}" value="立即购买"></a>
+
 					</div>
 				</li>
 			

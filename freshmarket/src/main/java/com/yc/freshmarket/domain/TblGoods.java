@@ -21,7 +21,7 @@ public class TblGoods {
 	private double	inprice;
 	private double	saleprice;
 	private Integer	categoryId;
-	private Integer	goodsReservenum;
+	private double	goodsReservenum;
 	private String	goodsDesc;
 	private Timestamp goodsPutdate;
 	private String	goodsPutstatus;
@@ -39,6 +39,7 @@ public class TblGoods {
 	public void setGoodsPic(String goodsPic) {
 		this.goodsPic = goodsPic;
 	}
+	
 
 	@Override
 	public String toString() {
@@ -84,11 +85,13 @@ public class TblGoods {
 		this.categoryId = categoryId;
 	}
 
-	public Integer getGoodsReservenum() {
+	
+
+	public double getGoodsReservenum() {
 		return goodsReservenum;
 	}
 
-	public void setGoodsReservenum(Integer goodsReservenum) {
+	public void setGoodsReservenum(double goodsReservenum) {
 		this.goodsReservenum = goodsReservenum;
 	}
 

@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!-- 头部 -->
 <%@ include file="header.jsp"%>
 
 
 	<div class="search_bar clearfix">
-		<a href="index.html" class="logo fl"><img src="images/logo.png"></a>
+		<a href="index.html" class="logo fl"><img src="images/logoforward.png"></a>
 		<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;用户中心</div>
 		<div class="search_con fr">
 			<input type="text" class="input_text fl" name="" placeholder="搜索商品">
@@ -18,18 +18,25 @@
 		<div class="left_menu_con clearfix">
 			<h3>用户中心</h3>
 			<ul>
-				<li><a href="user_center_info.html" class="active">· 个人信息</a></li>
-				<li><a href="user_center_order.html">· 全部订单</a></li>
-				<li><a href="user_center_site.html">· 收货地址</a></li>
+				<li><a href="user_center_info" class="active">· 个人信息</a></li>
+				<li><a href="user_center_order">· 全部订单</a></li>
+				<li><a href="user_center_site">· 收货地址</a></li>
 			</ul>
 		</div>
 		<div class="right_content clearfix">
 				<div class="info_con clearfix">
-				<h3 class="common_title2">基本信息</h3>
+				<h3 class="common_title2">基本信息&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">点击修改</a></h3>
 						<ul class="user_info_list">
-							<li><span>用户名：</span>18210569700</li>
-							<li><span>联系方式：</span>18210569700</li>
-							<li><span>联系地址：</span>北京市昌平区</li>			
+							<li>
+								<span>用户名：</span>${loginedUser.getUserName()}
+								<%-- <input type="text" value="${user.getUserName()}" id="username_info"/> --%></li>
+							<li><span>联系方式：</span>${loginedUser.getUserPhone()}</li>
+							<li><span>联系地址：</span>${loginedUser.getUserAddr()}
+								<c:if test="${empty  loginedUser.getUserAddr()}">
+									<a href="#">暂未完善地址信息</a>
+								</c:if>
+								${loginedUser.getUserAddr()}
+							</li>			
 						</ul>
 				</div>
 				
@@ -37,8 +44,8 @@
 				<div class="has_view_list">
 					<ul class="goods_type_list clearfix">
 				<li>
-					<a href="detail.html"><img src="images/goods/goods003.jpg"></a>
-					<h4><a href="detail.html">大兴大棚草莓</a></h4>
+					<a href="detail"><img src="images/goods/goods003.jpg"></a>
+					<h4><a href="detail">大兴大棚草莓</a></h4>
 					<div class="operate">
 						<span class="prize">￥16.80</span>
 						<span class="unit">16.80/500g</span>

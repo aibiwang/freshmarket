@@ -24,7 +24,14 @@ public class TblUser {
 	private String userEmail;
 	private String userAddr;
 	private Integer cartId;
+	private Double userMoney;
 	
+	public Double getUserMoney() {
+		return userMoney;
+	}
+	public void setUserMoney(Double userMoney) {
+		this.userMoney = userMoney;
+	}
 	public Integer getUserId() {
 		return userId;
 	}
@@ -73,11 +80,13 @@ public class TblUser {
 	public void setCartId(Integer cartId) {
 		this.cartId = cartId;
 	}
+
+	
 	@Override
 	public String toString() {
 		return "TblUser [userId=" + userId + ", userName=" + userName + ", userPwd=" + userPwd + ", userType="
 				+ userType + ", userPhone=" + userPhone + ", userEmail=" + userEmail + ", userAddr=" + userAddr
-				+ ", cartId=" + cartId + "]";
+				+ ", cartId=" + cartId + ", userMoney=" + userMoney + "]";
 	}
 
 	
