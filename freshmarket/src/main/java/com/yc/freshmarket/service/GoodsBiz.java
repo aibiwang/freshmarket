@@ -7,7 +7,7 @@ import com.yc.freshmarket.domain.TblGoods;
  * @author liu-pc
  *
  */
-public interface GoosBiz {
+public interface GoodsBiz {
 
 	public void addGoos(TblGoods tblGoods);
 }

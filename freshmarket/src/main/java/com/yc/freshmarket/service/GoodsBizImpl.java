@@ -10,7 +10,7 @@ import com.yc.freshmarket.domain.TblGoodsDao;
 
 @Service
 @EnableAutoConfiguration
-public class GoosBizImpl implements GoosBiz{
+public class GoodsBizImpl implements GoodsBiz{
 
 	@Resource
 	TblGoodsDao dao;

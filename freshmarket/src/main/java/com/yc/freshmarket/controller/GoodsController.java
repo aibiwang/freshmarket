@@ -9,14 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yc.freshmarket.domain.TblGoods;
-import com.yc.freshmarket.service.GoosBizImpl;
+import com.yc.freshmarket.service.GoodsBizImpl;
 
 @Controller
 @EnableAutoConfiguration
 public class GoodsController {
 
 	@Resource
-	GoosBizImpl goosBizImpl;
+	GoodsBizImpl goosBizImpl;
 	
 	@RequestMapping("/addGoods.do")
 	public void addGoods(TblGoods tblGoods,HttpServletRequest request,HttpSession session ){
