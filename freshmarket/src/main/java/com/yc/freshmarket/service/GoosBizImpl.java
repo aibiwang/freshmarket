@@ -18,9 +18,9 @@ public class GoosBizImpl implements GoosBiz{
 	@Override
 	public void addGoos(TblGoods tblGoods) {
 		
-		dao.addGoos(tblGoods.getGoodsName(),tblGoods.getInprice(),
+	/*	dao.addGoos(tblGoods.getGoodsName(),tblGoods.getInprice(),
 				tblGoods.getSaleprice(),tblGoods.getCategoryId(),
-				tblGoods.getGoodsReservenum(),tblGoods.getGoodsDesc(),tblGoods.getGoodsPic());
+				tblGoods.getGoodsReservenum(),tblGoods.getGoodsDesc(),tblGoods.getGoodsPic());*/
 		
 	}
 
