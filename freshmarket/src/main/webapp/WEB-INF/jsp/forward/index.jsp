@@ -1,8 +1,25 @@
+<%@page import="com.yc.freshmarket.domain.TblUser"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <!-- 头部 -->
 <%@ include file="header.jsp"%>
+
+<%
+
+TblUser user = new TblUser();
+user.setCartId(11);
+user.setUserAddr("湖南工学院");
+user.setUserEmail("2312312@qq.com");
+user.setUserId(1);
+user.setUserName("jam");
+user.setUserPhone("15846352436");
+user.setUserPwd("aaa");
+user.setUserType("普通用户");
+
+session.setAttribute("loginedUser", user);
+session.removeAttribute("loginedUser");
+%>
 
 
 
@@ -72,36 +89,38 @@
 		<div class="goods_con clearfix">
 			<div class="goods_banner fl"><img src="images/banner01.jpg"></div>
 			<ul class="goods_list fl">
+			
+			<c:forEach items="${allGoods}" var="g">
+			
+			<c:if test="${g.categoryId==1}">
+			
 				<li>
-					<h4><a href="#">草莓</a></h4>
-					<a href="#"><img src="images/goods/goods003.jpg"></a>
-					<div class="prize" style="size: 10px" >¥ 30.00
+					<h4><a href="#">${g.goodsName}</a></h4>
+					<a href="detail.do?goodsId=${g.goodsId}"><img src="${g.goodsPic}"></a>
+					  
+					<div class="prize" style="size: 10px" >¥ ${g.saleprice}/kg
 					<a href="cart.jsp"><input type="button" value="加购物车"></a>
-					<a href="order.jsp"><input type="button" value="立即购买"></a>
+					<a href="buy.do?goodsId=${g.goodsId}"><input type="button" onclick="script:if(${loginedUser==null}){alert('请先登录')}" value="立即购买"></a>
 					</div>
-					
-					
 				</li>
-				<li>
-					<h4><a href="#">葡萄</a></h4>
-					<a href="#"><img src="images/goods/goods002.jpg"></a>
-					<div class="prize">¥ 5.50</div>
-				</li>
-				<li>
-					<h4><a href="#">柠檬</a></h4>
-					<a href="#"><img src="images/goods/goods001.jpg"></a>
-					<div class="prize">¥ 3.90</div>
-				</li>
-				<li>
-					<h4><a href="#">奇异果</a></h4>
-					<a href="#"><img src="images/goods/goods012.jpg"></a>
-					<div class="prize">¥ 25.80</div>
-				</li>
+			
+			</c:if>
+			</c:forEach>
+			
 			</ul>
+			
+			
 		</div>
 	</div>
 	<div class="list_model" style="height: 50px"><div style="margin-left: 420px;" 
 	class="page" maxshowpageitem="1" pagelistcount="9"  id="page1"> </div></div>
+	
+	
+	
+	
+	
+	
+	
 	
 	<div class="list_model">
 		<div class="list_title clearfix">
@@ -117,31 +136,33 @@
 		<div class="goods_con clearfix">
 			<div class="goods_banner fl"><img src="images/banner02.jpg"></div>
 			<ul class="goods_list fl">
+			
+			
+			<c:forEach items="${allGoods}" var="g">
+			
+			<c:if test="${g.categoryId==2}">
+			
 				<li>
-					<h4><a href="#">青岛野生海捕大青虾</a></h4>
-					<a href="#"><img src="images/goods/goods018.jpg"></a>
-					<div class="prize">¥ 48.00</div>
+					<h4><a href="#">${g.goodsName}</a></h4>
+					<a href="detail.do?goodsId=${g.goodsId}"><img src="${g.goodsPic}"></a>
+					  
+					<div class="prize" style="size: 10px" >¥ ${g.saleprice}/kg
+					<a href="cart.jsp"><input type="button" value="加购物车"></a>
+					<a href="buy.do?goodsId=${g.goodsId}"><input type="button" onclick="script:if(${loginedUser==null}){alert('请先登录')}" value="立即购买"></a>
+					</div>
 				</li>
-				<li>
-					<h4><a href="#">扇贝</a></h4>
-					<a href="#"><img src="images/goods/goods019.jpg"></a>
-					<div class="prize">¥ 46.00</div>
-				</li>
-				<li>
-					<h4><a href="#">冷冻秋刀鱼</a></h4>
-					<a href="#"><img src="images/goods/goods020.jpg"></a>
-					<div class="prize">¥ 19.00</div>
-				</li>
-				<li>
-					<h4><a href="#">基围虾</a></h4>
-					<a href="#"><img src="images/goods/goods021.jpg"></a>
-					<div class="prize">¥ 25.00</div>
-				</li>
+			
+			</c:if>
+			</c:forEach>
+			
 			</ul>
 		</div>
 	</div>
 	<div class="list_model" style="height: 50px"><div style="margin-left: 420px;" 
 	class="page" maxshowpageitem="1" pagelistcount="9"  id="page2"> </div></div>
+
+
+
 
 	<div class="list_model">
 		<div class="list_title clearfix">
@@ -158,26 +179,25 @@
 		<div class="goods_con clearfix">
 			<div class="goods_banner fl"><img src="images/banner03.jpg"></div>
 			<ul class="goods_list fl">
+			
+			
+			<c:forEach items="${allGoods}" var="g">
+			
+			<c:if test="${g.categoryId==3}">
+			
 				<li>
-					<h4><a href="#">维多利亚葡萄维多利亚葡萄维多利亚葡萄维多利亚葡萄</a></h4>
-					<a href="#"><img src="images/goods.jpg"></a>
-					<div class="prize">¥ 38.00</div>
+					<h4><a href="#">${g.goodsName}</a></h4>
+					<a href="detail.do?goodsId=${g.goodsId}"><img src="${g.goodsPic}"></a>
+					  
+					<div class="prize" style="size: 10px" >¥ ${g.saleprice}/kg
+					<a href="cart.jsp"><input type="button" value="加购物车"></a>
+					<a href="buy.do?goodsId=${g.goodsId}"><input type="button" onclick="script:if(${loginedUser==null}){alert('请先登录')}" value="立即购买"></a>
+					</div>
 				</li>
-				<li>
-					<h4><a href="#">维多利亚葡萄</a></h4>
-					<a href="#"><img src="images/goods.jpg"></a>
-					<div class="prize">¥ 38.00</div>
-				</li>
-				<li>
-					<h4><a href="#">维多利亚葡萄</a></h4>
-					<a href="#"><img src="images/goods.jpg"></a>
-					<div class="prize">¥ 38.00</div>
-				</li>
-				<li>
-					<h4><a href="#">维多利亚葡萄</a></h4>
-					<a href="#"><img src="images/goods.jpg"></a>
-					<div class="prize">¥ 38.00</div>
-				</li>
+			
+			</c:if>
+			</c:forEach>
+			
 			</ul>
 		</div>
 	</div>
@@ -198,26 +218,24 @@
 		<div class="goods_con clearfix">
 			<div class="goods_banner fl"><img src="images/banner04.jpg"></div>
 			<ul class="goods_list fl">
+			
+			<c:forEach items="${allGoods}" var="g">
+			
+			<c:if test="${g.categoryId==4}">
+			
 				<li>
-					<h4><a href="#">维多利亚葡萄维多利亚葡萄维多利亚葡萄维多利亚葡萄</a></h4>
-					<a href="#"><img src="images/goods.jpg"></a>
-					<div class="prize">¥ 38.00</div>
+					<h4><a href="#">${g.goodsName}</a></h4>
+					<a href="detail.do?goodsId=${g.goodsId}"><img src="${g.goodsPic}"></a>
+					  
+					<div class="prize" style="size: 10px" >¥ ${g.saleprice}/kg
+					<a href="cart.jsp"><input type="button" value="加购物车"></a>
+				<a href="buy.do?goodsId=${g.goodsId}"><input type="button" onclick="script:if(${loginedUser==null}){alert('请先登录')}" value="立即购买"></a>
+					</div>
 				</li>
-				<li>
-					<h4><a href="#">维多利亚葡萄</a></h4>
-					<a href="#"><img src="images/goods.jpg"></a>
-					<div class="prize">¥ 38.00</div>
-				</li>
-				<li>
-					<h4><a href="#">维多利亚葡萄</a></h4>
-					<a href="#"><img src="images/goods.jpg"></a>
-					<div class="prize">¥ 38.00</div>
-				</li>
-				<li>
-					<h4><a href="#">维多利亚葡萄</a></h4>
-					<a href="#"><img src="images/goods.jpg"></a>
-					<div class="prize">¥ 38.00</div>
-				</li>
+			
+			</c:if>
+			</c:forEach>
+			
 			</ul>
 		</div>
 	</div>
@@ -238,26 +256,24 @@
 		<div class="goods_con clearfix">
 			<div class="goods_banner fl"><img src="images/banner05.jpg"></div>
 			<ul class="goods_list fl">
+			
+			<c:forEach items="${allGoods}" var="g">
+			
+			<c:if test="${g.categoryId==5}">
+			
 				<li>
-					<h4><a href="#">维多利亚葡萄维多利亚葡萄维多利亚葡萄维多利亚葡萄</a></h4>
-					<a href="#"><img src="images/goods.jpg"></a>
-					<div class="prize">¥ 38.00</div>
+					<h4><a href="#">${g.goodsName}</a></h4>
+					<a href="detail.do?goodsId=${g.goodsId}"><img src="${g.goodsPic}"></a>
+					  
+					<div class="prize" style="size: 10px" >¥ ${g.saleprice}/kg
+					<a href="cart.jsp"><input type="button" value="加购物车"></a>
+					<a href="buy.do?goodsId=${g.goodsId}"><input type="button" onclick="script:if(${loginedUser==null}){alert('请先登录')}" value="立即购买"></a>
+					</div>
 				</li>
-				<li>
-					<h4><a href="#">维多利亚葡萄</a></h4>
-					<a href="#"><img src="images/goods.jpg"></a>
-					<div class="prize">¥ 38.00</div>
-				</li>
-				<li>
-					<h4><a href="#">维多利亚葡萄</a></h4>
-					<a href="#"><img src="images/goods.jpg"></a>
-					<div class="prize">¥ 38.00</div>
-				</li>
-				<li>
-					<h4><a href="#">维多利亚葡萄</a></h4>
-					<a href="#"><img src="images/goods.jpg"></a>
-					<div class="prize">¥ 38.00</div>
-				</li>
+			
+			</c:if>
+			</c:forEach>
+			
 			</ul>
 		</div>
 	</div>
@@ -278,33 +294,36 @@
 		<div class="goods_con clearfix">
 			<div class="goods_banner fl"><img src="images/banner06.jpg"></div>
 			<ul class="goods_list fl">
+			
+			<c:forEach items="${allGoods}" var="g">
+			
+			<c:if test="${g.categoryId==6}">
+			
 				<li>
-					<h4><a href="#">维多利亚葡萄维多利亚葡萄维多利亚葡萄维多利亚葡萄</a></h4>
-					<a href="#"><img src="images/goods.jpg"></a>
-					<div class="prize">¥ 38.00</div>
+					<h4><a href="#">${g.goodsName}</a></h4>
+					<a href="detail.do?goodsId=${g.goodsId}"><img src="${g.goodsPic}"></a>
+					  
+					<div class="prize" style="size: 10px" >¥ ${g.saleprice}/kg
+					<a href="cart.jsp"><input type="button" value="加购物车"></a>
+					<a href="buy.do?goodsId=${g.goodsId}"><input type="button" onclick="script:if(${loginedUser==null}){alert('请先登录')}" value="立即购买"></a>
+					</div>
 				</li>
-				<li>
-					<h4><a href="#">维多利亚葡萄</a></h4>
-					<a href="#"><img src="images/goods.jpg"></a>
-					<div class="prize">¥ 38.00</div>
-				</li>
-				<li>
-					<h4><a href="#">维多利亚葡萄</a></h4>
-					<a href="#"><img src="images/goods.jpg"></a>
-					<div class="prize">¥ 38.00</div>
-				</li>
-				<li>
-					<h4><a href="#">维多利亚葡萄</a></h4>
-					<a href="#"><img src="images/goods.jpg"></a>
-					<div class="prize">¥ 38.00</div>
-				</li>
+			
+			</c:if>
+			</c:forEach>
+				
 			</ul>
 		</div>
 	</div>
 	<div class="list_model" style="height: 50px"><div style="margin-left: 420px;" 
 	class="page" maxshowpageitem="1" pagelistcount="9"  id="page6"> </div></div>
+	
+
+
 <script type="text/javascript">
 		
+		
+
 		function tt(dd){
 			//alert(dd);
 		}

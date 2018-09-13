@@ -11,17 +11,18 @@ import com.yc.freshmarket.service.GoodsBiz;
 
 @Controller
 @EnableAutoConfiguration
-public class GoodsController {
+public class IndexController {
 
 	@Resource
-	GoodsBiz goodsBiz;
+	GoodsBiz goodBiz;
 	
-	@RequestMapping("/detail.do")
-	public String goodsDetail(Integer goodsId,Model model) {
+	@RequestMapping("/index")
+	public String index(Model model) {
 		
-		model.addAttribute("DetailGoods",goodsBiz.findTblGoodsBygoodsId(goodsId));
+		System.out.println(goodBiz.findAllGoods());
+		model.addAttribute("allGoods",goodBiz.findAllGoods());
 		
-		return "forward/detail";
-		
+		return "forward/index";
 	}
+	
 }

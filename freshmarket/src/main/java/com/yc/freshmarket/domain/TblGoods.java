@@ -25,16 +25,27 @@ public class TblGoods {
 	private String	goodsDesc;
 	private Timestamp goodsPutdate;
 	private String	goodsPutstatus;
+	private String goodsPic;
 	
+
+	public Integer getGoodsId() {
+		return goodsId;
+	}
+
+	public String getGoodsPic() {
+		return goodsPic;
+	}
+
+	public void setGoodsPic(String goodsPic) {
+		this.goodsPic = goodsPic;
+	}
+
 	@Override
 	public String toString() {
 		return "TblGoods [goodsId=" + goodsId + ", goodsName=" + goodsName + ", inprice=" + inprice + ", saleprice="
 				+ saleprice + ", categoryId=" + categoryId + ", goodsReservenum=" + goodsReservenum + ", goodsDesc="
-				+ goodsDesc + ", goodsPutdate=" + goodsPutdate + ", goodsPutstatus=" + goodsPutstatus + "]";
-	}
-
-	public Integer getGoodsId() {
-		return goodsId;
+				+ goodsDesc + ", goodsPutdate=" + goodsPutdate + ", goodsPutstatus=" + goodsPutstatus + ", goodsPic="
+				+ goodsPic + "]";
 	}
 
 	public void setGoodsId(Integer goodsId) {

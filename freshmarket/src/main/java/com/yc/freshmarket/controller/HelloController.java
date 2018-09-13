@@ -19,33 +19,15 @@ public class HelloController {
 	@Resource
 	TblUserDao dao;
 	
-	@RequestMapping("/hello2")
-    @ResponseBody
-    String home() {
-        return "Hello ,spring boot!666";
-    }
-
-	@RequestMapping("/hello")
-	String hello(){
-		return "hello";
-	}
-	
 	@RequestMapping("/login")
 	String login(){
 		return "/forward/login";
 	}
 	
-	@RequestMapping("/findAll")
-	String findAll(Model m){
-		m.addAttribute("list", dao.findAll());
-		
-		TblUser user = dao.findByUserNameAndUserPwd("k","1");
-		m.addAttribute("user", user);
-		return "allUser";
+	@RequestMapping("/cart")
+	String cart(){
+		return "/forward/cart";
 	}
 	
-    public static void main(String[] args) throws Exception {
-        SpringApplication.run(HelloController.class, args);
-        //运行之后在浏览器中访问：http://localhost:8080/hello
-    }
+
 }
