@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50018
 File Encoding         : 65001
 
-Date: 2018-09-13 14:18:19
+Date: 2018-09-13 15:53:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -187,7 +187,7 @@ CREATE TABLE `tbl_user` (
   `user_email` varchar(255) default NULL,
   `user_addr` varchar(255) default NULL,
   `cart_id` int(11) NOT NULL,
-  `user_money` double(255,0) NOT NULL,
+  `user_money` double(255,2) default '0.00',
   PRIMARY KEY  (`user_id`),
   KEY `cart_id` (`cart_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -195,3 +195,4 @@ CREATE TABLE `tbl_user` (
 -- ----------------------------
 -- Records of tbl_user
 -- ----------------------------
+INSERT INTO `tbl_user` VALUES ('1', 'dbh', 'ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb', null, '15124564356', null, null, '7325834', null);
