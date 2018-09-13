@@ -64,4 +64,10 @@ public class HelloController {
 	String logistics(){
 		return "/forward/logistics";
 	}
+	
+	//去结算
+	@RequestMapping("/place_order")
+	String place_order(){
+		return "/forward/place_order";
+	}
 }

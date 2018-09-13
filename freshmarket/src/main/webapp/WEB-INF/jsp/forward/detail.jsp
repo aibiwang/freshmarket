@@ -69,7 +69,7 @@
 			</div>
 			<div class="total">总价：<em>16.80元</em></div> -->
 			<div class="operate_btn">
-				<a href="buy.do?goodsId=${DetailGoods.goodsId}" class="buy_btn">立即购买</a>
+				<a href="buy.do?goodsId=${DetailGoods.goodsId}" onclick="script:if(${loginedUser==null}){alert('请先登录')}" class="buy_btn">立即购买</a>
 				<a href="javascript:;" class="add_cart" id="add_cart">加入购物车</a>				
 			</div>
 		</div>

@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>怀玉乡旅游订单填写</title>
+<title>订单填写</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -32,11 +32,11 @@
 
 <div class="j_main m-main">
 	
-	<form action="http" method="post" name="form_1">
+	<form action="oderSubmit.do" method="post" name="form_1">
 		
-		<div class="tit">
+	<!-- 	<div class="tit">
 			<i></i>填写订单信息
-		</div>
+		</div> -->
 		<div class="txt">
 			<dl>
 				<dt>商品名称:</dt>  
@@ -48,8 +48,14 @@
 			<dl class="J_price">
 				<dt>单价:</dt>
 				<dd class="box-flex-1 price pd0" id="adult_price_span"><span>￥ <span id="price_d">${goods.saleprice }</span><span>&nbsp;&nbsp;/Kg</span></span></dd>
-				<dd class="box-flex-2"><span class="subadd j_num">数量：&nbsp;<span class="sub" data-type="adults"></span><input id="j_price_d_num" type="number" min="1" max="99" class="text_num" value="1" name="goodsNum"><span class="add" data-type="adults"></span></span></dd>
+				<dd class="box-flex-2"><span class="subadd j_num">数量：/Kg&nbsp;<span class="sub" data-type="adults"></span><input id="j_price_d_num" type="number" min="1" max="99" class="text_num" value="1" name="goodsNum"><span class="add" data-type="adults"></span></span></dd>
 			</dl>
+			<dl>
+				<dt>订单总额:</dt>
+				<dd><span style="color:#f70">￥&nbsp;<em id="em" class="j_all_money">0.00</em></span></dd>
+				
+			</dl>
+			
 			<dl>
 				<dt>下单时间:</dt>
 				<dd><%=new SimpleDateFormat("yyyy.MM.dd  \t   HH:mm:ss").format(new Date())%> </dd>
@@ -89,17 +95,21 @@
 		
 	<input  name="siglePrice" type="hidden" value="${goods.saleprice }"/>
 	<input  name="goodsName" type="hidden"  value="${goods.goodsName }">
+	<input  name="goodsPic" type="hidden"  value="${goods.goodsPic }">
+	
 	<input  name="orderTime"  type="hidden"  value="插入数据库时获取">
 	
 	</form>
 	<div class="submintFix">
 		<dl>
 			<dt>
-			<div class="price">
-				订单总额 <span>￥<em id="em" class="j_all_money">620</em></span>
-			</div>
+			<!-- <div class="price">
+				订单总额 <span>￥<em id="em" class="j_all_money">0.00</em></span>
+			</div> -->
 			</dt>
-			<dd class="sbmFix"><button type="button" id="save">提交订单</button></dd>
+			<dd class="sbmFix"><button type="button" onclick="javascript :history.back(-1)" >返回</button></dd>
+			<dd>&nbsp;</dd>
+			<dd class="sbmFix"><button type="button" id="save">去结算</button></dd>
 		</dl>
 	</div>
 </div>
@@ -325,5 +335,5 @@
 
  }
 </script>
-		</body>
-		</html>
+</body>
+</html>
