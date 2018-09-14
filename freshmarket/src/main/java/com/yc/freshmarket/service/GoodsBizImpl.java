@@ -20,12 +20,12 @@ import com.yc.freshmarket.domain.TblGoodsDao;
 public class GoodsBizImpl implements GoodsBiz{
 
 	@Resource
-	TblGoodsDao dao;
+	TblGoodsDao tblGoodsDao;
 	
 	@Override
 	public void addGoods(TblGoods tblGoods) {
 		
-		dao.save(tblGoods);
+		tblGoodsDao.save(tblGoods);
 		
 	}
 
@@ -40,7 +40,7 @@ public class GoodsBizImpl implements GoodsBiz{
 	@Override
 	public List<TblGoods> findAll() {
 		
-		List<TblGoods> list = dao.findAll();
+		List<TblGoods> list = tblGoodsDao.findAll();
 	
 		return list;
 	}

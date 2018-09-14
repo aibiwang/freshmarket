@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.yc.freshmarket.service.GoodsBiz;
 import com.yc.freshmarket.domain.TblGoods;
-<<<<<<< HEAD
 import com.yc.freshmarket.service.GoodsBiz;
 
 @Controller
@@ -55,7 +53,7 @@ public class GoodsController {
 		
 		tblGoods.setGoodsPutdate(new Timestamp(System.currentTimeMillis()));
 		try {
-			goosBiz.upload(uploadPath, picFile);
+			goodsBiz.upload(uploadPath, picFile);
 			
 			System.out.println(uploadPath+"-------------------");
 			
@@ -75,7 +73,7 @@ public class GoodsController {
 	@RequestMapping("/findGoods.do")
 	public String findGoods(HttpServletRequest request){
 		
-		List<TblGoods> list = this.goosBiz.findAll();
+		List<TblGoods> list = this.goodsBiz.findAll();
 		
 		System.out.println("------list--------"+list);
 		
