@@ -19,9 +19,9 @@
 	<div class="common_list_con clearfix">
 		<dl>
 			<dt>寄送到：</dt>
-			<dd><input type="radio" name="" checked="">北京市 海淀区 东北旺西路8号中关村软件园 （李思 收） 182****7528</dd>
+			<dd><input type="radio" name="" checked="">${receiverAddr }<span>&nbsp;&nbsp;收货人：${receiverName }</span></dd>
 		</dl>
-		<a href="user_center_site.html" class="edit_site">编辑收货地址</a>
+		<!-- <a href="user_center_site.html" class="edit_site">编辑收货地址</a> -->
 
 	</div>
 	
@@ -51,12 +51,13 @@
 		</ul>
 		<ul class="goods_list_td clearfix">
 			<li class="col01">1</li>			
-			<li class="col02"><img src="images/goods/goods012.jpg"></li>
-			<li class="col03">奇异果</li>
-			<li class="col04">500g</li>
-			<li class="col05">25.80元</li>
-			<li class="col06">1</li>
-			<li class="col07">25.80元</li>	
+			<li class="col02"><img src="${goodsPic }"></li>
+			<li class="col03">${goodsName}</li>
+			<li class="col04">Kg</li>
+			<li class="col05">${siglePrice }Kg/元</li>
+			<li class="col06">${goodsNum }</li>
+			
+			<li class="col07">${totalMoney}元</li>	
 		</ul>
 		<ul class="goods_list_td clearfix">
 			<li class="col01">2</li>			
@@ -80,12 +81,12 @@
 	</div>
 
 	<div class="order_submit clearfix">
-		<a href="javascript:;" id="order_btn">提交订单</a>
+		<a href="javascript:;" id="order_btn">确认订单</a>
 	</div>	
 
 	<div class="popup_con">
 		<div class="popup">
-			<p>订单提交成功！</p>
+			<p>提交成功！</p>
 		</div>
 		
 		<div class="mask"></div>

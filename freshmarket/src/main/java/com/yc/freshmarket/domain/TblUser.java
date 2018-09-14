@@ -80,6 +80,7 @@ public class TblUser {
 	public void setCartId(Integer cartId) {
 		this.cartId = cartId;
 	}
+
 	
 	@Override
 	public String toString() {

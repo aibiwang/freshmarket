@@ -50,16 +50,16 @@
 	</div>
 
 	<div class="goods_detail_con clearfix">
-		<div class="goods_detail_pic fl"><img src="images/goods_detail.jpg"></div>
+		<div class="goods_detail_pic fl"><img height="300px" width="300px" src="${DetailGoods.goodsPic }"></div>
 
 		<div class="goods_detail_list fr">
-			<h3>大兴大棚草莓</h3>
-			<p>草莓浆果柔软多汁，味美爽口，适合速冻保鲜贮藏。草莓速冻后，可以保持原有的色、香、味，既便于贮藏，又便于外销。</p>
+			<h3>${DetailGoods.goodsName }</h3>
+			<p>${DetailGoods.goodsDesc }</p>
 			<div class="prize_bar">
-				<span class="show_pirze">¥<em>16.80</em></span>
-				<span class="show_unit">单  位：500g</span>
+				<span class="show_pirze">¥<em>${DetailGoods.saleprice }</em></span>
+				<span class="show_unit">单  位：Kg</span>
 			</div>
-			<div class="goods_num clearfix">
+		<!-- 	<div class="goods_num clearfix">
 				<div class="num_name fl">数 量：</div>
 				<div class="num_add fl">
 					<input type="text" class="num_show fl" value="1">
@@ -67,16 +67,16 @@
 					<a href="javascript:;" class="minus fr">-</a>	
 				</div> 
 			</div>
-			<div class="total">总价：<em>16.80元</em></div>
+			<div class="total">总价：<em>16.80元</em></div> -->
 			<div class="operate_btn">
-				<a href="javascript:;" class="buy_btn">立即购买</a>
+				<a href="buy.do?goodsId=${DetailGoods.goodsId}" onclick="script:if(${loginedUser==null}){alert('请先登录')}" class="buy_btn">立即购买</a>
 				<a href="javascript:;" class="add_cart" id="add_cart">加入购物车</a>				
 			</div>
 		</div>
 	</div>
 
 	<div class="main_wrap clearfix">
-		<div class="l_wrap fl clearfix">
+	<!-- 	<div class="l_wrap fl clearfix">
 			<div class="new_goods">
 				<h3>新品推荐</h3>
 				<ul>
@@ -92,9 +92,9 @@
 					</li>
 				</ul>
 			</div>
-		</div>
+		</div> -->
 
-		<div class="r_wrap fr clearfix">
+		<div class="main_wrap clearfix">
 			<ul class="detail_tab clearfix">
 				<li class="active">商品介绍</li>
 				<li>评论</li>

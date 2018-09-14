@@ -3,30 +3,35 @@
 
 <%@ include file="header.jsp" %>
 
+
 <title>新增图片</title>
 </head>
 <body>
-<div class="clearfix" id="add_picture">
-<div id="scrollsidebar" class="left_Treeview">
-    <div class="show_btn" id="rightArrow"><span></span></div>
-    <div class="widget-box side_content" >
-    <div class="side_title"><a title="隐藏" class="close_btn"><span></span></a></div>
-     <div class="side_list">
-      <div class="widget-header header-color-green2">
-          <h4 class="lighter smaller">选择产品类型</h4>
-      </div>
-      <div class="widget-body">
-          <div class="widget-main padding-8">
-              <div  id="treeDemo" class="ztree"></div>
-          </div>
-  </div>
-  </div>
-  </div>  
-  </div>
-  
-  <!-- 商品列表: Goods (gid,gname,inprice,salePrice,catId,reserve,desc,putDate,putStatus) 
+	<div class="clearfix" id="add_picture">
+		<div id="scrollsidebar" class="left_Treeview">
+			<div class="show_btn" id="rightArrow">
+				<span></span>
+			</div>
+			<div class="widget-box side_content">
+				<div class="side_title">
+					<a title="隐藏" class="close_btn"><span></span></a>
+				</div>
+				<div class="side_list">
+					<div class="widget-header header-color-green2">
+						<h4 class="lighter smaller">选择产品类型</h4>
+					</div>
+					<div class="widget-body">
+						<div class="widget-main padding-8">
+							<div id="treeDemo" class="ztree"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 商品列表: Goods (gid,gname,inprice,salePrice,catId,reserve,desc,putDate,putStatus) 
    商品列表:（goods）包括商品ID，商品名，进价，销售价，类别id，库存数量，描述, 上架日期，上架状态。商品gid是主键，categoryId是外键。 -->
-  <!-- 
+		<!-- 
   		private String	goodsName;
 	private double	inprice;
 	private double	saleprice;
@@ -49,6 +54,8 @@
          <label class="form-label col-2"><span class="c-red">*</span>商品名称：</label>
 		 <div class="formControls col-10"><input type="text" class="input-text" value="" placeholder="" id="" name="goodsName"></div>
 		</div>
+
+
 
 		<div class=" clearfix cl">
            
@@ -95,40 +102,17 @@
 			</div>
 		</div>
 		
-		
-		
 		<div class="clearfix cl">
 			<label class="form-label col-2">图片上传：</label>
 			
 			<!-- 图片上传 -->
 			<input type="file" name="picFile">
 			
-			<!-- <div class="formControls col-10">
-				<div class="uploader-list-container"> 
-					<div class="queueList">
-						<div id="dndArea" class="placeholder">
-							<div id="filePicker-2"></div>
-							<p>或将照片拖到这里，单次最多可选300张</p>
-						</div>
-					</div>
-					<div class="statusBar" style="display:none;">
-						<div class="progress"> <span class="text">0%</span> <span class="percentage"></span> </div>
-						<div class="info"></div>
-						<div class="btns">
-							<div id="filePicker2"></div>
-							<div class="uploadBtn">开始上传</div>
-						</div>
-					</div>
-				</div>
-			</div> -->
 		</div>
         
 		<div class="clearfix cl">
 			<div class="Button_operation">
 				<input type="submit" value="提交" >
-				<!-- <button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="icon-save "></i>保存并提交审核</button>
-				<button onClick="article_save();" class="btn btn-secondary  btn-warning" type="button"><i class="icon-save"></i>保存草稿</button>
-				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button> -->
 			</div>
 		</div>
 		
@@ -137,7 +121,9 @@
     </div>
 </div>
 
+
 <script>
+
 $(function() { 
 	$("#add_picture").fix({
 		float : 'left',
@@ -229,7 +215,7 @@ $(document).ready(function(){
 	//zTree.selectNode(zTree.getNodeByParam("id",'11'));
 });			
 </script>
-<script type="text/javascript">
+	<script type="text/javascript">
 $(function(){
 	$('.skin-minimal input').iCheck({
 		checkboxClass: 'icheckbox-blue',

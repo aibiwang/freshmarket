@@ -34,10 +34,14 @@
 		<div class="header">
 			<div class="welcome fl">欢迎来到天天生鲜!</div>
 			<div class="fr">
+
 				<div class="login_info1 fl" style="line-height: 29px;">
 					欢迎：<span style="color:green;font-weight:bold;">${loginedUser.getUserName()}</span>&nbsp;大驾光临&nbsp;&nbsp;
 				</div>
 				<div class="login_btn fl">
+					<span>|</span>
+					<a href="index">首页</a>
+					<span>|</span>
 					<a href="login">登录</a>
 					<span>|</span>
 					<a href="register">注册</a>

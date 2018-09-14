@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @EnableAutoConfiguration
 public class HelloController {
-	
+
 	/**
 	 * 测试添加商品
 	 */
@@ -16,6 +16,7 @@ public class HelloController {
 	String goodsAdd(){
 		return "/back/picture-add";
 	}
+
 	
 
 	/**
@@ -35,15 +36,18 @@ public class HelloController {
 	}
 	
 	
+
 	@RequestMapping("/login")
 	String login(){
 		return "/forward/login";
 	}
 
+
 	@RequestMapping("/register")
 	String register(){
 		return "/forward/register";
 	}
+
 
 	//我的订单
 	@RequestMapping("/user_center_order")
@@ -75,9 +79,15 @@ public class HelloController {
 		return "/forward/detail";
 	}
 
-	//商品详情
-	@RequestMapping("/index")
-	String index(){
-		return "/forward/index";
+	//物流图
+	@RequestMapping("/logistics")
+	String logistics(){
+		return "/forward/logistics";
+	}
+	
+	//去结算
+	@RequestMapping("/place_order")
+	String place_order(){
+		return "/forward/place_order";
 	}
 }

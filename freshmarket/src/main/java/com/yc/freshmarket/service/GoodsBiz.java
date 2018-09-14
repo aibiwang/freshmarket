@@ -35,4 +35,12 @@ public interface GoodsBiz {
 	 * @throws IOException
 	 */
 	public void upload(String uploadPath,MultipartFile file) throws IllegalStateException, IOException;
+
+
+
+	List<TblGoods> findAllGoods();
+	
+	TblGoods findTblGoodsBygoodsId(Integer goodsId);
+
+
 }

@@ -46,5 +46,21 @@ public class GoodsBizImpl implements GoodsBiz{
 	}
 
 	
+	
+	@Override
+	public List<TblGoods> findAllGoods() {
+		
+		return tblGoodsDao.findAll();
+		
+		
+	}
+
+	@Override
+	public TblGoods findTblGoodsBygoodsId(Integer goodsId) {
+		return tblGoodsDao.findOne(goodsId);
+
+
+	}
+	
 
 }

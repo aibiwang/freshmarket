@@ -55,7 +55,7 @@ public class UserController {
 		return "/forward/index";
 	}
 	/**
-	 * 组测试检验用户名是否已经存在
+	 * 注册检验用户名是否已经存在
 	 * @param username
 	 * @param out
 	 * @throws IOException
@@ -96,6 +96,69 @@ public class UserController {
 		}
 		
 	}
-	
 
+	/**
+	 * 更改手机号码
+	 * @param phone
+	 * @param session
+	 * @param out
+	 * @throws IOException
+	 */
+	@RequestMapping(path="updatePhone.do",method=RequestMethod.POST)
+	public void updatePhone(@Param("phone")String phone,HttpSession session,Writer out) throws IOException{
+		TblUser user = (TblUser)session.getAttribute("loginedUser");
+		if(!"".equals(phone)&& !phone.isEmpty()&&!user.getUserPhone().equals(phone)){
+			user.setUserPhone(phone);
+			TblUser updateUser = userBiz.updatePhone(user);
+			if(updateUser!=null){
+				out.write("update phone seccess");
+			}
+		}else{
+			out.write("update phone fail");
+		}
+	}
+	
+	/**
+	 * 修改密码
+	 * @param phone
+	 * @param session
+	 * @param out
+	 * @throws IOException
+	 */
+	@RequestMapping(path="updatePwd.do",method=RequestMethod.POST)
+	public void updatePwd(@Param("pwd")String pwd,HttpSession session,Writer out) throws IOException{
+		TblUser user = (TblUser)session.getAttribute("loginedUser");
+		if(!"".equals(pwd)&& !pwd.isEmpty()&&!user.getUserPwd().equals(pwd)){
+			pwd = SHA.applySha256(pwd);
+			user.setUserPwd(pwd);
+			TblUser updateUser = userBiz.updatePwd(user);
+			if(updateUser!=null){
+				out.write("update pwd seccess");
+			}
+		}else{
+			out.write("update pwd fail");
+		}
+	}
+	
+	/**
+	 * 修改地址
+	 * @param addr
+	 * @param session
+	 * @param out
+	 * @throws IOException
+	 */
+	@RequestMapping(path="updateAddr.do",method=RequestMethod.POST)
+	public void updateAddr(@Param("addr")String addr,HttpSession session,Writer out) throws IOException{
+		TblUser user = (TblUser)session.getAttribute("loginedUser");
+		if(!"".equals(addr)&& !addr.isEmpty()&&!user.getUserPwd().equals(addr)){
+			user.setUserAddr(addr);
+			TblUser updateUser = userBiz.updateAddr(user);
+			if(updateUser!=null){
+				out.write("update addr seccess");
+			}
+		}else{
+			out.write("update addr fail");
+		}
+	}
+	
 }

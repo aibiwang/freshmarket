@@ -1,7 +1,6 @@
 package com.yc.freshmarket.utils;
 
 import java.security.MessageDigest;
-import java.util.Scanner;
 
 public class SHA {
 	
