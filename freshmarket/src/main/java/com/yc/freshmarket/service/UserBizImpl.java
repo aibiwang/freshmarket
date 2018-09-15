@@ -15,7 +15,7 @@ import com.yc.freshmarket.domain.TblUserDao;
 public class UserBizImpl implements UserBiz{
 
 	@Resource
-	TblUserDao dao;
+	private TblUserDao dao;
 	/**
 	 * 登录
 	 */
