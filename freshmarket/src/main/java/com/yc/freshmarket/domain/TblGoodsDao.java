@@ -13,4 +13,5 @@ public interface TblGoodsDao extends JpaRepository<TblGoods, Integer> {
 	@Query(nativeQuery=true,value="select * from tbl_goods where tbl_goods.goods_id=?1")
 	TblGoods findByGoodsId(Integer goodsId);
 
+
 }
