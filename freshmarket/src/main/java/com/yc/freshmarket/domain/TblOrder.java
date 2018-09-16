@@ -1,11 +1,13 @@
 package com.yc.freshmarket.domain;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity	//实体类注解
 @Table(name="tbl_order")	// 配置表名
@@ -19,18 +21,29 @@ public class TblOrder {
 	private String receiverName;
 	private String receiverPhone;
 	private String payment;
-	private Integer	orderMeno;
+	private String orderMeno;
 	private Timestamp orderDate;
 	private Timestamp sendDate;
 	private String tag;
 	
+	@OneToMany(targetEntity=TblOrderItem.class,mappedBy="orderId")
+	private List<TblOrderItem> items;
+
 	@Override
 	public String toString() {
 		return "TblOrder [orderId=" + orderId + ", userId=" + userId + ", orderTotalprice=" + orderTotalprice
 				+ ", receiverAddr=" + receiverAddr + ", receiverName=" + receiverName + ", receiverPhone="
 				+ receiverPhone + ", payment=" + payment + ", orderMeno=" + orderMeno + ", orderDate=" + orderDate
-				+ ", sendDate=" + sendDate + ", tag=" + tag + ", getClass()=" + getClass() + ", hashCode()="
-				+ hashCode() + ", toString()=" + super.toString() + "]";
+				+ ", sendDate=" + sendDate + ", tag=" + tag + ", items=" + items + "]";
+	}
+
+	
+	public List<TblOrderItem> getItems() {
+		return items;
+	}
+
+	public void setItems(List<TblOrderItem> items) {
+		this.items = items;
 	}
 
 	public Integer getOrderId() {
@@ -89,11 +102,11 @@ public class TblOrder {
 		this.payment = payment;
 	}
 
-	public Integer getOrderMeno() {
+	public String getOrderMeno() {
 		return orderMeno;
 	}
 
-	public void setOrderMeno(Integer orderMeno) {
+	public void setOrderMeno(String orderMeno) {
 		this.orderMeno = orderMeno;
 	}
 

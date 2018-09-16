@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity	//实体类注解
@@ -27,6 +28,8 @@ public class TblGoods {
 	private String	goodsPutstatus;
 	private String goodsPic;
 	
+	/*@ManyToOne(targetEntity=TblOrderItem.class)//表示TblOrderItem表中的goodsId引用的该表中的goodsid
+	private TblOrderItem Item;*/
 
 	public Integer getGoodsId() {
 		return goodsId;

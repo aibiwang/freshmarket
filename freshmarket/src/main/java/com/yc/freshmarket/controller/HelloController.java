@@ -17,6 +17,26 @@ public class HelloController {
 		return "/back/picture-add";
 	}
 
+	
+
+	/**
+	 * 测试查看商品列表
+	 */
+	@RequestMapping("/TgoodsList.do")
+	String goodsList(){
+		return "/back/Products_List";
+	}
+	
+	/**
+	 * 测试backIndex
+	 */
+	@RequestMapping("/backIndex")
+	String backIndex(){
+		return "/back/index";
+	}
+	
+	
+
 	@RequestMapping("/login")
 	String login(){
 		return "/forward/login";

@@ -1,18 +1,172 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- 头部 -->
 <%@ include file="header.jsp"%>
-	<div class="search_bar clearfix">
-		<a href="index.html" class="logo fl"><img src="images/logoforward.png"></a>
-		<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;用户中心</div>
-		<div class="search_con fr">
-			<input type="text" class="input_text fl" name="" placeholder="搜索商品">
-			<input type="button" class="input_btn fr" name="" value="搜索">
-		</div>		
-	</div>
+<script type="text/javascript">
+	/* 确认收货 */
+	function Conf(orderId) {
+		var value = document.getElementById("conf_"+orderId).innerText;
+		alert(value);
+		if('确认收货'==value){
+			if (confirm("是否已收到货？")) {
+				ConfofRej(orderId);
+			} else {
+				$("conf_"+orderId).attr("href", "#");//确认收货的按钮
+			}
+		}else if('去评价'==value){
+			ConfofRej1(orderId);//评价
+		}
+	}
+	
+	function ConfofRej(orderId) {/* 确认收货，修改订单状态 */
+		alert(orderId);
+		$.post("updateOrderTag.do?orderId=" + orderId, null, function(data) {
+			if (data == '订单状态出现异常！！！') {
+				alert(data);
+			} else {
+				alert($('#conf_'+orderId));
+				document.getElementById("chakanwuliu_"+orderId).innerText = null;//隐藏查看物流
+				document.getElementById("tag_"+orderId).innerText = '待评价';//订单栏状态修改  
+				document.getElementById("tag1_"+orderId).innerText = '待评价';//状态修改  
+				document.getElementById("conf_"+orderId).innerText = data;//确认收货的
+				document.getElementById("daipingjia").innerText = 1+parseInt(document.getElementById("daipingjia").innerText);//待评价数量加1
+				document.getElementById("daishouhuo").innerText = parseInt(document.getElementById("daishouhuo").innerText)-1;
+			}
+		});
+	}
+	
+	/* 1.评价订单 */
+	function Conf1(orderId) {
+		var value = document.getElementById("confA_"+orderId).innerText;
+		alert(value);
+		if('去评价'==value){
+			if (confirm("是否评价订单？")) {
+				ConfofRej1(orderId);
+			} else {
+				$("confA_"+orderId).attr("href", "#");//确认收货的按钮
+			}
+		}
+	}
+	
+	function ConfofRej1(orderId) {
+		alert(orderId);
+		$.post("updateOrderTag.do?orderId=" + orderId, null, function(data) {
+			if (data == '订单状态出现异常！！！') {
+				alert(data);
+			} else {
+				alert($('#conf_'+orderId));
+				document.getElementById("chakanwuliu_"+orderId).innerText = null;//隐藏查看物流
+				document.getElementById("tag_"+orderId).innerText = '待评价';//订单栏状态修改  
+				document.getElementById("tag1_"+orderId).innerText = '待评价';//状态修改  
+				document.getElementById("conf_"+orderId).innerText = data;//确认收货的
+				document.getElementById("daipingjia").innerText = 1+parseInt(document.getElementById("daipingjia").innerText);//待评价数量加1
+				document.getElementById("daishouhuo").innerText = parseInt(document.getElementById("daishouhuo").innerText)-1;
+			}
+		});
+	}
+	
+	/* 2.支付订单 */
+	function Conf2(orderId) {
+		var value = document.getElementById("confB_"+orderId).innerText;
+		alert(value);
+		if('去付款'==value){
+			if (confirm("确认去付款？")) {
+				ConfofRej2(orderId);
+			} else {
+				$("confB_"+orderId).attr("href", "#");//确认收货的按钮
+			}
+		}
+	}
+	
+	function ConfofRej2(orderId) {
+		alert(orderId);
+		$.post("updateOrderTag.do?orderId=" + orderId, null, function(data) {
+			if (data == '订单状态出现异常！！！') {
+				alert(data);
+			} else {
+				alert($('#conf_'+orderId));
+				document.getElementById("chakanwuliu_"+orderId).innerText = null;//隐藏查看物流
+				document.getElementById("tag_"+orderId).innerText = '待评价';//订单栏状态修改  
+				document.getElementById("tag1_"+orderId).innerText = '待评价';//状态修改  
+				document.getElementById("conf_"+orderId).innerText = data;//确认收货的
+				document.getElementById("daipingjia").innerText = 1+parseInt(document.getElementById("daipingjia").innerText);//待评价数量加1
+				document.getElementById("daishouhuo").innerText = parseInt(document.getElementById("daishouhuo").innerText)-1;
+			}
+		});
+	}
+	
+	/* 3.提醒商家发货 */
+	function Conf3(orderId) {
+		var value = document.getElementById("confC_"+orderId).innerText;
+		alert(value);
+		if('提醒发货'==value){
+			if (confirm("是否已收到货？")) {
+				ConfofRej3(orderId);
+			} else {
+				$("confC_"+orderId).attr("href", "#");//确认收货的按钮
+			}
+		}
+	}
+	
+	function ConfofRej3(orderId) {
+		alert(orderId);
+		$.post("updateOrderTag.do?orderId=" + orderId, null, function(data) {
+			if (data == '订单状态出现异常！！！') {
+				alert(data);
+			} else {
+				alert($('#conf_'+orderId));
+				document.getElementById("chakanwuliu_"+orderId).innerText = null;//隐藏查看物流
+				document.getElementById("tag_"+orderId).innerText = '待评价';//订单栏状态修改  
+				document.getElementById("tag1_"+orderId).innerText = '待评价';//状态修改  
+				document.getElementById("conf_"+orderId).innerText = data;//确认收货的
+				document.getElementById("daipingjia").innerText = 1+parseInt(document.getElementById("daipingjia").innerText);//待评价数量加1
+				document.getElementById("daishouhuo").innerText = parseInt(document.getElementById("daishouhuo").innerText)-1;
+			}
+		});
+	}
+	
+	/* 查看评价详情 */
+	function Conf4(orderId) {
+		var value = document.getElementById("confC_"+orderId).innerText;
+		alert(value);
+		if('提醒发货'==value){
+			if (confirm("是否已收到货？")) {
+				ConfofRej4(orderId);
+			} else {
+				$("confC_"+orderId).attr("href", "#");//确认收货的按钮
+			}
+		}
+	}
+	
+	function ConfofRej4(orderId) {
+		alert(orderId);
+		$.post("updateOrderTag.do?orderId=" + orderId, null, function(data) {
+			if (data == '订单状态出现异常！！！') {
+				alert(data);
+			} else {
+				alert($('#conf_'+orderId));
+				document.getElementById("chakanwuliu_"+orderId).innerText = null;//隐藏查看物流
+				document.getElementById("tag_"+orderId).innerText = '待评价';//订单栏状态修改  
+				document.getElementById("tag1_"+orderId).innerText = '待评价';//状态修改  
+				document.getElementById("conf_"+orderId).innerText = data;//确认收货的
+				document.getElementById("daipingjia").innerText = 1+parseInt(document.getElementById("daipingjia").innerText);//待评价数量加1
+				document.getElementById("daishouhuo").innerText = parseInt(document.getElementById("daishouhuo").innerText)-1;
+			}
+		});
+	}
+</script>
+<div class="search_bar clearfix">
+	<a href="index.html" class="logo fl"><img
+		src="images/logoforward.png"></a>
+	<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;<a href="find_allorder.do?op=全部订单">全部订单<span style="color:red;">&nbsp;&nbsp;${ordercount}</span></a></div>
+	<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;<a href="find_allorder.do?op=待支付">待支付<span style="color:red;" id="daizhifu">&nbsp;&nbsp;${waitpaycount}</span></a> </div>
+	<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;<a href="find_allorder.do?op=待发货">待发货<span style="color:red;" id="daifahuo">&nbsp;&nbsp;${waitfahuocount}</span></a> </div>
+	<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;<a href="find_allorder.do?op=待收货">待收货 <span style="color:red;" id="daishouhuo">&nbsp;&nbsp;${waitshouhuo}</span></a> </div>
+	<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;<a href="find_allorder.do?op=待评价">待评价<span style="color:red;" id="daipingjia">&nbsp;&nbsp;${waitdaipingjia}</span></a>  </div>
+</div>
 
-	<div class="main_con clearfix">
+<div class="main_con clearfix">
 		<div class="left_menu_con clearfix">
 			<h3>用户中心</h3>
 			<ul>
@@ -22,66 +176,50 @@
 			</ul>
 		</div>
 		<div class="right_content clearfix">
-				<h3 class="common_title2">全部订单</h3>
-				<ul class="order_list_th w978 clearfix">
-					<li class="col01">2016-8-21 17:36:24</li>
-					<li class="col02">订单号：56872934</li>
-					<li class="col02 stress">未支付</li>		
-				</ul>
-
-				<table class="order_list_table w980">
+				<c:forEach items="${orders}" var="order">
+					<ul class="order_list_th w978 clearfix">
+						<li class="col01">${order.getOrderDate()}</li>
+						<li class="col02">订单号：${order.getOrderId()}</li>
+						<li class="col02 stress" id="tag_${order.getOrderId()}" >${order.getTag()}</li>		
+					</ul>
+					<table class="order_list_table w980">
 					<tbody>
 						<tr>
 							<td width="55%">
-								<ul class="order_goods_list clearfix">					
-									<li class="col01"><img src="images/goods02.jpg"></li>
-									<li class="col02">嘎啦苹果嘎啦苹果<em>11.80元/500g</em></li>	
-									<li class="col03">1</li>
-									<li class="col04">11.80元</li>	
-								</ul>
-								<ul class="order_goods_list clearfix">					
-									<li class="col01"><img src="images/goods02.jpg"></li>
-									<li class="col02">嘎啦苹果嘎啦苹果<em>11.80元/500g</em></li>	
-									<li class="col03">1</li>
-									<li class="col04">11.80元</li>	
-								</ul>
+								<c:forEach items="${order.getItems()}" var="f">
+									<ul class="order_goods_list clearfix">					
+										<li class="col01"><img src="${goodsDetail[f].getGoodsPic()}"></li>
+										<li class="col02">
+											${goodsDetail[f].getGoodsDesc()}<em>${goodsDetail[f].getSaleprice()}元/500g</em>
+										</li>
+										<li class="col03">${f.getGoodscount()}</li>
+										<li class="col04">${f.getGoodscount()* goodsDetail[f].getSaleprice()}元</li>	
+									</ul>
+								</c:forEach>
 							</td>
-							<td width="15%">33.60元</td>
-							<td width="15%">待付款</td>
-							<td width="15%"><a href="#" class="oper_btn">去付款</a></td>
+							<td width="15%">${order.getOrderTotalprice()}元</td>
+							<td width="15%" id="tag1_${order.getOrderId()}">${order.getTag()}</td>
+							<c:if test="${order.getTag()=='待支付'}">
+								<td width="15%"><a id="confB_${order.getOrderId()}" href="#" class="oper_btn" onclick="Conf2(${order.getOrderId()})">去付款</a></td>
+							</c:if>
+							<c:if test="${order.getTag()=='待发货'}">
+								<td width="15%"><a id="confC_${order.getOrderId()}" href="#" class="oper_btn" onclick="Conf3(${order.getOrderId()})">提醒发货</a></td>
+							</c:if>
+							<c:if test="${order.getTag()=='待收货'}">
+								<td width="15%"><a id="conf_${order.getOrderId()}" href="#" class="oper_btn" onclick="Conf(${order.getOrderId()})">确认收货</a><br>
+								<a  href="logistics" id="chakanwuliu_${order.getOrderId()}">查看物流</a></td>
+							</c:if>
+							<c:if test="${order.getTag()=='待评价'}">
+								<td width="15%"><a id="confA_${order.getOrderId()}" href="#" class="oper_btn" onclick="Conf1(${order.getOrderId()})">去评价</a></td>
+							</c:if>
+							<c:if test="${order.getTag()=='已评价'}">
+								<td width="15%"><a id="confD_${order.getOrderId()}" href="#" class="oper_btn" onclick="Conf4(${order.getOrderId()})">查看评价</a></td>
+							</c:if>
 						</tr>
 					</tbody>
 				</table>
+				</c:forEach>
 				
-				<ul class="order_list_th w978 clearfix">
-					<li class="col01">2016-8-21 17:36:24</li>
-					<li class="col02">订单号：56872934</li>
-					<li class="col02 stress">已支付</li>			
-				</ul>
-				<table class="order_list_table w980">
-					<tbody>
-						<tr>
-							<td width="55%">
-								<ul class="order_goods_list clearfix">					
-									<li class="col01"><img src="images/goods02.jpg"></li>
-									<li class="col02">嘎啦苹果嘎啦苹果<em>11.80元/500g</em></li>	
-									<li class="col03">1</li>
-									<li class="col04">11.80元</li>	
-								</ul>
-								<ul class="order_goods_list clearfix">					
-									<li class="col01"><img src="images/goods02.jpg"></li>
-									<li class="col02">嘎啦苹果嘎啦苹果<em>11.80元/500g</em></li>	
-									<li class="col03">1</li>
-									<li class="col04">11.80元</li>	
-								</ul>
-							</td>
-							<td width="15%">33.60元</td>
-							<td width="15%">已付款</td>
-							<td width="15%"><a href="logistics" class="oper_btn">查看物流</a></td>
-						</tr>
-					</tbody>
-				</table>
-
 				<div class="pagenation">
 					<a href="#">上一页</a>
 					<a href="#" class="active">1</a>
@@ -93,9 +231,6 @@
 				</div>
 		</div>
 	</div>
-
-
-
 
 <!-- 脚部 -->
 <%@ include file="footer.jsp"%>

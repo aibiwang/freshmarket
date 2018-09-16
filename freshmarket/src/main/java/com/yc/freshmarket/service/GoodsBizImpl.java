@@ -1,11 +1,16 @@
 package com.yc.freshmarket.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.validation.constraints.Size;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.yc.freshmarket.domain.TblGoods;
 import com.yc.freshmarket.domain.TblGoodsDao;
@@ -16,6 +21,31 @@ public class GoodsBizImpl implements GoodsBiz{
 
 	@Resource
 	TblGoodsDao tblGoodsDao;
+	
+	@Override
+	public void addGoods(TblGoods tblGoods) {
+		
+		tblGoodsDao.save(tblGoods);
+		
+	}
+
+	@Override
+	public void upload(String uploadPath, MultipartFile file) throws IllegalStateException, IOException {
+		//构建保存的文件对象
+		File dest = new File(uploadPath, file.getOriginalFilename());
+		//保存文件
+		file.transferTo(dest);
+	}
+
+	@Override
+	public List<TblGoods> findAll() {
+		
+		List<TblGoods> list = tblGoodsDao.findAll();
+	
+		return list;
+	}
+
+	
 	
 	@Override
 	public List<TblGoods> findAllGoods() {
@@ -32,13 +62,5 @@ public class GoodsBizImpl implements GoodsBiz{
 
 	}
 	
-	@Override
-	public void addGoos(TblGoods tblGoods) {
-		
-	/*	dao.addGoos(tblGoods.getGoodsName(),tblGoods.getInprice(),
-				tblGoods.getSaleprice(),tblGoods.getCategoryId(),
-				tblGoods.getGoodsReservenum(),tblGoods.getGoodsDesc(),tblGoods.getGoodsPic());*/
-		
-	}
 
 }

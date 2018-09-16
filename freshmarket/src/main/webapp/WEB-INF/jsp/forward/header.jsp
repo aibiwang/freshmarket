@@ -54,7 +54,7 @@
 					<span>|</span>
 					<a href="myCart.do">我的购物车</a>
 					<span>|</span>
-					<a href="user_center_order">我的订单</a>
+					<a href="find_allorder.do?op=全部订单">我的订单</a>
 					<span>|</span>
 					<a href="#" id="out" onclick="loginedOut()">退出</a>
 				</div>

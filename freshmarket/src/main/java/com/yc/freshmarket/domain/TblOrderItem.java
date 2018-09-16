@@ -1,9 +1,12 @@
 package com.yc.freshmarket.domain;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity	//实体类注解
@@ -16,7 +19,7 @@ public class TblOrderItem {
 	private Integer	goodsId;
 	private Integer	goodscount;
 	private double	orderitemTotalprice;
-	
+
 	@Override
 	public String toString() {
 		return "TblOrderItem [orderitemId=" + orderitemId + ", orderId=" + orderId + ", goodsId=" + goodsId
