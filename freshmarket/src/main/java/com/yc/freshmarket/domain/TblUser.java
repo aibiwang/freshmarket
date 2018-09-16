@@ -1,4 +1,5 @@
 package com.yc.freshmarket.domain;
+import javax.annotation.Resource;
 /**
  * 用户实体类
  */
@@ -7,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity	//实体类注解
@@ -25,6 +28,8 @@ public class TblUser {
 	private String userAddr;
 	private Integer cartId;
 	private Double userMoney;
+	
+	
 	
 	public Double getUserMoney() {
 		return userMoney;
@@ -80,8 +85,6 @@ public class TblUser {
 	public void setCartId(Integer cartId) {
 		this.cartId = cartId;
 	}
-
-	
 	@Override
 	public String toString() {
 		return "TblUser [userId=" + userId + ", userName=" + userName + ", userPwd=" + userPwd + ", userType="
