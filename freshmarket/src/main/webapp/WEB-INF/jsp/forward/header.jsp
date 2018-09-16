@@ -34,10 +34,11 @@
 		<div class="header">
 			<div class="welcome fl">欢迎来到天天生鲜!</div>
 			<div class="fr">
-
+				<c:if test="${loginedUser!=null }">
 				<div class="login_info1 fl" style="line-height: 29px;">
 					欢迎：<span style="color:green;font-weight:bold;">${loginedUser.getUserName()}</span>&nbsp;大驾光临&nbsp;&nbsp;
 				</div>
+				</c:if>
 				<div class="login_btn fl">
 					<span>|</span>
 					<a href="index">首页</a>
@@ -46,16 +47,18 @@
 					<span>|</span>
 					<a href="register">注册</a>
 				</div>
+				<c:if test="${loginedUser!=null }">
 				<div class="user_link fl">
 					<span>|</span>
 					<a href="user_center_info">用户中心</a>
 					<span>|</span>
-					<a href="cart">我的购物车</a>
+					<a href="myCart.do">我的购物车</a>
 					<span>|</span>
 					<a href="user_center_order">我的订单</a>
 					<span>|</span>
 					<a href="#" id="out" onclick="loginedOut()">退出</a>
 				</div>
+				</c:if>
 			</div>
 		</div>		
 	</div>

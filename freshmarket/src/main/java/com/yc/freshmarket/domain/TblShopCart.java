@@ -1,6 +1,6 @@
 package com.yc.freshmarket.domain;
 
-import javax.persistence.EmbeddedId;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +18,8 @@ public class TblShopCart {
 
 	private Integer	goodsId;
 	private double	goodscount;
+	
+
 	public Integer getCartitemId() {
 		return cartitemId;
 	}
@@ -44,11 +46,10 @@ public class TblShopCart {
 	}
 	@Override
 	public String toString() {
-		return "TblShopCart [cartitemId=" + cartitemId + ", cartId=" + cartId
-				+ ", goodsId=" + goodsId + ", goodscount=" + goodscount + "]";
+		return "TblShopCart [cartitemId=" + cartitemId + ", cartId=" + cartId + ", goodsId=" + goodsId + ", goodscount="
+				+ goodscount + "]";
 	}
 	
-	
-	
+
 
 }
