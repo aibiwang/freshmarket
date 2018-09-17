@@ -32,7 +32,7 @@ public class HelloController {
 	String goodsList(){
 		return "/back/Products_List";
 	}
-	
+
 	/**
 	 * 测试backIndex
 	 */
@@ -40,7 +40,7 @@ public class HelloController {
 	String backIndex(){
 		return "/back/index";
 	}
-	
+
 	/**
 	 * 打开home界面
 	 * @return
@@ -92,10 +92,23 @@ public class HelloController {
 	String logistics(){
 		return "/forward/logistics";
 	}
-	
+
 	//去结算
 	@RequestMapping("/place_order")
 	String place_order(){
 		return "/forward/place_order";
 	}
+
+	//去评价
+	@RequestMapping("/pingjia")
+	String pingjia(){
+		return "/forward/pingjia";
+	}
+	
+	//评价详情
+	@RequestMapping("/pingjia_xiangqing")
+	String pingjia_xiangqing(){
+		return "/forward/pingjia_xiangqing";
+	}
+	
 }

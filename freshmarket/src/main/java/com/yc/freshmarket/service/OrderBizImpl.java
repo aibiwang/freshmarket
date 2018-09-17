@@ -1,5 +1,6 @@
 package com.yc.freshmarket.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -26,6 +27,19 @@ public class OrderBizImpl implements OrderBiz{
 	@Override
 	public int updateTagByOrderId(String tag,Integer orderId) {
 		int result = dao.updateTagByOrderId(tag,orderId);
+		return result;
+	}
+
+	@Override
+	public TblOrder findByOrderId(Integer orderId) {
+		TblOrder list = dao.findAllByOrderId(orderId);
+		return list;
+	}
+
+	@Override
+	public int updateOrderManyiduByOrderId(String tag, Integer pingjiamanyidu, String pingjianeirong,
+			Timestamp pingjiashijian, Integer orderId) {
+		int result = dao.updateOrderManyiduByOrderId(tag,pingjiamanyidu,pingjianeirong,pingjiashijian,orderId);
 		return result;
 	}
 

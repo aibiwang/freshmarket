@@ -2,6 +2,7 @@ package com.yc.freshmarket.controller;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.yc.freshmarket.domain.TblGoods;
 import com.yc.freshmarket.domain.TblGoodsDao;
 import com.yc.freshmarket.domain.TblOrder;
-import com.yc.freshmarket.domain.TblOrderDao;
 import com.yc.freshmarket.domain.TblOrderItem;
 import com.yc.freshmarket.domain.TblUser;
 import com.yc.freshmarket.service.GoodsBiz;
@@ -72,7 +72,6 @@ public class OrderController{
 		model.addAttribute("totalMoney",siglePrice*goodsNum);
 
 		return "forward/place_order";
-
 	}
 
 	/**
@@ -84,7 +83,6 @@ public class OrderController{
 	 */
 	@RequestMapping("/find_allorder.do")
 	public String find_allorder(String op,HttpSession session,Model model) {
-		System.out.println(op);
 		TblUser user=(TblUser) session.getAttribute("loginedUser");
 		Integer uid = user.getUserId();
 		List<TblOrder> orders1 = orderBiz.findByUserId(uid);
@@ -97,6 +95,7 @@ public class OrderController{
 			int waitfahuocount=0;//待发货
 			int waitshouhuo=0;//待收货
 			int waitdaipingjia=0;//待评价
+			int yipingjia=0;//已评价
 			String status="";
 
 			for(int i = 0;i<orders1.size();i++){
@@ -115,6 +114,7 @@ public class OrderController{
 					waitfahuocount++;
 					ordercount++;
 				}else if("已评价".equals(status)){
+					yipingjia++;
 					ordercount++;
 				}
 				//判断显示哪个状态的订单
@@ -127,7 +127,7 @@ public class OrderController{
 			}
 
 			if(orders!=null&&orders.size()>0){
-				System.out.println(orders);
+				//				System.out.println(orders);
 
 				List<TblOrderItem> orderItems = new ArrayList<TblOrderItem>();
 				Map<TblOrderItem,TblGoods> goodsDetail =new HashMap<TblOrderItem,TblGoods>();//每个订单有一个Map
@@ -152,8 +152,8 @@ public class OrderController{
 				model.addAttribute("waitpaycount", waitpaycount);
 				model.addAttribute("waitshouhuo", waitshouhuo);
 				model.addAttribute("waitdaipingjia", waitdaipingjia);
+				model.addAttribute("yipingjia", yipingjia);
 			}
-
 		}
 		return "forward/user_center_order";
 
@@ -176,6 +176,64 @@ public class OrderController{
 		}else{
 			out.write("订单状态出现异常！！！");
 		}
+	}
+
+	/**
+	 * 点击去评价时跳到评价界面前，先查订单信息
+	 * @param orderId
+	 * op=0则为添加评价信息，op=1则为查看评价详情
+	 * @param out
+	 * @throws IOException
+	 */
+	@RequestMapping("/selectPingjia.do")
+	public void selectPingjia(Integer op,Integer orderId,Writer out,HttpSession session) throws IOException {
+		System.out.println(op);
+		TblOrder order = orderBiz.findByOrderId(orderId);
+		System.out.println(order);
+		if(order!=null){
+			List<TblOrderItem> orderItems = new ArrayList<TblOrderItem>();
+			Map<TblOrderItem,TblGoods> goodsDetail =new HashMap<TblOrderItem,TblGoods>();//订单有一个Map
+			//2.获取每个订单项对应的商品详情
+			if(order.getItems()!=null&&order.getItems().size()>0){
+				orderItems=order.getItems();
+				for(TblOrderItem orderItem:orderItems){
+					Integer goodsId = orderItem.getGoodsId();
+					TblGoods tblgoods = tblGoodsDao.findByGoodsId(goodsId);
+					goodsDetail.put(orderItem, tblgoods);
+					System.out.println("商品详情"+tblgoods);
+					System.out.println(goodsDetail.get(orderItem).getGoodsPic());
+				}
+			}
+			session.setAttribute("order", order);
+			session.setAttribute("goodsDetail", goodsDetail);
+		}
+		if(op==1){
+			out.write("pingjia_xiangqing");//评价详情
+		}else{
+			out.write("pingjia");//添加评价信息
+		}
+	}
+
+	/**
+	 * 评价成功后，从评价界面跳回我的订单时修改该订单状态
+	 * @param orderId
+	 * @param model
+	 * @return 
+	 * @return
+	 * @throws IOException 
+	 */
+	@RequestMapping("/updateOrderTag1.do")
+	public String updateOrderTag(Integer orderId,Integer pingjiamanyidu,String pingjianeirong,HttpSession session,Model model) throws IOException {
+		if(orderId!=null&&!"".equals(pingjiamanyidu)&&!"".equals(pingjianeirong)){
+			String tag ="已评价";
+			Timestamp Pingjiashijian = new Timestamp(System.currentTimeMillis());
+			int result = orderBiz.updateOrderManyiduByOrderId(tag,pingjiamanyidu,pingjianeirong,Pingjiashijian,orderId);
+			System.out.println(result);
+			if(result>0){
+				return find_allorder("全部订单",session,model);
+			}
+		}
+		return "forward/user_center_info";
 	}
 
 }
