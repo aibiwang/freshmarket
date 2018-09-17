@@ -1,5 +1,9 @@
 package com.yc.freshmarket.service;
 
+import java.util.List;
+
+import com.yc.freshmarket.domain.TblCategory;
+
 /**
  * CategoryBiz		商品类型接口
  * @author liu-pc
@@ -7,4 +11,9 @@ package com.yc.freshmarket.service;
  */
 public interface CategoryBiz {
 
+	/**
+	 * 查看所有商品
+	 * @return
+	 */
+	public List<TblCategory> findAll();
 }

@@ -63,4 +63,10 @@ public class UserBizImpl implements UserBiz{
 		return dao.saveAndFlush(user);
 	}
 
+	@Override
+	public int usertotal() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

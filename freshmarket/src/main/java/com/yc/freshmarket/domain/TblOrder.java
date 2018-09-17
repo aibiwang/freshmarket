@@ -19,7 +19,7 @@ public class TblOrder {
 	private String receiverName;
 	private String receiverPhone;
 	private String payment;
-	private Integer	orderMeno;
+	private String	orderMeno;
 	private Timestamp orderDate;
 	private Timestamp sendDate;
 	private String tag;
@@ -89,11 +89,13 @@ public class TblOrder {
 		this.payment = payment;
 	}
 
-	public Integer getOrderMeno() {
+
+
+	public String getOrderMeno() {
 		return orderMeno;
 	}
 
-	public void setOrderMeno(Integer orderMeno) {
+	public void setOrderMeno(String orderMeno) {
 		this.orderMeno = orderMeno;
 	}
 

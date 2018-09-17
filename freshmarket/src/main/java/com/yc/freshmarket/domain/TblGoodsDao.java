@@ -5,6 +5,9 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface TblGoodsDao extends JpaRepository<TblGoods, Integer> {
 
+	@Query(nativeQuery=true,value="select count(*) cnt from tbl_goods;")
+	int goodtotal();
+
 
 	/*
 	@Query(nativeQuery=true,value="")

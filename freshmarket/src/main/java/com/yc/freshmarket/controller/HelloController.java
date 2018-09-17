@@ -3,7 +3,6 @@ package com.yc.freshmarket.controller;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @EnableAutoConfiguration
@@ -17,7 +16,14 @@ public class HelloController {
 		return "/back/picture-add";
 	}
 
-	
+	/**
+	 * 修改商品信息
+	 * @return
+	 */
+	@RequestMapping("/TgoodsUpdate.do")
+	String goodsUpdate(){
+		return "/back/picture-update";
+	}
 
 	/**
 	 * 测试查看商品列表
@@ -35,7 +41,14 @@ public class HelloController {
 		return "/back/index";
 	}
 	
-	
+	/**
+	 * 打开home界面
+	 * @return
+	 */
+	@RequestMapping("/home")
+	String home(){
+		return "/back/home";
+	}
 
 	@RequestMapping("/login")
 	String login(){

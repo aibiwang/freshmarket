@@ -1,6 +1,7 @@
 package com.yc.freshmarket.controller;
 
 import java.io.IOException;
+import java.io.Writer;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.yc.freshmarket.domain.TblCategory;
 import com.yc.freshmarket.domain.TblGoods;
+import com.yc.freshmarket.service.CategoryBiz;
 import com.yc.freshmarket.service.GoodsBiz;
 
 @Controller
@@ -23,8 +26,10 @@ import com.yc.freshmarket.service.GoodsBiz;
 public class GoodsController {
 
 	@Resource
-
 	private GoodsBiz goodsBiz;
+	@Resource
+	private CategoryBiz categoryBiz;
+	
 	
 	@RequestMapping("/detail.do")
 	public String goodsDetail(Integer goodsId,Model model) {
@@ -47,7 +52,7 @@ public class GoodsController {
 		
 		String uploadPath = "/upload";
 
-		tblGoods.setGoodsPic(".."+uploadPath+ "\\" + picFile.getOriginalFilename());
+		tblGoods.setGoodsPic(".."+uploadPath+ "/" + picFile.getOriginalFilename());
 		
 		uploadPath = session.getServletContext().getRealPath(uploadPath);
 		
@@ -71,15 +76,65 @@ public class GoodsController {
 	
 	
 	@RequestMapping("/findGoods.do")
-	public String findGoods(HttpServletRequest request){
+	public String findGoods(HttpServletRequest request,Model model){
+		int goodtotal = goodsBiz.goodtotal();
 		
-		List<TblGoods> list = this.goodsBiz.findAll();
-		
-		System.out.println("------list--------"+list);
-		
+		List<TblCategory> list = this.categoryBiz.findAll();
+		request.setAttribute("goodtotal", goodtotal);
 		request.setAttribute("list", list);
 		return "/back/Products_List";
 
+	}
+	
+	@RequestMapping("/detelegoods.do")
+	public String detelegoods(@RequestParam("goodsId") Integer	goodsId,HttpServletRequest request, Model mav){
+		
+		System.out.println("-----goodsId------"+goodsId);
+		
+		goodsBiz.detelegoods(goodsId);
+		
+		return "/back/Products_List";
+	}
+	
+	@RequestMapping("/updategoods.do")
+	public void updategoods(TblGoods tblGoods,HttpServletRequest request,HttpSession session,Writer write,Model mav ) throws IOException{
+		
+		System.out.println("-----------tblGoods-----------"+tblGoods);
+		
+		
+		write.write("1");
+		
+		session.setAttribute("tblGoods", tblGoods);
+		
+		System.out.println("111111111111");
+		
+		
+	}
+	
+	
+	@RequestMapping("/doUpdate.do")
+	public void doUpdate(TblGoods tblGoods,HttpServletRequest request,HttpSession session ){
+		
+		System.out.println("-------8778-----------"+tblGoods.getGoodsId());
+		System.out.println("-------87780000-----------"+tblGoods.getGoodsPic());
+		tblGoods.setGoodsPutdate(new Timestamp(System.currentTimeMillis()));
+		try {
+		
+			goodsBiz.updategoods(tblGoods);
+			
+			System.out.println("----------------------"+tblGoods);
+			
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		}	
+	}
+	
+	@RequestMapping("/statisticalData.do")
+	public String statisticalData(HttpServletRequest request){
+		int goodtotal = goodsBiz.goodtotal();
+		request.setAttribute("goodtotal", goodtotal);
+		return "/back/home";
+		
 	}
 	
 }
