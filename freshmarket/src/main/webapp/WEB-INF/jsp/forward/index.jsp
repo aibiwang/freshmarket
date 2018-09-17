@@ -12,8 +12,7 @@
 			<input type="button" class="input_btn fr" name="" value="搜索">
 		</div>
 		<div class="guest_cart fr">
-			<a href="cart.jsp" class="cart_name fl">我的购物车</a>
-			<div class="goods_count fl" id="show_count">1</div>
+			<input type="button" onclick="myCart()" class="cart_name fl" value="我的购物车">
 		</div>
 	</div>
 
@@ -81,7 +80,7 @@
 					<a href="detail.do?goodsId=${g.goodsId}"><img src="${g.goodsPic}"></a>
 					  
 					<div class="prize" style="size: 10px" >¥ ${g.saleprice}/kg
-					<a href="cart.jsp"><input type="button" value="加购物车"></a>
+					<input type="button" value="加购物车" onclick="addToCart(${g.goodsId})">
 					<a href="buy.do?goodsId=${g.goodsId}"><input type="button" onclick="script:if(${loginedUser==null}){alert('请先登录')}" value="立即购买"></a>
 
 					</div>
@@ -130,7 +129,7 @@
 					<a href="detail.do?goodsId=${g.goodsId}"><img src="${g.goodsPic}"></a>
 					  
 					<div class="prize" style="size: 10px" >¥ ${g.saleprice}/kg
-					<a href="cart.jsp"><input type="button" value="加购物车"></a>
+					<input type="button" value="加购物车" onclick="addToCart(${g.goodsId})">
 					<a href="buy.do?goodsId=${g.goodsId}"><input type="button" onclick="script:if(${loginedUser==null}){alert('请先登录')}" value="立即购买"></a>
 					</div>
 				</li>
@@ -173,7 +172,7 @@
 					<a href="detail.do?goodsId=${g.goodsId}"><img src="${g.goodsPic}"></a>
 					  
 					<div class="prize" style="size: 10px" >¥ ${g.saleprice}/kg
-					<a href="cart.jsp"><input type="button" value="加购物车"></a>
+					<input type="button" value="加购物车" onclick="addToCart(${g.goodsId})">
 					<a href="buy.do?goodsId=${g.goodsId}"><input type="button" onclick="script:if(${loginedUser==null}){alert('请先登录')}" value="立即购买"></a>
 					</div>
 				</li>
@@ -211,7 +210,7 @@
 					<a href="detail.do?goodsId=${g.goodsId}"><img src="${g.goodsPic}"></a>
 					  
 					<div class="prize" style="size: 10px" >¥ ${g.saleprice}/kg
-					<a href="cart.jsp"><input type="button" value="加购物车"></a>
+					<input type="button" value="加购物车" onclick="addToCart(${g.goodsId})">
 				<a href="buy.do?goodsId=${g.goodsId}"><input type="button" onclick="script:if(${loginedUser==null}){alert('请先登录')}" value="立即购买"></a>
 					</div>
 				</li>
@@ -249,7 +248,7 @@
 					<a href="detail.do?goodsId=${g.goodsId}"><img src="${g.goodsPic}"></a>
 					  
 					<div class="prize" style="size: 10px" >¥ ${g.saleprice}/kg
-					<a href="cart.jsp"><input type="button" value="加购物车"></a>
+					<input type="button" value="加购物车" onclick="addToCart(${g.goodsId})">
 					<a href="buy.do?goodsId=${g.goodsId}"><input type="button" onclick="script:if(${loginedUser==null}){alert('请先登录')}" value="立即购买"></a>
 					</div>
 				</li>
@@ -287,7 +286,7 @@
 					<a href="detail.do?goodsId=${g.goodsId}"><img src="${g.goodsPic}"></a>
 					  
 					<div class="prize" style="size: 10px" >¥ ${g.saleprice}/kg
-					<a href="cart.jsp"><input type="button" value="加购物车"></a>
+					<input type="button" value="加购物车" onclick="addToCart(${g.goodsId})">
 					<a href="buy.do?goodsId=${g.goodsId}"><input type="button" onclick="script:if(${loginedUser==null}){alert('请先登录')}" value="立即购买"></a>
 					</div>
 				</li>
@@ -304,6 +303,27 @@
 
 
 <script type="text/javascript">
+		
+		function addToCart(goodsId){
+			
+			$.post("addToCart.do?goodsId="+goodsId,function(data){
+				
+				alert(data);
+			});
+			
+		}
+		
+		function myCart(){
+			
+			$.post("myCart.do",function(data){
+				if(data=='请先登录'){
+				alert(data);
+				}else{
+				window.location.href ='myCart.do';
+				}
+			});
+		}
+		
 		
 		
 

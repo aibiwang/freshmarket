@@ -74,11 +74,6 @@ public class HelloController {
 		return "/forward/user_center_info";
 	}
 
-	//用户购物车
-	@RequestMapping("/cart")
-	String cart(){
-		return "/forward/cart";
-	}
 
 	//用户地址
 	@RequestMapping("/user_center_site")
