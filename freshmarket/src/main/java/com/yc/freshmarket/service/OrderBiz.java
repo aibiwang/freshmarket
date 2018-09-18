@@ -1,5 +1,6 @@
 package com.yc.freshmarket.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import com.yc.freshmarket.domain.TblOrder;
@@ -29,5 +30,21 @@ public interface OrderBiz {
 	
 	public int moneytotal();
 	
+	TblOrder insertOrder(TblOrder Order);
+
+	/**
+	 * 显示待评价订单界面信息
+	 * @param orderId
+	 * @return
+	 */
+	TblOrder findByOrderId(Integer orderId);
+
+	/**
+	 * 插入评价内容
+	 * @param order
+	 * @return
+	 */
+	int updateOrderManyiduByOrderId(String tag, Integer pingjiamanyidu, String pingjianeirong, Timestamp pingjiashijian,
+			Integer orderId);
 
 }

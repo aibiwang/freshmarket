@@ -25,6 +25,9 @@ public class TblOrder {
 	private Timestamp orderDate;
 	private Timestamp sendDate;
 	private String tag;
+	private Timestamp orderPingjiashijian;
+	private String orderPingjianeirong;
+	private Integer orderPingjiamanyidu;
 	
 	@OneToMany(targetEntity=TblOrderItem.class,mappedBy="orderId")
 	private List<TblOrderItem> items;
@@ -34,10 +37,36 @@ public class TblOrder {
 		return "TblOrder [orderId=" + orderId + ", userId=" + userId + ", orderTotalprice=" + orderTotalprice
 				+ ", receiverAddr=" + receiverAddr + ", receiverName=" + receiverName + ", receiverPhone="
 				+ receiverPhone + ", payment=" + payment + ", orderMeno=" + orderMeno + ", orderDate=" + orderDate
-				+ ", sendDate=" + sendDate + ", tag=" + tag + ", items=" + items + "]";
+				+ ", sendDate=" + sendDate + ", tag=" + tag + ", orderPingjiashijian=" + orderPingjiashijian
+				+ ", orderPingjianeirong=" + orderPingjianeirong + ", orderPingjiamanyidu=" + orderPingjiamanyidu
+				+ ", items=" + items + "]";
 	}
 
 	
+	public Timestamp getOrderPingjiashijian() {
+		return orderPingjiashijian;
+	}
+
+	public void setOrderPingjiashijian(Timestamp orderPingjiashijian) {
+		this.orderPingjiashijian = orderPingjiashijian;
+	}
+
+	public String getOrderPingjianeirong() {
+		return orderPingjianeirong;
+	}
+
+	public void setOrderPingjianeirong(String orderPingjianeirong) {
+		this.orderPingjianeirong = orderPingjianeirong;
+	}
+
+	public Integer getOrderPingjiamanyidu() {
+		return orderPingjiamanyidu;
+	}
+
+	public void setOrderPingjiamanyidu(Integer orderPingjiamanyidu) {
+		this.orderPingjiamanyidu = orderPingjiamanyidu;
+	}
+
 	public List<TblOrderItem> getItems() {
 		return items;
 	}

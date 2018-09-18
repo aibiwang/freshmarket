@@ -17,7 +17,7 @@ public class TblOrderItem {
 	private Integer	orderitemId;
 	private Integer	orderId;
 	private Integer	goodsId;
-	private Integer	goodscount;
+	private double	goodscount;
 	private double	orderitemTotalprice;
 
 	@Override
@@ -50,11 +50,12 @@ public class TblOrderItem {
 		this.goodsId = goodsId;
 	}
 
-	public Integer getGoodscount() {
+
+	public double getGoodscount() {
 		return goodscount;
 	}
 
-	public void setGoodscount(Integer goodscount) {
+	public void setGoodscount(double goodscount) {
 		this.goodscount = goodscount;
 	}
 

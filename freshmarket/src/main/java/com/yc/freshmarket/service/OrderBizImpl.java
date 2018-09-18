@@ -1,5 +1,6 @@
 package com.yc.freshmarket.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -45,5 +46,25 @@ public class OrderBizImpl implements OrderBiz{
 	
 
 	
+	/**
+	 * 插入订单
+	 */
+	@Override
+	public TblOrder insertOrder(TblOrder Order) {
+		
+		return dao.save(Order);
+	}
+	@Override
+	public TblOrder findByOrderId(Integer orderId) {
+		TblOrder list = dao.findAllByOrderId(orderId);
+		return list;
+	}
+
+	@Override
+	public int updateOrderManyiduByOrderId(String tag, Integer pingjiamanyidu, String pingjianeirong,
+			Timestamp pingjiashijian, Integer orderId) {
+		int result = dao.updateOrderManyiduByOrderId(tag,pingjiamanyidu,pingjianeirong,pingjiashijian,orderId);
+		return result;
+	}
 
 }

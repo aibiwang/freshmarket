@@ -12,8 +12,7 @@
 			<input type="button" class="input_btn fr" name="" value="搜索">
 		</div>
 		<div class="guest_cart fr">
-			<a href="cart.html" class="cart_name fl">我的购物车</a>
-			<div class="goods_count fl" id="show_count">1</div>
+		<input type="button" onclick="myCart()" class="cart_name fl" value="我的购物车">
 		</div>
 	</div>
 
@@ -70,7 +69,7 @@
 			<div class="total">总价：<em>16.80元</em></div> -->
 			<div class="operate_btn">
 				<a href="buy.do?goodsId=${DetailGoods.goodsId}" onclick="script:if(${loginedUser==null}){alert('请先登录')}" class="buy_btn">立即购买</a>
-				<a href="javascript:;" class="add_cart" id="add_cart">加入购物车</a>				
+				<a href="javascript:addCart(${DetailGoods.goodsId})" class="add_cart" id="add_cart">加入购物车</a>				
 			</div>
 		</div>
 	</div>
@@ -110,6 +109,29 @@
 		</div>
 	</div>
 
+<script type="text/javascript">
+
+function addCart(goodsId){
+	
+	$.post("addToCart.do?goodsId="+goodsId,function(data){
+		
+		alert(data);
+	});
+	
+}
+	function myCart(){
+		$.post("myCart.do",function(data){
+			if(data=='请先登录'){
+			alert(data);
+			}else{
+			window.location.href ='myCart.do';
+			}
+		});
+	}
+	
+
+
+</script>
 
 
 <!-- 脚部 -->

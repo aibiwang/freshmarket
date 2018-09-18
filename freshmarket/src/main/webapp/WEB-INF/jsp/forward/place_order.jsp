@@ -73,7 +73,8 @@
 	</div>
 
 	<div class="order_submit clearfix">
-		<a href="javascript:;" id="order_btn">确认订单</a>
+		<a href="javascript:payCheck(${orderId})" id="order_btn">确认支付</a>
+		<a href="find_allorder.do?op=待支付" id="order_btn">暂不支付</a>
 	</div>	
 
 	<div class="popup_con">
@@ -85,19 +86,23 @@
 	</div>
 	<script type="text/javascript" src="js/jquery-1.12.2.js"></script>
 	<script type="text/javascript">
-		$('#order_btn').click(function() {
+	
+	function payCheck(orderId){
+		
 			localStorage.setItem('order_finish',2);
 
 			$('.popup_con').fadeIn('fast', function() {
 
 				setTimeout(function(){
 					$('.popup_con').fadeOut('fast',function(){
-						window.location.href = 'index.html';
+						window.location.href = 'payCheck.do?orderId='+orderId;
 					});	
 				},3000)
 				
 			});
-		});
+		
+		
+	}
 	</script>
 
 

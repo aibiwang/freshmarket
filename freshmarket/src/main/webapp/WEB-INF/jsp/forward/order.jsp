@@ -96,6 +96,7 @@
 	<input  name="siglePrice" type="hidden" value="${goods.saleprice }"/>
 	<input  name="goodsName" type="hidden"  value="${goods.goodsName }">
 	<input  name="goodsPic" type="hidden"  value="${goods.goodsPic }">
+	<input  name="goodsId" type="hidden"  value="${goodsId }">
 	
 	<input  name="orderTime"  type="hidden"  value="插入数据库时获取">
 	
