@@ -21,4 +21,6 @@ public interface ShopcartBiz {
 	public void changeNum(Integer cartitemId, String flag);
 
 	public double getNum(int cartitemId);
+	
+	List<TblShopCart> findByCartitemIds(List<Integer> CartItemIds);
 }

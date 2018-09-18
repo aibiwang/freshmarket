@@ -24,5 +24,7 @@ public interface OrderBiz {
 	 * @return
 	 */
 	int updateTagByOrderId(String tag,Integer orderId);
+	
+	TblOrder insertOrder(TblOrder Order);
 
 }

@@ -29,4 +29,13 @@ public class OrderBizImpl implements OrderBiz{
 		return result;
 	}
 
+	/**
+	 * 插入订单
+	 */
+	@Override
+	public TblOrder insertOrder(TblOrder Order) {
+		
+		return dao.save(Order);
+	}
+
 }

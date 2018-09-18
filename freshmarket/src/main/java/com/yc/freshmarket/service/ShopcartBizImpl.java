@@ -81,6 +81,18 @@ public class ShopcartBizImpl implements ShopcartBiz{
 	public double getNum(int cartitemId) {
 		
 		return (double) (tblShopCartDao.findOne(cartitemId)).getGoodscount();
+	}
+
+	
+	/**
+	 * 根据多个CartItemId来查询购物车子项
+	 */
+	@Override
+	public List<TblShopCart> findByCartitemIds(List<Integer> CartItemIds) {
+		
+		return tblShopCartDao.findAll(CartItemIds);
 	} 
 
+
+	
 }

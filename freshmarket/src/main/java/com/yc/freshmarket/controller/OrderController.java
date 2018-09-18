@@ -2,6 +2,7 @@ package com.yc.freshmarket.controller;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,17 +13,18 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yc.freshmarket.domain.TblGoods;
 import com.yc.freshmarket.domain.TblGoodsDao;
 import com.yc.freshmarket.domain.TblOrder;
-import com.yc.freshmarket.domain.TblOrderDao;
 import com.yc.freshmarket.domain.TblOrderItem;
 import com.yc.freshmarket.domain.TblUser;
 import com.yc.freshmarket.service.GoodsBiz;
 import com.yc.freshmarket.service.OrderBiz;
+import com.yc.freshmarket.service.OrderitemBiz;
 
 @Controller
 @EnableAutoConfiguration
@@ -34,6 +36,8 @@ public class OrderController{
 	private GoodsBiz goodsBiz;
 	@Resource
 	private TblGoodsDao tblGoodsDao;
+	@Resource
+	OrderitemBiz orderitemBiz; 
 
 	/**
 	 * 立即购买请求
@@ -50,7 +54,7 @@ public class OrderController{
 			model.addAttribute("msg","请先登录");
 			return "forward/login";
 		}else {
-			System.out.println(user);
+			model.addAttribute("goodsId",goodsId);
 			model.addAttribute("goods",goodsBiz.findTblGoodsBygoodsId(goodsId));
 			return "forward/order";
 
@@ -58,9 +62,33 @@ public class OrderController{
 	}
 
 
+	@Transactional
 	@RequestMapping("/oderSubmit.do")
-	public String oderSubmit(Model model,Integer goodsNum,String receiverName,String receiverTel,String receiverAddr,double siglePrice,String goodsName,String goodsPic,String orderTime) {
+	public String oderSubmit(HttpSession session, Model model,Integer goodsId, Integer goodsNum,String receiverName,String receiverTel,String receiverAddr,double siglePrice,String goodsName,String goodsPic,String orderTime) {
 
+		double totalprices=siglePrice*goodsNum;
+		TblOrder order = new TblOrder();
+		order.setOrderDate(new Timestamp(System.currentTimeMillis()));
+		order.setOrderTotalprice(totalprices);
+		order.setReceiverAddr(receiverAddr);
+		order.setReceiverName(receiverName);
+		order.setReceiverPhone(receiverTel);
+		order.setTag("待支付");
+		order.setUserId(((TblUser)session.getAttribute("loginedUser")).getUserId());
+		//插入订单
+		order=orderBiz.insertOrder(order);
+		
+		TblOrderItem orderItem = new TblOrderItem();
+		orderItem.setGoodscount(goodsNum);
+		orderItem.setGoodsId(goodsId);
+		orderItem.setOrderId(order.getOrderId());
+		orderItem.setOrderitemTotalprice(totalprices);
+		
+		List<TblOrderItem> orderItems=new ArrayList<TblOrderItem>();
+		orderItems.add(orderItem);
+		//插入订单子项
+		orderitemBiz.insertOrderitem(orderItems);
+		
 		model.addAttribute("goodsNum",goodsNum);
 		model.addAttribute("receiverName",receiverName);
 		model.addAttribute("receiverTel",receiverTel);
@@ -69,8 +97,9 @@ public class OrderController{
 		model.addAttribute("goodsName",goodsName);
 		model.addAttribute("orderTime",orderTime);
 		model.addAttribute("goodsPic",goodsPic);
-		model.addAttribute("totalMoney",siglePrice*goodsNum);
-
+		model.addAttribute("totalMoney",totalprices);
+		model.addAttribute("orderId", order.getOrderId());
+		//返回界面
 		return "forward/place_order";
 
 	}
@@ -177,5 +206,20 @@ public class OrderController{
 			out.write("订单状态出现异常！！！");
 		}
 	}
+	
+	/**
+	 * 确认支付
+	 * @param orderId
+	 * @param out
+	 * @throws IOException
+	 */
+	@RequestMapping("/payCheck.do")
+	public String payCheck(Integer orderId,HttpSession session,Model model) throws IOException {
+		
+		orderBiz.updateTagByOrderId("待发货", orderId);
+		
+		return find_allorder("待发货",session,model);
+	}
+	
 
 }

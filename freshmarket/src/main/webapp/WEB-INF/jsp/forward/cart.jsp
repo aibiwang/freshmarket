@@ -161,7 +161,7 @@
 			
 			//根据复选框的选中情况,决定set中的元素是否移除
 			if(isSelected==false){
-				var a=set.delete(''+cartitemId);
+				set.delete(''+cartitemId);
 			}else{
 				set.add(cartitemId+'');
 			}
@@ -191,6 +191,7 @@
 				$('#totalPrice').html(totalPrice);
 				$('#goodsNum').html(goodsNum);
 			}else{
+				set=new Set();
 				$('#totalPrice').html(0);
 				$('#goodsNum').html(0);
 			}
@@ -198,23 +199,28 @@
 
 	//去结算
 	function goPay(){
+		//总价
+		var totalPrice=$('#totalPrice').html();
 		//判断是否全选
 		if($('#selectAllGoods').is(':checked')){
 			
-			window.location.href ='cartOrder.do';
+			window.location.href ='cartOrder.do?totalPrice='+totalPrice;
 				
 		}else{
+			
+			if(set.size<=0){
+				alert('未选择任何商品!');
+				return ;
+			}
 			var param='';
 			set.forEach(function(element){
 				param+=element+',';
 			})
-			alert(param);	
+			//alert(param);	
 			
-			window.location.href ='goPay.do?params='+param;
-			
+			window.location.href ='goPay.do?params='+param+'&totalPrice='+totalPrice;
 			
 		}
-		
 		
 	}
 	
