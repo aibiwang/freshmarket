@@ -28,7 +28,7 @@ $.extend( true, $.fn.dataTable.defaults, {
         "sLengthMenu": "每页显示条数: _MENU_",
         "sLoadingRecords": "正在载入...",
         "sProcessing": "正在载入...",
-        "sSearch": "搜索:",
+        "sSearch": "",	//"sSearch": "搜索",
         "sSearchPlaceholder": "",
         "sUrl": "",
         "sZeroRecords": "没有相关记录"

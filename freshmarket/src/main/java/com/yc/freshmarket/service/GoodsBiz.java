@@ -21,10 +21,22 @@ public interface GoodsBiz {
 	public void addGoods(TblGoods tblGoods);
 	
 	/**
-	 * 查看所有商品
+	 * 查询商品总数
 	 * @return
 	 */
-	public List<TblGoods> findAll();
+	public int goodtotal();
+	
+	/**
+	 * 删除商品
+	 * @param goodsId
+	 */
+	public void detelegoods(Integer	goodsId);
+	
+	/**
+	 * 修改商品信息
+	 * @param tblGoods
+	 */
+	public void updategoods(TblGoods tblGoods);
 	
 	
 	/**

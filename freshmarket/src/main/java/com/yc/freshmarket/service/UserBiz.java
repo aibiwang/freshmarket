@@ -10,6 +10,12 @@ import com.yc.freshmarket.domain.TblUser;
 public interface UserBiz {
 
 	/**
+	 * 查询用户总数
+	 * @return
+	 */
+	public int usertotal();
+	
+	/**
 	 * 用户登录
 	 * @param name
 	 * @param pwd

@@ -5,10 +5,8 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.validation.constraints.Size;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -36,15 +34,6 @@ public class GoodsBizImpl implements GoodsBiz{
 		//保存文件
 		file.transferTo(dest);
 	}
-
-	@Override
-	public List<TblGoods> findAll() {
-		
-		List<TblGoods> list = tblGoodsDao.findAll();
-	
-		return list;
-	}
-
 	
 	
 	@Override
@@ -61,6 +50,25 @@ public class GoodsBizImpl implements GoodsBiz{
 
 
 	}
+
+	@Override
+	public int goodtotal() {
+		return tblGoodsDao.goodtotal();
+	}
+
 	
+	@Override
+	public void detelegoods(Integer goodsId) {
+		tblGoodsDao.delete(goodsId);
+	}
+
+	@Override
+	public void updategoods(TblGoods tblGoods) {
+		tblGoodsDao.saveAndFlush(tblGoods);
+		
+	}
+	
+	
+
 
 }

@@ -42,18 +42,18 @@
  <div id="products_style">
     <div class="search_style">
      
-      <ul class="search_content clearfix">
+<!--       <ul class="search_content clearfix">
        <li><label class="l_f">产品名称</label><input name="" type="text"  class="text_add" placeholder="输入品牌名称"  style=" width:250px"/></li>
        <li><label class="l_f">添加时间</label><input class="inline laydate-icon" id="start" style=" margin-left:10px;"></li>
        <li style="width:90px;"><button type="button" class="btn_search"><i class="icon-search"></i>查询</button></li>
-      </ul>
+      </ul> -->
     </div>
      <div class="border clearfix">
        <span class="l_f">
-        <a href="picture-add.html" title="添加商品" class="btn btn-warning Order_form"><i class="icon-plus"></i>添加商品</a>
+        <a href="TgoodsAdd.do" title="添加商品" class="btn btn-warning Order_form"><i class="icon-plus"></i>添加商品</a>
         <a href="javascript:ovid()" class="btn btn-danger"><i class="icon-trash"></i>批量删除</a>
        </span>
-       <span class="r_f">共：<b>2334</b>件商品</span>
+       <span class="r_f">共：<b>${goodtotal}</b>件商品</span>
      </div>
      <!--产品列表展示-->
      <div class="h_products_list clearfix" id="products_list">
@@ -69,9 +69,9 @@
       </div>  
      </div>
          <div class="table_menu_list" id="testIframe">
-      <table class="table table-striped table-bordered table-hover" id="sample-table">
+       <table class="table table-striped table-bordered table-hover" id="sample-table">
 		<thead>
-		 <tr>
+		 	<tr>
 				<th width="25px"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
 				<th width="80px">商品编号</th>
 				<th width="100px">图片</th>
@@ -79,44 +79,56 @@
 				<th width="50px">进价</th>
 				<th width="50px">销售价</th>
 				<th width="50px">类别</th>	
-				<th width="100px">库存</th>			
-				<th width="180px">加入时间</th>
+				<th width="100px">库存</th>
+				<th width="180px">商品描述</th>			
+				<th width="100px">加入时间</th>
 				<th width="70px">状态</th>                
 				<th width="200px">操作</th>
-				
-				
-				
 			</tr>
 		</thead>
 	<tbody>
-			
-		<c:forEach items="${list}" var="list">
-		 <tr>
-        <td width="25px"><label><input type="checkbox" class="ace" /><span class="lbl"></span></label></td>
-        <td width="80px">${list.goodsId}</td>  
-        <td height="100px" width="100px"><img height="80px" width="80px" src="${list.goodsPic }"/></td>  
-        <td width="80px"><u style="cursor:pointer" class="text-primary" onclick="">${list.goodsName}</u></td>
-        <td width="50px">${list.inprice}元</td>
-        <td width="50px">${list.saleprice}元</td>  
-        <td width="50px">${list.categoryId}</td>
-        <td width="100px">${list.goodsReservenum }</td>    
-        <td width="180px">${list.goodsPutdate }</td>
-       	<td width="70px">${list.goodsPutstatus }</td>    
-     
-        <td class="td-manage">
-        <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
-        <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
-        <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
-       </td>
-	  </tr>
-	
-	
+     	<c:forEach items="${list}" var="list">
+			<c:forEach items="${list.getListGoods()}" var="listgoods">
+			 <tr>
+		        
+		        
+		        
+		       	 
+		       	 <c:if test="${!empty listgoods }">
+		       	 	<td width="25px"><label><input type="checkbox" class="ace" name="goodsId" value="${listgoods.getGoodsId()}" /><span class="lbl"></span></label></td>
+		       	 	<td width="80px">${listgoods.getGoodsId()}</td>  
+		       	 	
+		       	 	<td height="100px" width="100px"><img height="80px" width="80px" src="${listgoods.getGoodsPic() }"/></td>  
+		        	<td width="80px"><u style="cursor:pointer" class="text-primary" onclick="">${listgoods.getGoodsName()}</u></td>
+		        	<td width="50px">${listgoods.getInprice()}元</td>
+		        	<td width="50px">${listgoods.getSaleprice()}元</td>
+		        	<td width="50px">${list.getCategoryName()}</td>
+			        <td width="100px">${listgoods.getGoodsReservenum() }</td> 
+			        <td width="180px">${listgoods.getGoodsDesc() }</td>   
+			        <td width="100px">${listgoods.getGoodsPutdate() }</td>
+			       	<td width="70px">${listgoods.getGoodsPutstatus() }</td>
+		        
+		        	 <td class="td-manage">
+				        <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
+				        <a title="编辑" onclick="member_edit(
+				        '${listgoods.getGoodsName()}',
+				        '${listgoods.getInprice()}',
+				        '${listgoods.getSaleprice()}',
+				        '${list.getCategoryId()}',
+				        '${listgoods.getGoodsReservenum() }',
+				        '${listgoods.getGoodsDesc() }',
+				   
+				        '${listgoods.getGoodsPutstatus() }',
+				        '${listgoods.getGoodsPic()}',
+				        '${listgoods.getGoodsId() }')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
+				        <a title="删除" href="javascript:;"  onclick="member_del(this,'${listgoods.getGoodsId()}')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
+				    
+				     </td>
+		       	 </c:if>
+		       	 </tr>
+		        </c:forEach>		       
+		  	
 	</c:forEach>
-
-	
-	
-	
-
 
     </tbody>
     </table>
@@ -255,6 +267,7 @@ $(document).ready(function(){
 });	
 /*产品-停用*/
 function member_stop(obj,id){
+	alert(id);
 	layer.confirm('确认要停用吗？',function(index){
 		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs " onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="icon-ok bigger-120"></i></a>');
 		$(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
@@ -265,6 +278,7 @@ function member_stop(obj,id){
 
 /*产品-启用*/
 function member_start(obj,id){
+	alert(obj);
 	layer.confirm('确认要启用吗？',function(index){
 		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs btn-success" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="icon-ok bigger-120"></i></a>');
 		$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
@@ -273,14 +287,56 @@ function member_start(obj,id){
 	});
 }
 /*产品-编辑*/
-function member_edit(title,url,id,w,h){
-	layer_show(title,url,w,h);
+function member_edit(a,b,c,d,e,f,g,h,i){
+	alert(a);
+	alert(h);
+	$.ajax({
+		  type: 'POST',
+		  url: "updategoods.do",
+	 	  data: {'goodsName':     document.getElementsByName("goodsName").innerHTML = a ,
+	 		 	'inprice':   document.getElementsByName("inprice").innerHTML = b    ,
+				'saleprice':     document.getElementsByName("saleprice").innerHTML = c  , 
+				'categoryId':    document.getElementsByName("categoryId").innerHTML = d    ,
+				'goodsReservenum':   document.getElementsByName("goodsReservenum").innerHTML = e    ,
+				
+				'goodsDesc':  document.getElementsByName("goodsDesc").innerHTML = f,
+				'goodsPutstatus':  document.getElementsByName("goodsPutstatus").innerHTML = g  , 
+				'goodsPic':  document.getElementsByName("goodsPic").innerHTML = h ,
+				'goodsId':  document.getElementsByName("goodsId").innerHTML = i 
+				 
+		  }, 
+		  dataType: 'JSON',
+		  success: function( data ){
+			 
+			  if(data=='1'){
+				  alert(i);
+				  window.location.href="TgoodsUpdate.do";
+				  
+			  }
+			  
+		  }
+	});
+	
+	//layer_show(a,b,c,d,e,f,g,h);
 }
 
 /*产品-删除*/
 function member_del(obj,id){
+	alert(id);
+	
+	
 	layer.confirm('确认要删除吗？',function(index){
 		$(obj).parents("tr").remove();
+		
+		$.ajax({
+			  type: 'POST',
+			  url: "detelegoods.do?goodsId="+id,
+			  dataType: 'JSON',
+			  success: function( data ){
+				
+			  }
+		});
+		
 		layer.msg('已删除!',{icon:1,time:1000});
 	});
 }
@@ -301,4 +357,3 @@ $('.Order_form').on('click', function(){
 	
 });
 </script>
-

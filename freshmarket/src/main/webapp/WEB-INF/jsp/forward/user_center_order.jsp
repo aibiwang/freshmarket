@@ -7,7 +7,6 @@
 	/* 确认收货 */
 	function Conf(orderId) {
 		var value = document.getElementById("conf_"+orderId).innerText;
-		alert(value);
 		if('确认收货'==value){
 			if (confirm("是否已收到货？")) {
 				ConfofRej(orderId);
@@ -20,12 +19,10 @@
 	}
 	
 	function ConfofRej(orderId) {/* 确认收货，修改订单状态 */
-		alert(orderId);
 		$.post("updateOrderTag.do?orderId=" + orderId, null, function(data) {
 			if (data == '订单状态出现异常！！！') {
 				alert(data);
 			} else {
-				alert($('#conf_'+orderId));
 				document.getElementById("chakanwuliu_"+orderId).innerText = null;//隐藏查看物流
 				document.getElementById("tag_"+orderId).innerText = '待评价';//订单栏状态修改  
 				document.getElementById("tag1_"+orderId).innerText = '待评价';//状态修改  
@@ -39,30 +36,18 @@
 	/* 1.评价订单 */
 	function Conf1(orderId) {
 		var value = document.getElementById("confA_"+orderId).innerText;
-		alert(value);
 		if('去评价'==value){
 			if (confirm("是否评价订单？")) {
 				ConfofRej1(orderId);
 			} else {
-				$("confA_"+orderId).attr("href", "#");//确认收货的按钮
+				$("confA_"+orderId).attr("href", "#");//去评价的按钮
 			}
 		}
 	}
 	
 	function ConfofRej1(orderId) {
-		alert(orderId);
-		$.post("updateOrderTag.do?orderId=" + orderId, null, function(data) {
-			if (data == '订单状态出现异常！！！') {
-				alert(data);
-			} else {
-				alert($('#conf_'+orderId));
-				document.getElementById("chakanwuliu_"+orderId).innerText = null;//隐藏查看物流
-				document.getElementById("tag_"+orderId).innerText = '待评价';//订单栏状态修改  
-				document.getElementById("tag1_"+orderId).innerText = '待评价';//状态修改  
-				document.getElementById("conf_"+orderId).innerText = data;//确认收货的
-				document.getElementById("daipingjia").innerText = 1+parseInt(document.getElementById("daipingjia").innerText);//待评价数量加1
-				document.getElementById("daishouhuo").innerText = parseInt(document.getElementById("daishouhuo").innerText)-1;
-			}
+		$.post("selectPingjia.do?op=0&orderId=" + orderId, null, function(data) {
+			window.location.href="pingjia";
 		});
 	}
 	
@@ -126,33 +111,17 @@
 		});
 	}
 	
-	/* 查看评价详情 */
+	/* 4.查看评价详情 */
 	function Conf4(orderId) {
-		var value = document.getElementById("confC_"+orderId).innerText;
-		alert(value);
-		if('提醒发货'==value){
-			if (confirm("是否已收到货？")) {
-				ConfofRej4(orderId);
-			} else {
-				$("confC_"+orderId).attr("href", "#");//确认收货的按钮
-			}
+		var value = document.getElementById("confD_"+orderId).innerText;
+		if('查看评价'==value){
+			ConfofRej4(orderId);
 		}
 	}
 	
 	function ConfofRej4(orderId) {
-		alert(orderId);
-		$.post("updateOrderTag.do?orderId=" + orderId, null, function(data) {
-			if (data == '订单状态出现异常！！！') {
-				alert(data);
-			} else {
-				alert($('#conf_'+orderId));
-				document.getElementById("chakanwuliu_"+orderId).innerText = null;//隐藏查看物流
-				document.getElementById("tag_"+orderId).innerText = '待评价';//订单栏状态修改  
-				document.getElementById("tag1_"+orderId).innerText = '待评价';//状态修改  
-				document.getElementById("conf_"+orderId).innerText = data;//确认收货的
-				document.getElementById("daipingjia").innerText = 1+parseInt(document.getElementById("daipingjia").innerText);//待评价数量加1
-				document.getElementById("daishouhuo").innerText = parseInt(document.getElementById("daishouhuo").innerText)-1;
-			}
+		$.post("selectPingjia.do?op=1&orderId=" + orderId, null, function(data) {
+			window.location.href="pingjia_xiangqing";					
 		});
 	}
 </script>
@@ -164,6 +133,7 @@
 	<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;<a href="find_allorder.do?op=待发货">待发货<span style="color:red;" id="daifahuo">&nbsp;&nbsp;${waitfahuocount}</span></a> </div>
 	<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;<a href="find_allorder.do?op=待收货">待收货 <span style="color:red;" id="daishouhuo">&nbsp;&nbsp;${waitshouhuo}</span></a> </div>
 	<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;<a href="find_allorder.do?op=待评价">待评价<span style="color:red;" id="daipingjia">&nbsp;&nbsp;${waitdaipingjia}</span></a>  </div>
+	<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;<a href="find_allorder.do?op=已评价">已评价<span style="color:red;" id="yipingjia">&nbsp;&nbsp;${yipingjia}</span></a>  </div>
 </div>
 
 <div class="main_con clearfix">
