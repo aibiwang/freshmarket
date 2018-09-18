@@ -65,8 +65,7 @@ public class UserBizImpl implements UserBiz{
 
 	@Override
 	public int usertotal() {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.usertotal();
 	}
 
 }

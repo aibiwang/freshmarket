@@ -41,13 +41,13 @@
                              <i class="icon-user"></i>
                           </div>
                           <div class="value">
-                              <h1>34522</h1>
+                              <h1>${usertotal }</h1>
                               <p>商城用户</p>
                           </div>
                           </a>
                       </section>
                   </div>
-                  <div class="col-lg-3 col-sm-6">
+              <!--     <div class="col-lg-3 col-sm-6">
                       <section class="panel">
                           <div class="symbol red">
                               <i class="icon-tags"></i>
@@ -57,14 +57,14 @@
                               <p>分销记录</p>
                           </div>
                       </section>
-                  </div>
+                  </div> -->
                   <div class="col-lg-3 col-sm-6">
                       <section class="panel">
                           <div class="symbol yellow">
                               <i class="icon-shopping-cart"></i>
                           </div>
                           <div class="value">
-                              <h1>345</h1>
+                              <h1>${ordertotal}</h1>
                               <p>商城订单</p>
                           </div>
                       </section>
@@ -75,7 +75,7 @@
                               <i class="icon-bar-chart"></i>
                           </div>
                           <div class="value">
-                              <h1>￥34,500</h1>
+                              <h1>￥${moneytotal }</h1>
                               <p>交易记录</p>
                           </div>
                       </section>
@@ -101,8 +101,8 @@
            <tbody>
            <tr><td class="name">商品总数：</td><td class="munber"><a href="#">${goodtotal}</a>&nbsp;个</td></tr>
            <tr><td class="name">回收站商品：</td><td class="munber"><a href="#">10</a>&nbsp;个</td></tr>
-           <tr><td class="name">上架商品：</td><td class="munber"><a href="#">13</a>&nbsp;个</td></tr>
-           <tr><td class="name">下架商品：</td><td class="munber"><a href="#">26</a>&nbsp;个</td></tr>
+           <tr><td class="name">上架商品：</td><td class="munber"><a href="#">${goodgrounding}</a>&nbsp;个</td></tr>
+           <tr><td class="name">下架商品：</td><td class="munber"><a href="#">${goodLowerframe}</a>&nbsp;个</td></tr>
            <tr><td class="name">商品评论：</td><td class="munber"><a href="#">21s6</a>&nbsp;条</td></tr>
 
            </tbody>

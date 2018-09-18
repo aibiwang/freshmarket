@@ -27,6 +27,19 @@ public interface GoodsBiz {
 	public int goodtotal();
 	
 	/**
+	 * 商品上架数量
+	 * @return
+	 */
+	public int goodgrounding();
+	
+	/**
+	 * 商品下架数量
+	 * @return
+	 */
+	public int goodLowerframe();
+	
+	
+	/**
 	 * 删除商品
 	 * @param goodsId
 	 */

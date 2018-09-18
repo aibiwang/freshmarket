@@ -67,6 +67,16 @@ public class GoodsBizImpl implements GoodsBiz{
 		tblGoodsDao.saveAndFlush(tblGoods);
 		
 	}
+
+	@Override
+	public int goodgrounding() {
+		return tblGoodsDao.goodgrounding();
+	}
+
+	@Override
+	public int goodLowerframe() {
+		return tblGoodsDao.goodLowerframe();
+	}
 	
 	
 

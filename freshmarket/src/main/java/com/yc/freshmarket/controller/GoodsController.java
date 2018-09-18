@@ -3,6 +3,7 @@ package com.yc.freshmarket.controller;
 import java.io.IOException;
 import java.io.Writer;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,8 @@ import com.yc.freshmarket.domain.TblCategory;
 import com.yc.freshmarket.domain.TblGoods;
 import com.yc.freshmarket.service.CategoryBiz;
 import com.yc.freshmarket.service.GoodsBiz;
+import com.yc.freshmarket.service.OrderBiz;
+import com.yc.freshmarket.service.UserBiz;
 
 @Controller
 @EnableAutoConfiguration
@@ -29,7 +33,10 @@ public class GoodsController {
 	private GoodsBiz goodsBiz;
 	@Resource
 	private CategoryBiz categoryBiz;
-	
+	@Resource
+	private UserBiz userBiz;
+	@Resource
+	private OrderBiz orderBiz;
 	
 	@RequestMapping("/detail.do")
 	public String goodsDetail(Integer goodsId,Model model) {
@@ -130,9 +137,28 @@ public class GoodsController {
 	}
 	
 	@RequestMapping("/statisticalData.do")
-	public String statisticalData(HttpServletRequest request){
+	public String statisticalData(HttpServletRequest request,HttpSession session ){
 		int goodtotal = goodsBiz.goodtotal();
-		request.setAttribute("goodtotal", goodtotal);
+		int usertotal = userBiz.usertotal();
+		int ordertotal = orderBiz.ordertotal();
+		int goodgrounding = goodsBiz.goodgrounding();
+		int goodLowerframe = goodsBiz.goodLowerframe();
+		
+		
+		//给金额添加逗号
+		DecimalFormat df = new DecimalFormat("#,###.00"); 
+		String moneytotal = df.format(orderBiz.moneytotal());
+		
+		//double moneytotal = orderBiz.moneytotal();
+		System.out.println("---------moneytotal------------"+moneytotal);
+		
+		session.setAttribute("goodgrounding", goodgrounding);
+		session.setAttribute("goodLowerframe", goodLowerframe);
+		session.setAttribute("moneytotal", moneytotal);
+		session.setAttribute("ordertotal", ordertotal);
+		session.setAttribute("usertotal", usertotal);
+		session.setAttribute("goodtotal", goodtotal);
+		
 		return "/back/home";
 		
 	}

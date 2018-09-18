@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -18,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.yc.freshmarket.domain.TblGoods;
 import com.yc.freshmarket.domain.TblGoodsDao;
 import com.yc.freshmarket.domain.TblOrder;
-import com.yc.freshmarket.domain.TblOrderDao;
 import com.yc.freshmarket.domain.TblOrderItem;
 import com.yc.freshmarket.domain.TblUser;
 import com.yc.freshmarket.service.GoodsBiz;
@@ -88,8 +88,11 @@ public class OrderController{
 		TblUser user=(TblUser) session.getAttribute("loginedUser");
 		Integer uid = user.getUserId();
 		List<TblOrder> orders1 = orderBiz.findByUserId(uid);
+		
+		
 		List<TblOrder> orders = new ArrayList<TblOrder>();
 
+		
 		if(orders1!=null&&orders1.size()>0){
 
 			int ordercount=0;//订单总数
@@ -177,5 +180,18 @@ public class OrderController{
 			out.write("订单状态出现异常！！！");
 		}
 	}
+	
+	/**
+	 * 后台查看订单
+	 * @return
+	 */
+	@RequestMapping("/orderfind.do")
+	public String orderfind(HttpServletRequest request,Model model){
+
+		
+		return "/back/Order_handling";
+		
+	}
+	
 
 }

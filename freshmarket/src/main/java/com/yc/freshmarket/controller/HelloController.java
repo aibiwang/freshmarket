@@ -49,6 +49,16 @@ public class HelloController {
 	String home(){
 		return "/back/home";
 	}
+	
+	/**
+	 * 打开Order_handling界面
+	 * @return
+	 */
+	@RequestMapping("/orderhandling")
+	String orderhandling(){
+		return "/back/Order_handling";
+	}
+	
 
 	@RequestMapping("/login")
 	String login(){

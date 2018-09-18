@@ -29,4 +29,21 @@ public class OrderBizImpl implements OrderBiz{
 		return result;
 	}
 
+	@Override
+	public int ordertotal() {
+		
+		return dao.ordertotal();
+	}
+
+	@Override
+	public int moneytotal() {
+		
+		return dao.moneytotal();
+	}
+
+
+	
+
+	
+
 }

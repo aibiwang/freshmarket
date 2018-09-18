@@ -23,4 +23,12 @@ public interface TblOrderDao  extends JpaRepository<TblOrder, Integer>{
 	@Modifying
 	@Query(nativeQuery=true,value="update tbl_order as o set o.tag = ?1 where o.order_id = ?2")
 	int updateTagByOrderId(String tag,Integer orderId);
+
+	@Query(nativeQuery=true,value="select count(*) ocnt from tbl_order")
+	int ordertotal();
+
+	@Query(nativeQuery=true,value="select sum(order_totalprice) total from tbl_order")
+	int moneytotal();
+
+
 }

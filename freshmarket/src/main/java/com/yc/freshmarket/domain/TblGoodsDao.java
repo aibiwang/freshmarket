@@ -5,7 +5,10 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface TblGoodsDao extends JpaRepository<TblGoods, Integer> {
 
-
+	/**
+	 * 统计商品数量
+	 * @return
+	 */
 	@Query(nativeQuery=true,value="select count(*) cnt from tbl_goods;")
 	int goodtotal();
 
@@ -23,6 +26,22 @@ public interface TblGoodsDao extends JpaRepository<TblGoods, Integer> {
 	 */
 	@Query(nativeQuery=true,value="select * from tbl_goods where tbl_goods.goods_id=?1")
 	TblGoods findByGoodsId(Integer goodsId);
+
+
+	/**
+	 * 统计商品上架数量
+	 * @return
+	 */
+	@Query(nativeQuery=true,value="select count(*) gcnt from tbl_goods where goods_putstatus like '%上架%'")
+	int goodgrounding();
+
+
+	/**
+	 * 统计商品下架数量
+	 * @return
+	 */
+	@Query(nativeQuery=true,value="select count(*) gcnt from tbl_goods where goods_putstatus like '%下架%'")
+	int goodLowerframe();
 
 
 }

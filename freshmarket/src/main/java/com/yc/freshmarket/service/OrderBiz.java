@@ -24,5 +24,10 @@ public interface OrderBiz {
 	 * @return
 	 */
 	int updateTagByOrderId(String tag,Integer orderId);
+	
+	public int ordertotal();
+	
+	public int moneytotal();
+	
 
 }
