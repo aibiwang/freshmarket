@@ -1,13 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page language="java" contentType="text/html charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE >
+<html >
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="css/style.css"/>       
-        <link href="assets/css/codemirror.css" rel="stylesheet">
-        <link rel="stylesheet" href="assets/css/ace.min.css" />
-        <link rel="stylesheet" href="Widget/zTree/css/zTreeStyle/zTreeStyle.css" type="text/css">
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+        <link href="/assets/css/codemirror.css" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/css/ace.min.css" />
+        <link rel="stylesheet" href="/Widget/zTree/css/zTreeStyle/zTreeStyle.css" type="text/css"/>
+        <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
         
 		<!--[if IE 7]>
 		  <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
@@ -30,12 +32,12 @@
  window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
 </script>
 <![endif]-->
-        <script src="assets/js/ace-elements.min.js"></script>
-		<script src="assets/js/ace.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-		<script src="assets/js/typeahead-bs2.min.js"></script>
-        <script type="text/javascript" src="Widget/zTree/js/jquery.ztree.all-3.5.min.js"></script> 
-        <script src="js/lrtk.js" type="text/javascript" ></script>
+        <script src="/assets/js/ace-elements.min.js"></script>
+		<script src="/assets/js/ace.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
+		<script src="/assets/js/typeahead-bs2.min.js"></script>
+        <script type="text/javascript" src="/Widget/zTree/js/jquery.ztree.all-3.5.min.js"></script> 
+        <script src="/js/lrtk.js" type="text/javascript" ></script>
 <title>分类管理</title>
 </head>
 
@@ -68,7 +70,7 @@
 $(function() { 
 	$("#category").fix({
 		float : 'left',
-		//minStatue : true,
+		/* minStatue : true, */
 		skin : 'green',	
 		durationTime :false
 	});
