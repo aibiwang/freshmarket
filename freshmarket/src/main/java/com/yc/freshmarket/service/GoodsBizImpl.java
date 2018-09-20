@@ -2,7 +2,9 @@ package com.yc.freshmarket.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -77,8 +79,26 @@ public class GoodsBizImpl implements GoodsBiz{
 	public int goodLowerframe() {
 		return tblGoodsDao.goodLowerframe();
 	}
-	
-	
 
+	/**
+	 * 条件查询商品
+	 */
+	@Override
+	public Set<TblGoods> findByGoodsName(String contents) {
+		
+		Set<TblGoods> set = new HashSet<TblGoods>();
+
+		for(int i=0;i<contents.length();i++) {
+			
+			char c =contents.charAt(i);
+			String s=""+c;
+			
+			for(TblGoods goods:tblGoodsDao.findByGoodsName("%"+s+"%")) {
+				
+				set.add(goods);
+			}
+		}
+		return set;
+	}
 
 }

@@ -5,6 +5,7 @@ import java.io.Writer;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -161,6 +162,15 @@ public class GoodsController {
 		
 		return "/back/home";
 		
+	}
+	
+	@RequestMapping("/search.do")
+	public String searchGoods(String contents,Model model) {
+		
+		Set<TblGoods> goodsSet=goodsBiz.findByGoodsName(contents);
+		System.out.println(goodsSet);
+		model.addAttribute("goodsSet",goodsSet);
+		return "forward/search";
 	}
 	
 }
