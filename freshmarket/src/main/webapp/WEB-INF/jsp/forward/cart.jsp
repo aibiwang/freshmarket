@@ -8,9 +8,9 @@
 	<div class="search_bar clearfix">
 		<a href="index.html" class="logo fl"><img src="images/logoforward.png"></a>
 		<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;购物车</div>
-		<div class="search_con fr">
-			<input type="text" class="input_text fl" name="" placeholder="搜索商品">
-			<input type="button" class="input_btn fr" name="" value="搜索">
+		<div class="search_con fl">
+			<input type="text" class="input_text fl" id="searchId" name="" placeholder="搜索商品" value="">
+			<input type="button" class="input_btn fr" name="" value="搜索" onclick="searchGoods()">
 		</div>		
 	</div>
 
@@ -203,11 +203,14 @@
 		var totalPrice=$('#totalPrice').html();
 		//判断是否全选
 		if($('#selectAllGoods').is(':checked')){
-			
+			if(set.size<=0){
+				alert('未选择任何商品!');
+			}else{
 			window.location.href ='cartOrder.do?totalPrice='+totalPrice;
 				
+			}
+				
 		}else{
-			
 			if(set.size<=0){
 				alert('未选择任何商品!');
 				return ;
@@ -223,6 +226,18 @@
 		}
 		
 	}
+	//搜索功能
+	function searchGoods(){
+		var contents=$('#searchId').val();
+		if(contents.trim()!=''){
+			window.location.href ='search.do?contents='+contents;
+			
+		}else{
+			alert('请输入搜索内容!')
+		}
+		
+	}
+	
 	
 </script>
 

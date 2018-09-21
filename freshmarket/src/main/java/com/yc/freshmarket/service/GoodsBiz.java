@@ -2,6 +2,7 @@ package com.yc.freshmarket.service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -66,6 +67,12 @@ public interface GoodsBiz {
 	List<TblGoods> findAllGoods();
 	
 	TblGoods findTblGoodsBygoodsId(Integer goodsId);
+	/**
+	 * 条件查询商品
+	 * @param contents
+	 * @return
+	 */
+	public Set<TblGoods> findByGoodsName(String contents);
 
 	
 

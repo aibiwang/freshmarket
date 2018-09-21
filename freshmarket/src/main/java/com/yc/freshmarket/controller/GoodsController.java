@@ -9,6 +9,7 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -201,6 +202,7 @@ public class GoodsController {
 		
 	}
 	
+
 	@RequestMapping("/allOrder.do")
 	public String allOrder(HttpServletRequest request){
 		
@@ -217,5 +219,14 @@ public class GoodsController {
 	}
 	
 
+
+	@RequestMapping("/search.do")
+	public String searchGoods(String contents,Model model) {
+		
+		Set<TblGoods> goodsSet=goodsBiz.findByGoodsName(contents);
+		System.out.println(goodsSet);
+		model.addAttribute("goodsSet",goodsSet);
+		return "forward/search";
+	}
 	
 }

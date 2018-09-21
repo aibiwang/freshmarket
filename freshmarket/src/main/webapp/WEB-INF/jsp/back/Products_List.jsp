@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
+	pageEncoding="UTF-8"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!DOCTYPE>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
@@ -20,33 +20,35 @@
 		<!--[if IE 7]>
 		  <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
 		<![endif]-->
-        <!--[if lte IE 8]>
+<!--[if lte IE 8]>
 		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
 		<![endif]-->
-	    <script src="js/jquery-1.9.1.min.js"></script>   
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/typeahead-bs2.min.js"></script>
-		<!-- page specific plugin scripts -->
-		<script src="assets/js/jquery.dataTables.min.js"></script>
-		<script src="assets/js/jquery.dataTables.bootstrap.js"></script>
-        <script type="text/javascript" src="js/H-ui.js"></script> 
-        <script type="text/javascript" src="js/H-ui.admin.js"></script> 
-        <script src="assets/layer/layer.js" type="text/javascript" ></script>
-        <script src="assets/laydate/laydate.js" type="text/javascript"></script>
-        <script type="text/javascript" src="Widget/zTree/js/jquery.ztree.all-3.5.min.js"></script> 
-        <script src="js/lrtk.js" type="text/javascript" ></script>
+<script src="/js/jquery-1.9.1.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/typeahead-bs2.min.js"></script>
+<!-- page specific plugin scripts -->
+<script src="/assets/js/jquery.dataTables.min.js"></script>
+<script src="/assets/js/jquery.dataTables.bootstrap.js"></script>
+<script type="text/javascript" src="/js/H-ui.js"></script>
+<script type="text/javascript" src="/js/H-ui.admin.js"></script>
+<script src="/assets/layer/layer.js" type="text/javascript"></script>
+<script src="/assets/laydate/laydate.js" type="text/javascript"></script>
+<script type="text/javascript"
+	src="/Widget/zTree/js/jquery.ztree.all-3.5.min.js"></script>
+<script src="/js/lrtk.js" type="text/javascript"></script>
 <title>产品列表</title>
 </head>
 <body>
-<div class=" page-content clearfix">
- <div id="products_style">
-    <div class="search_style">
-     
-<!--       <ul class="search_content clearfix">
+	<div class=" page-content clearfix">
+		<div id="products_style">
+			<div class="search_style">
+
+				<!--       <ul class="search_content clearfix">
        <li><label class="l_f">产品名称</label><input name="" type="text"  class="text_add" placeholder="输入品牌名称"  style=" width:250px"/></li>
        <li><label class="l_f">添加时间</label><input class="inline laydate-icon" id="start" style=" margin-left:10px;"></li>
        <li style="width:90px;"><button type="button" class="btn_search"><i class="icon-search"></i>查询</button></li>
       </ul> -->
+
     </div>
      <div class="border clearfix">
        <span class="l_f">
@@ -111,6 +113,7 @@
 		        	 <td class="td-manage">
 				        <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> 
 				        <a title="编辑" onclick="member_edit(
+
 				        '${listgoods.getGoodsName()}',
 				        '${listgoods.getInprice()}',
 				        '${listgoods.getSaleprice()}',
@@ -120,22 +123,25 @@
 				   
 				        '${listgoods.getGoodsPutstatus() }',
 				        '${listgoods.getGoodsPic()}',
-				        '${listgoods.getGoodsId() }')" href="javascript:;"  class="btn btn-xs btn-info" ><i class="icon-edit bigger-120"></i></a> 
-				        <a title="删除" href="javascript:;"  onclick="member_del(this,'${listgoods.getGoodsId()}')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a>
-				    
-				     </td>
-		       	 </c:if>
-		       	 </tr>
-		        </c:forEach>		       
-		  	
-	</c:forEach>
+				        '${listgoods.getGoodsId() }')"
+												href="javascript:;" class="btn btn-xs btn-info"><i
+													class="icon-edit bigger-120"></i></a> <a title="删除"
+												href="javascript:;"
+												onclick="member_del(this,'${listgoods.getGoodsId()}')"
+												class="btn btn-xs btn-warning"><i
+													class="icon-trash  bigger-120"></i></a></td>
+										</c:if>
+									</tr>
+								</c:forEach>
 
-    </tbody>
-    </table>
-    </div>     
-  </div>
- </div>
-</div>
+							</c:forEach>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
 <script>

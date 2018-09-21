@@ -37,10 +37,10 @@
 	<a href="index.html" class="logo fl"><img
 		src="images/logoforward.png"></a>
 	<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;用户中心</div>
-	<div class="search_con fr">
+	<!-- <div class="search_con fr">
 		<input type="text" class="input_text fl" name="" placeholder="搜索商品">
 		<input type="button" class="input_btn fr" name="" value="搜索">
-	</div>
+	</div> -->
 </div>
 
 <div class="main_con clearfix">
@@ -75,7 +75,7 @@
 		<h3 class="common_title2">最近浏览</h3>
 		<div class="has_view_list">
 			<ul class="goods_type_list clearfix">
-				<li><a href="detail"><img src="images/goods/goods003.jpg"></a>
+				<li><a href="detail"><img src="images/goods/caomei.jpg"></a>
 					<h4>
 						<a href="detail">大兴大棚草莓</a>
 					</h4>
@@ -84,7 +84,7 @@
 						<a href="#" class="add_goods" title="加入购物车"></a>
 					</div></li>
 
-				<li><a href="#"><img src="images/goods/goods004.jpg"></a>
+				<li><a href="#"><img src="images/goods/lizhi.jpg"></a>
 					<h4>
 						<a href="#">吐鲁番梨光杏</a>
 					</h4>
@@ -93,7 +93,7 @@
 						<a href="#" class="add_goods" title="加入购物车"></a>
 					</div></li>
 
-				<li><a href="#"><img src="images/goods/goods005.jpg"></a>
+				<li><a href="#"><img src="images/goods/huangtao.jpg"></a>
 					<h4>
 						<a href="#">黄肉桃</a>
 					</h4>
@@ -102,18 +102,18 @@
 						<a href="#" class="add_goods" title="加入购物车"></a>
 					</div></li>
 
-				<li><a href="#"><img src="images/goods/goods006.jpg"></a>
+				<li><a href="#"><img src="images/goods/putao.jpg"></a>
 					<h4>
-						<a href="#">进口西梅</a>
+						<a href="#">葡萄</a>
 					</h4>
 					<div class="operate">
 						<span class="prize">￥28.80</span> <span class="unit">28.8/500g</span>
 						<a href="#" class="add_goods" title="加入购物车"></a>
 					</div></li>
 
-				<li><a href="#"><img src="images/goods/goods007.jpg"></a>
+				<li><a href="#"><img src="images/goods/lanmei.jpg"></a>
 					<h4>
-						<a href="#">香梨</a>
+						<a href="#">蓝莓</a>
 					</h4>
 					<div class="operate">
 						<span class="prize">￥6.45</span> <span class="unit">6.45/500g</span>

@@ -1,5 +1,7 @@
 package com.yc.freshmarket.domain;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -44,10 +46,9 @@ public interface TblGoodsDao extends JpaRepository<TblGoods, Integer> {
 	int goodLowerframe();
 
 
-
 	
+	@Query(nativeQuery=true,value="SELECT * FROM tbl_goods WHERE goods_name LIKE ?1")
+	List<TblGoods> findByGoodsName(String contents);
 
 
-	
-	
 }
