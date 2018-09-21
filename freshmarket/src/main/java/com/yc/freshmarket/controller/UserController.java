@@ -38,7 +38,6 @@ public class UserController {
 	public String login(String username, String pwd, HttpSession session, Model model){
 		pwd = SHA.applySha256(pwd);
 		TblUser user = userBiz.login(username, pwd);
-		
 		System.out.println("------------------"+user);
 		
 		if(user!=null){								//登录成功
@@ -49,10 +48,7 @@ public class UserController {
 			}else{
 				return "/back/index";
 			}
-			
-			
-			
-			
+	
 		}else{										//登录失败
 			model.addAttribute("msg", "用户名或密码错误");
 			return "/forward/login";	
