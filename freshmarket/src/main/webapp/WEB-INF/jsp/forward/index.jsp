@@ -8,8 +8,8 @@
 	<div class="search_bar clearfix">
 		<a href="index.html" class="logo fl"><img src="images/logoforward.png"></a>
 		<div class="search_con fl">
-			<input type="text" class="input_text fl" name="" placeholder="搜索商品">
-			<input type="button" class="input_btn fr" name="" value="搜索">
+			<input type="text" class="input_text fl" id="searchId" name="" placeholder="搜索商品" value="">
+			<input type="button" class="input_btn fr" name="" value="搜索" onclick="searchGoods()">
 		</div>
 		<div class="guest_cart fr">
 			<input type="button" onclick="myCart()" class="cart_name fl" value="我的购物车">
@@ -303,6 +303,19 @@
 
 
 <script type="text/javascript">
+
+
+		//搜索功能
+		function searchGoods(){
+			var contents=$('#searchId').val();
+			if(contents.trim()!=''){
+			window.location.href ='search.do?contents='+contents;
+				
+			}else{
+				alert('请输入搜索内容!')
+			}
+			
+		}
 		
 		function addToCart(goodsId){
 			

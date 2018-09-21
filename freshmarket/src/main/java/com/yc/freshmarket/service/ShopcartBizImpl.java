@@ -4,9 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.eclipse.jdt.internal.compiler.impl.ShortConstant;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.yc.freshmarket.domain.TblShopCart;

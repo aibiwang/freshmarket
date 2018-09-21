@@ -26,6 +26,15 @@ public interface OrderBiz {
 	 */
 	int updateTagByOrderId(String tag,Integer orderId);
 	
+	//public int 
+	
+	int daiFaHuototal();
+	
+	int yiFaHuototal();
+	int yiPingJiatotal();
+	int daiZhiFutotal();
+	int pingJiatotal();
+	
 	public int ordertotal();
 	
 	public int moneytotal();
@@ -47,4 +56,24 @@ public interface OrderBiz {
 	int updateOrderManyiduByOrderId(String tag, Integer pingjiamanyidu, String pingjianeirong, Timestamp pingjiashijian,
 			Integer orderId);
 
+	/**
+	 * 查询所有订单
+	 * @return
+	 */
+	public List<TblOrder> findAllOrder();
+
+	/**
+	 * 查询所有详情订单
+	 * @return
+	 */
+	List<Object[]> findorderDetails(Integer orderId);
+
+	
+
+	
+
+	
+
+	
+	
 }

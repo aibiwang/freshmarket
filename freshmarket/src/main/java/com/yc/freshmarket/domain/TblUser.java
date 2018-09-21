@@ -1,5 +1,4 @@
 package com.yc.freshmarket.domain;
-import javax.annotation.Resource;
 /**
  * 用户实体类
  */
@@ -8,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity	//实体类注解

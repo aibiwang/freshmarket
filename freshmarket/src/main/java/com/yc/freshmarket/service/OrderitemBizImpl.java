@@ -23,4 +23,9 @@ public class OrderitemBizImpl implements OrderitemBiz{
 		
 	}
 
+	@Override
+	public void deteleOrderitem(Integer goodsId) {
+		Dao.delete(goodsId);
+	}
+
 }
