@@ -223,6 +223,21 @@ public class OrderController{
 		
 	}
 	
+	/**
+	 * 发货
+	 * @return
+	 * @throws IOException 
+	 */
+	@RequestMapping("/deliverGoods.do")
+	public void deliverGoods(Integer orderId,Writer out) throws IOException{
+		String tag ="已发货";
+		int result = orderBiz.updateTagByOrderId(tag,orderId);
+		System.out.println("---------------deliverGoods------------"+result);
+		out.write("1");
+		
+	}
+	
+	
 	/** 确认支付
 	 * @param orderId
 	 * @param out
@@ -293,6 +308,93 @@ public class OrderController{
 			}
 		}
 		return "forward/user_center_info";
+	}
+	
+	
+	/**
+	 * 订单详情
+	 * @return
+	 */
+	@RequestMapping("/orderDetails.do")
+	public String orderDetails( HttpServletRequest request,Integer orderId ){
+		
+		System.out.println("---------opopopopooooooooo--------"+orderId);
+		
+		List<Object[]> orderDetails = orderBiz.findorderDetails(orderId);
+		
+		for (int i = 0; i < orderDetails.size(); i++) {
+			System.out.println("-------orderDetails--------"+orderDetails.get(i)[0]);
+		}
+		
+		request.setAttribute("orderDetails", orderDetails);
+		return "back/order_detailed";
+		
+	}
+	
+	
+	@SuppressWarnings({ "deprecation", "unused" })
+	@RequestMapping("/transaction.do")
+	public String transaction( HttpServletRequest request,Integer orderId ){
+		System.out.println("=========transaction============");
+		List<TblOrder> allOrderlist = orderBiz.findAllOrder();
+		
+		int Jan = 0;
+		int Feb = 0;
+		int Mar = 0;
+		int Apr = 0;
+		int May = 0;
+		int Jun = 0;
+		int Jul = 0;
+		int Aug = 0;
+		int Sep = 0;
+		int Oct = 0;
+		int Nov = 0;
+		int Dec = 0;
+		
+		for (int i = 0; i < allOrderlist.size(); i++) {
+		
+			if((allOrderlist.get(i).getOrderDate().getMonth()+1) == 1){
+				Jan++;
+			}else if((allOrderlist.get(i).getOrderDate().getMonth()+1) == 2){
+				Feb++;
+			}else if((allOrderlist.get(i).getOrderDate().getMonth()+1) == 3){
+				Mar++;
+			}else if((allOrderlist.get(i).getOrderDate().getMonth()+1) == 4){
+				Apr++;
+			}else if((allOrderlist.get(i).getOrderDate().getMonth()+1) == 5){
+				May++;
+			}else if((allOrderlist.get(i).getOrderDate().getMonth()+1) == 6){
+				Jun++;
+			}else if((allOrderlist.get(i).getOrderDate().getMonth()+1) == 7){
+				Jul++;
+			}else if((allOrderlist.get(i).getOrderDate().getMonth()+1) == 8){
+				Aug++;
+			}else if((allOrderlist.get(i).getOrderDate().getMonth()+1) == 9){
+				Sep++;
+			}else if((allOrderlist.get(i).getOrderDate().getMonth()+1) == 10){
+				Oct++;
+			}else if((allOrderlist.get(i).getOrderDate().getMonth()+1) == 11){
+				Nov++;
+			}else if((allOrderlist.get(i).getOrderDate().getMonth()+1) == 12){
+				Dec++;
+			}
+		}
+		
+		request.setAttribute("Jan", Jan);
+		request.setAttribute("Feb", Feb);
+		request.setAttribute("Mar", Mar);
+		request.setAttribute("Apr", Apr);
+		request.setAttribute("May", May);
+		request.setAttribute("Jun", Jun);
+		request.setAttribute("Jul", Jul);
+		request.setAttribute("Aug", Aug);
+		request.setAttribute("Sep", Sep);
+		request.setAttribute("Oct", Oct);
+		request.setAttribute("Nov", Nov);
+		request.setAttribute("Dec", Dec);
+		
+		return "/back/transaction";
+		
 	}
 
 }

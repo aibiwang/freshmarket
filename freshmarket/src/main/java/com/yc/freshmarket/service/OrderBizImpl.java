@@ -37,6 +37,34 @@ public class OrderBizImpl implements OrderBiz{
 	}
 
 	@Override
+	public int daiFaHuototal() {
+		
+		return dao.daiFaHuototal();
+	}
+	
+	@Override
+	public int yiFaHuototal() {
+		
+		return dao.yiFaHuototal();
+	}
+	@Override
+	public int yiPingJiatotal() {
+		
+		return dao.yiPingJiatotal();
+	}
+	@Override
+	public int daiZhiFutotal() {
+		
+		return dao.daiZhiFutotal();
+	}
+	
+	@Override
+	public int pingJiatotal() {
+		
+		return dao.pingJiatotal();
+	}
+	
+	@Override
 	public int moneytotal() {
 		
 		return dao.moneytotal();
@@ -67,4 +95,27 @@ public class OrderBizImpl implements OrderBiz{
 		return result;
 	}
 
+	@Override
+	public List<TblOrder> findAllOrder() {
+		List<TblOrder> list = dao.findAll();
+		return list;
+	}
+
+	@Override
+	public List<Object[]> findorderDetails(Integer orderId) {
+		
+		List<Object[]> list = dao.findorderDetails(orderId);
+		return list;
+	}
+
+
+
+
+
+
+
+
+
+
+	
 }

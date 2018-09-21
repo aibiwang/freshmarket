@@ -7,15 +7,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="renderer" content="webkit|ie-comp|ie-stand">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" /> 
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="css/style.css"/>       
         <link rel="stylesheet" href="assets/css/ace.min.css" />
         <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="Widget/zTree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+        <link rel="stylesheet" href="Widget/zTree/css/zTreeStyle/zTreeStyle.css" type="text/css"/>
         <link href="Widget/icheck/icheck.css" rel="stylesheet" type="text/css" />   
 		<!--[if IE 7]>
 		  <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
@@ -50,7 +50,7 @@
     </div>
      <div class="border clearfix">
        <span class="l_f">
-        <a href="TgoodsAdd.do" title="添加商品" class="btn btn-warning Order_form"><i class="icon-plus"></i>添加商品</a>
+        <a href="TgoodsAdd.do?list=${list }" title="添加商品" class="btn btn-warning Order_form"><i class="icon-plus"></i>添加商品</a>
         <a href="javascript:ovid()" class="btn btn-danger"><i class="icon-trash"></i>批量删除</a>
        </span>
        <span class="r_f">共：<b>${goodtotal}</b>件商品</span>
@@ -72,7 +72,7 @@
        <table class="table table-striped table-bordered table-hover" id="sample-table">
 		<thead>
 		 	<tr>
-				<th width="25px"><label><input type="checkbox" class="ace"><span class="lbl"></span></label></th>
+				<th width="25px"><label><input type="checkbox" class="ace"/><span class="lbl"></span></label></th>
 				<th width="80px">商品编号</th>
 				<th width="100px">图片</th>
 				<th width="80px">商品名称</th>
@@ -229,10 +229,10 @@ var setting = {
 		}
 	}
 };
-
+    
 var zNodes =[
 	{ id:1, pId:0, name:"商城分类列表", open:true},
-	{ id:11, pId:1, name:"蔬菜水果"},
+ 	{ id:11, pId:1, name:"蔬菜水果"},
 	{ id:111, pId:11, name:"蔬菜"},
 	{ id:112, pId:11, name:"苹果"},
 	{ id:113, pId:11, name:"大蒜"},
@@ -246,7 +246,7 @@ var zNodes =[
 	{ id:122, pId:13, name:"照相机 "},
 	{ id:14, pId:1, name:"服装鞋帽"},
 	{ id:141, pId:14, name:"手机 "},
-	{ id:42, pId:14, name:"照相机 "},
+	{ id:42, pId:14, name:"照相机 "},  
 ];
 		
 var code;

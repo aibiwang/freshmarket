@@ -12,5 +12,11 @@ import com.yc.freshmarket.domain.TblOrderItem;
 public interface OrderitemBiz {
 
 	void insertOrderitem(List<TblOrderItem> orderItems);
+	
+	/**
+	 * 删除订单项
+	 * @param goodsId
+	 */
+	public void deteleOrderitem(Integer	goodsId);
 
 }

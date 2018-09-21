@@ -44,4 +44,10 @@ public interface TblGoodsDao extends JpaRepository<TblGoods, Integer> {
 	int goodLowerframe();
 
 
+
+	
+
+
+	
+	
 }

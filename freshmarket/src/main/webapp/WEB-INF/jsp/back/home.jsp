@@ -8,18 +8,18 @@
         <link rel="stylesheet" href="css/style.css"/>
         	<link rel="stylesheet" href="assets/css/ace.min.css" />
         <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
-        <link href="assets/css/codemirror.css" rel="stylesheet">
+        <link href="assets/css/codemirror.css" rel="stylesheet"/>
 		<!--[if IE 7]>
 		  <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
 		<![endif]-->
         <!--[if lte IE 8]>
 		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
 		<![endif]-->
-		<script src="assets/js/ace-extra.min.js"></script>
+		<script src="assets/js/ace-extra.min.js">
 		<!--[if lt IE 9]>
 		<script src="assets/js/html5shiv.js"></script>
 		<script src="assets/js/respond.min.js"></script>
-		<![endif]-->
+		<!-- [endif]-->
         		<!--[if !IE]> -->
 		<script src="assets/js/jquery.min.js"></script>        
 		<!-- <![endif]-->
@@ -31,7 +31,7 @@
 <div class="page-content clearfix">
  <div class="alert alert-block alert-success">
   <button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
-  <i class="icon-ok green"></i>欢迎使用<strong class="green">后台管理系统<small>(v1.2)</small></strong>,你本次登录时间为2016年7月12日13时34分，登录IP:192.168.1.110.	
+  <i class="icon-ok green"></i>欢迎使用<strong class="green">后台管理系统<small>(v1.2)</small></strong>,你本次登录时间为${timea}，登录IP:${addre }.	
  </div>
  <div class="state-overview clearfix">
                   <div class="col-lg-3 col-sm-6">
@@ -87,11 +87,9 @@
           <div class="title_name">订单统计信息</div>
            <table class="table table-bordered">
            <tbody>
-           <tr><td class="name">未处理订单：</td><td class="munber"><a href="#">0</a>&nbsp;个</td></tr>
-           <tr><td class="name">待发货订单：</td><td class="munber"><a href="#">10</a>&nbsp;个</td></tr>
-           <tr><td class="name">待结算订单：</td><td class="munber"><a href="#">13</a>&nbsp;个</td></tr>
-           <tr><td class="name">已成交订单数：</td><td class="munber"><a href="#">26</a>&nbsp;个</td></tr>
-           <tr><td class="name">交易失败：</td><td class="munber"><a href="#">26</a>&nbsp;个</td></tr>
+           <tr><td class="name">待发货订单：</td><td class="munber"><a href="#">${daiFaHuototal }</a>&nbsp;个</td></tr>
+           <tr><td class="name">待支付订单：</td><td class="munber"><a href="#">${daiZhiFutotal }</a>&nbsp;个</td></tr>
+           <tr><td class="name">已成交订单数：</td><td class="munber"><a href="#">${yiFaHuototal }</a>&nbsp;个</td></tr>
            </tbody>
           </table>
          </div> 
@@ -100,38 +98,16 @@
            <table class="table table-bordered">
            <tbody>
            <tr><td class="name">商品总数：</td><td class="munber"><a href="#">${goodtotal}</a>&nbsp;个</td></tr>
-           <tr><td class="name">回收站商品：</td><td class="munber"><a href="#">10</a>&nbsp;个</td></tr>
            <tr><td class="name">上架商品：</td><td class="munber"><a href="#">${goodgrounding}</a>&nbsp;个</td></tr>
            <tr><td class="name">下架商品：</td><td class="munber"><a href="#">${goodLowerframe}</a>&nbsp;个</td></tr>
-           <tr><td class="name">商品评论：</td><td class="munber"><a href="#">21s6</a>&nbsp;条</td></tr>
+           <tr><td class="name">商品评论：</td><td class="munber"><a href="#">${pingJiatotal}</a>&nbsp;条</td></tr>
 
            </tbody>
           </table>
          </div> 
-         <div class="Order_Statistics">
-          <div class="title_name">会员登录统计信息</div>
-           <table class="table table-bordered">
-           <tbody>
-           <tr><td class="name">注册会员登录：</td><td class="munber"><a href="#">3240</a>&nbsp;次</td></tr>
-           <tr><td class="name">新浪会员登录：</td><td class="munber"><a href="#">1130</a>&nbsp;次</td></tr>
-           <tr><td class="name">支付宝登录：</td><td class="munber"><a href="#">1130</a>&nbsp;次</td></tr>
-           <tr><td class="name">QQ会员登录：</td><td class="munber"><a href="#">1130</a>&nbsp;次</td></tr>
-           </tbody>
-          </table>
-         </div> 
-             <!--<div class="t_Record">
-               <div id="main" style="height:300px; overflow:hidden; width:100%; overflow:auto" ></div>     
-              </div> -->
-         <div class="news_style">
-          <div class="title_name">最新消息</div>
-          <ul class="list">
-           <li><i class="icon-bell red"></i><a href="#">后台系统找那个是开通了。</a></li>
-           <li><i class="icon-bell red"></i><a href="#">6月共处理订单3451比，作废为...</a></li>
-           <li><i class="icon-bell red"></i><a href="#">后台系统找那个是开通了。</a></li>
-           <li><i class="icon-bell red"></i><a href="#">后台系统找那个是开通了。</a></li>
-           <li><i class="icon-bell red"></i><a href="#">后台系统找那个是开通了。</a></li>
-          </ul>
-         </div> 
+         
+          
+         
          </div>
  <!--记录-->
  <div class="clearfix">

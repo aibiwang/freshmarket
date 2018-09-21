@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.yc.freshmarket.domain.TblCategoryDao;
 import com.yc.freshmarket.domain.TblGoods;
 import com.yc.freshmarket.domain.TblGoodsDao;
 
@@ -19,6 +20,8 @@ public class GoodsBizImpl implements GoodsBiz{
 
 	@Resource
 	TblGoodsDao tblGoodsDao;
+	@Resource
+	TblCategoryDao tblCategoryDao;
 	
 	@Override
 	public void addGoods(TblGoods tblGoods) {
@@ -77,6 +80,10 @@ public class GoodsBizImpl implements GoodsBiz{
 	public int goodLowerframe() {
 		return tblGoodsDao.goodLowerframe();
 	}
+
+
+
+
 	
 	
 

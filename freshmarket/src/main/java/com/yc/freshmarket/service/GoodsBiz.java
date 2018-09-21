@@ -67,5 +67,8 @@ public interface GoodsBiz {
 	
 	TblGoods findTblGoodsBygoodsId(Integer goodsId);
 
+	
+
+	
 
 }
