@@ -25,4 +25,11 @@ public class CategoryBizImpl implements CategoryBiz{
 		return list;
 	}
 
+	//添加商品类型
+	@Override
+	public void addCategory(TblCategory tblCategory) {
+		tblCategoryDao.save(tblCategory);
+		
+	}
+
 }

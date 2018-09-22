@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.yc.freshmarket.domain.TblCategory;
 import com.yc.freshmarket.domain.TblCategoryDao;
 import com.yc.freshmarket.domain.TblGoods;
 import com.yc.freshmarket.domain.TblGoodsDao;
@@ -33,9 +34,9 @@ public class GoodsBizImpl implements GoodsBiz{
 	}
 
 	@Override
-	public void upload(String uploadPath, MultipartFile file) throws IllegalStateException, IOException {
+	public void upload(String uploadPath, MultipartFile file,Long suffix) throws IllegalStateException, IOException {
 		//构建保存的文件对象
-		File dest = new File(uploadPath, file.getOriginalFilename());
+		File dest = new File(uploadPath, suffix+file.getOriginalFilename());
 		//保存文件
 		file.transferTo(dest);
 	}
@@ -104,5 +105,13 @@ public class GoodsBizImpl implements GoodsBiz{
 		}
 		return set;
 	}
+
+	@Override
+	public void addCategory(TblCategory tblCategory) {
+		
+		tblCategoryDao.save(tblCategory);
+	}
+
+
 
 }

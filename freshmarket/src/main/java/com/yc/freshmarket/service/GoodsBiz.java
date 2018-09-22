@@ -6,6 +6,7 @@ import java.util.Set;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.yc.freshmarket.domain.TblCategory;
 import com.yc.freshmarket.domain.TblGoods;
 
 /**
@@ -60,7 +61,7 @@ public interface GoodsBiz {
 	 * @throws IllegalStateException
 	 * @throws IOException
 	 */
-	public void upload(String uploadPath,MultipartFile file) throws IllegalStateException, IOException;
+	public void upload(String uploadPath,MultipartFile file,Long suffix) throws IllegalStateException, IOException;
 
 
 
@@ -73,6 +74,16 @@ public interface GoodsBiz {
 	 * @return
 	 */
 	public Set<TblGoods> findByGoodsName(String contents);
+
+	
+
+	/**
+	 * 将商品加入类型表的第二层
+	 * @param goodsId
+	 * @param goodsName
+	 * @param categoryId
+	 */
+	public void addCategory(TblCategory tblCategory);
 
 	
 

@@ -54,8 +54,24 @@ public class HelloController {
 	String backIndex(){
 		return "/back/index";
 	}
+	
+	/**
+	 * 打开category_Manage界面
+	 * @return
+	 */
+	@RequestMapping("/category_Manage")
+	String category_Manage(){
+		return "/back/Category_Manage";
+	}
 
-
+	/**
+	 * product-category-add
+	 * @return
+	 */
+	@RequestMapping("/productCategoryAdd")
+	String productCategoryAdd(){
+		return "/back/product-category-add";
+	}
 
 	/**
 	 * 打开home界面
