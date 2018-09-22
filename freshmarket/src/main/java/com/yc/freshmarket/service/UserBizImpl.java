@@ -68,4 +68,14 @@ public class UserBizImpl implements UserBiz{
 		return dao.usertotal();
 	}
 
+	@Override
+	public TblUser updateEmail(TblUser user) {
+		return dao.saveAndFlush(user);
+	}
+
+	@Override
+	public TblUser updateName(TblUser user) {
+		return dao.saveAndFlush(user);
+	}
+
 }

@@ -57,5 +57,19 @@ public interface UserBiz {
 	 * @return
 	 */
 	public TblUser updateAddr(TblUser user);
+	
+	/**
+	 * 修改邮箱
+	 * @param user
+	 * @return
+	 */
+	public TblUser updateEmail(TblUser user);
+	
+	/**
+	 * 修改用户名
+	 * @param user
+	 * @return
+	 */
+	public TblUser updateName(TblUser user);
 
 }

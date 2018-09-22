@@ -1,18 +1,32 @@
 package com.yc.freshmarket.controller;
 
+import java.util.List;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.yc.freshmarket.domain.TblCategory;
+import com.yc.freshmarket.service.CategoryBiz;
 
 @Controller
 @EnableAutoConfiguration
 public class HelloController {
 
+	@Resource
+	private CategoryBiz categoryBiz;
 	/**
 	 * 测试添加商品
 	 */
 	@RequestMapping("/TgoodsAdd.do")
-	String goodsAdd(){
+	String goodsAdd(HttpServletRequest request){
+		
+		List<TblCategory> categorylist = this.categoryBiz.findAll();
+		request.setAttribute("categorylist", categorylist);
+		
 		return "/back/picture-add";
 	}
 
@@ -39,6 +53,24 @@ public class HelloController {
 	@RequestMapping("/backIndex")
 	String backIndex(){
 		return "/back/index";
+	}
+	
+	/**
+	 * 打开category_Manage界面
+	 * @return
+	 */
+	@RequestMapping("/category_Manage")
+	String category_Manage(){
+		return "/back/Category_Manage";
+	}
+
+	/**
+	 * product-category-add
+	 * @return
+	 */
+	@RequestMapping("/productCategoryAdd")
+	String productCategoryAdd(){
+		return "/back/product-category-add";
 	}
 
 	/**
