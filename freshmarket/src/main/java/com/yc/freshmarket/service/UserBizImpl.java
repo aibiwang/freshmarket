@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.yc.freshmarket.domain.TblUser;
 import com.yc.freshmarket.domain.TblUserDao;
+import com.yc.freshmarket.utils.MyMessage;
 
 @Service
 @EnableAutoConfiguration
@@ -16,6 +17,10 @@ public class UserBizImpl implements UserBiz{
 
 	@Resource
 	private TblUserDao dao;
+	
+	private final String[] authCode = { "a", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
+			"p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+
 	/**
 	 * 登录
 	 */
@@ -54,11 +59,6 @@ public class UserBizImpl implements UserBiz{
 	}
 
 	@Override
-	public TblUser updatePwd(TblUser user) {
-		return dao.saveAndFlush(user);
-	}
-
-	@Override
 	public TblUser updateAddr(TblUser user) {
 		return dao.saveAndFlush(user);
 	}
@@ -76,6 +76,70 @@ public class UserBizImpl implements UserBiz{
 	@Override
 	public TblUser updateName(TblUser user) {
 		return dao.saveAndFlush(user);
+	}
+
+	/**
+	 * 手机获取验证码
+	 */
+	@Override
+	public TblUser findByPhone(String phone) {
+		return dao.findByUserPhone(phone);
+	}
+
+	/**
+	 * 获取验证码
+	 * 
+	 * @return
+	 */
+	@Override
+	public String getCode() {
+		String code = "";
+		int strLength = 4;
+		Random r = new Random();
+		for (int i = 0; i < strLength; i++) {
+			if (i / 2 == 0) {
+				code += authCode[r.nextInt(authCode.length)];
+			} else {
+				code += authCode[r.nextInt(authCode.length)].toUpperCase();
+			}
+		}
+
+		return code;
+	}
+
+	/**
+	 * 
+	 * @param tel
+	 *            电话号码
+	 * @param code
+	 *            验证码
+	 * @return 0：失败 1：成功
+	 */
+	@Override
+	public int sendMsg(String phone, String code) {
+
+		String mobile = phone;
+		String param = code;
+		MyMessage message = new MyMessage();
+		System.out.println(phone+"----"+code+"\n"+message);
+		String Result = message.sendMessage(mobile, param);
+		System.out.println(Result);
+		String[] value = Result.split(",");
+		String[] val = value[0].split(":");
+
+		System.out.println("返回码：" + val[1]);
+		// 发送状态码
+		if ("\"000000\"".equals(val[1])) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+
+	@Override
+	public int updatePwd(String pwd, String phone) {
+		int result = dao.updatePwdByPhone(pwd,phone);
+		return result;
 	}
 
 }

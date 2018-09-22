@@ -2,6 +2,8 @@ package com.yc.freshmarket.controller;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -55,6 +57,11 @@ public class UserController {
 		}
 	}
 	
+	/**
+	 * 退出系统
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping("loginout.do")
 	public String loginOut(HttpSession session){
 		if(session.getAttribute("loginedUser")!=null){
@@ -132,20 +139,75 @@ public class UserController {
 	 * @param phone
 	 * @param session
 	 * @param out
+	 * @return 
 	 * @throws IOException
 	 */
 	@RequestMapping(path="updatePwd.do",method=RequestMethod.POST)
-	public void updatePwd(@Param("pwd")String pwd,HttpSession session,Writer out) throws IOException{
-		TblUser user = (TblUser)session.getAttribute("loginedUser");
-		if(!"".equals(pwd)&& !pwd.isEmpty()&&!user.getUserPwd().equals(pwd)){
-			pwd = SHA.applySha256(pwd);
-			user.setUserPwd(pwd);
-			TblUser updateUser = userBiz.updatePwd(user);
-			if(updateUser!=null){
-				out.write("update pwd seccess");
+	public String updatePwd(String phone,String checkNum,@Param("pwd")String pwd,HttpSession session) throws IOException{
+		String sessionCheckNum =  (String) session.getAttribute("code");
+		if(!"".equals(pwd)&& !pwd.isEmpty()&& !"".equals(checkNum)&& !checkNum.isEmpty()&&!"".equals(phone)&& !phone.isEmpty()){
+			if(sessionCheckNum!=null && checkNum.equals(sessionCheckNum)){
+				pwd = SHA.applySha256(pwd);
+				int result = userBiz.updatePwd(pwd,phone);
+				if(result>0){
+					System.out.println("修改密码成功");
+					return "/forward/login";	
+				}else{
+					System.out.println("修改密码失败");
+					return "/forward/finduserpwd";	
+				}
+			}else{
+				System.out.println("无效的验证码");
+				return "/forward/finduserpwd";	
+			}
+		}
+			System.out.println("信息不能为空");
+			return "/forward/finduserpwd";	
+	}
+	
+	/**
+	 * 手机获取验证码
+	 * @param phone
+	 * @param session
+	 * @param out
+	 * @throws IOException
+	 */
+	@RequestMapping(path="checkNum.do",method=RequestMethod.POST)
+	public void checkNum(@Param("phone")String phone,final HttpSession session,Writer out) throws IOException{
+		if(!"".equals(phone)&& !phone.isEmpty()){
+			TblUser user = userBiz.findByPhone(phone);
+			System.out.println(user);
+			if(user!=null){
+				// 获取验证码
+				String code = userBiz.getCode();
+				System.out.println("验证码：" + code);
+				// 保存验证码
+				session.setAttribute("code", code);
+				// 发送验证码
+				int result = userBiz.sendMsg(phone, code);
+				// 定时3分钟内删除验证码
+				final Timer timer = new Timer();
+				timer.schedule(new TimerTask() {
+					@Override
+					public void run() {
+						session.removeAttribute("code");
+						System.out.println("后台验证码删除成功");
+						timer.cancel();
+					}
+				}, 3 * 60 * 1000);
+
+				System.out.println("发送状态：" + result);
+				if (result == 1) {
+					out.write("发送验证码成功");
+
+				} else {
+					out.write("发送失败");
+				}
+			}else{
+				out.write("当前号码未注册，请先注册");
 			}
 		}else{
-			out.write("update pwd fail");
+			out.write("手机号不能为空");
 		}
 	}
 	

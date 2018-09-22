@@ -49,7 +49,7 @@ public interface UserBiz {
 	 * @param user
 	 * @return
 	 */
-	public TblUser updatePwd(TblUser user);
+	public int updatePwd(String pwd, String phone);
 
 	/**
 	 * 修改地址
@@ -71,5 +71,27 @@ public interface UserBiz {
 	 * @return
 	 */
 	public TblUser updateName(TblUser user);
+
+	/**
+	 * 手机获取验证码
+	 * @param phone
+	 * @return
+	 */
+	public TblUser findByPhone(String phone);
+
+	/**
+	 * 生成验证码
+	 * @return
+	 */
+	public String getCode();
+
+	/**
+	 * 手机号存在发送验证码
+	 * @param phone
+	 * @param code
+	 * @return
+	 */
+	public int sendMsg(String phone, String code);
+
 
 }

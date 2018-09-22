@@ -19,12 +19,12 @@
 		});
 	}
 
-	function updatePwd() {
+	/* function updatePwd() {
 		var addr = document.getElementById('pwd').value;
 		$.post("updatePwd.do?pwd=" + pwd, null, function(data) {
 			alert(data);
 		});
-	}
+	} */
 
 	function updateAddr() {
 		var addr = document.getElementById('addr').value;
@@ -37,10 +37,6 @@
 	<a href="index.html" class="logo fl"><img
 		src="images/logoforward.png"></a>
 	<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;用户中心</div>
-	<!-- <div class="search_con fr">
-		<input type="text" class="input_text fl" name="" placeholder="搜索商品">
-		<input type="button" class="input_btn fr" name="" value="搜索">
-	</div> -->
 </div>
 
 <div class="main_con clearfix">
@@ -61,9 +57,9 @@
 			<ul class="user_info_list">
 				<li><span>用户名：</span>
 				<input readonly="readonly" type="text" name="username" value="${loginedUser.getUserName()}"/>&nbsp;不可修改
-				<li><span>密码：</span>
+				<%-- <li><span>密码：</span>
 				<input type="password" id="pwd" name="pwd" value="${loginedUser.getUserPwd()}"/> 
-				<button id="update_pwd" onclick="updatePwd()">点击修改</button></li> 
+				<button id="update_pwd" onclick="updatePwd()">点击修改</button></li>  --%>
 				<li><span>联系方式：</span>
 				<input type="text" id="phone" name="phone"value="${loginedUser.getUserPhone()}" onblur="check_phone()">
 				<button id="update_phone" onclick="updatePhone()">点击修改</button></li>

@@ -23,10 +23,10 @@ public class HelloController {
 	 */
 	@RequestMapping("/TgoodsAdd.do")
 	String goodsAdd(HttpServletRequest request){
-		
+
 		List<TblCategory> categorylist = this.categoryBiz.findAll();
 		request.setAttribute("categorylist", categorylist);
-		
+
 		return "/back/picture-add";
 	}
 
@@ -54,7 +54,7 @@ public class HelloController {
 	String backIndex(){
 		return "/back/index";
 	}
-	
+
 
 
 	/**
@@ -65,7 +65,7 @@ public class HelloController {
 	String home(){
 		return "/back/home";
 	}
-	
+
 	/**
 	 * 打开Order_handling界面
 	 * @return
@@ -74,7 +74,7 @@ public class HelloController {
 	String orderhandling(){
 		return "/back/Order_handling";
 	}
-	
+
 
 	@RequestMapping("/login")
 	String login(){
@@ -130,11 +130,17 @@ public class HelloController {
 	String pingjia(){
 		return "/forward/pingjia";
 	}
-	
+
 	//评价详情
 	@RequestMapping("/pingjia_xiangqing")
 	String pingjia_xiangqing(){
 		return "/forward/pingjia_xiangqing";
 	}
-	
+
+	//修改密码
+	@RequestMapping("/finduserpwd")
+	String finduserpwd(){
+		return "/forward/finduserpwd";
+	}
+
 }
