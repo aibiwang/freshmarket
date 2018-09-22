@@ -3,7 +3,6 @@ package com.yc.freshmarket.service;
 import java.util.List;
 
 import com.yc.freshmarket.domain.TblCategory;
-import com.yc.freshmarket.domain.TblGoods;
 
 /**
  * CategoryBiz		商品类型接口

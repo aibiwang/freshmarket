@@ -16,9 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.yc.freshmarket.domain.TblUser;
-import com.yc.freshmarket.domain.TblUserDao;
 import com.yc.freshmarket.service.UserBiz;
-import com.yc.freshmarket.service.UserBizImpl;
 import com.yc.freshmarket.utils.SHA;
 
 @Controller

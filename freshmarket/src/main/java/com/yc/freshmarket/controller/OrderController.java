@@ -331,8 +331,7 @@ public class OrderController{
 		
 	}
 	
-	
-	@SuppressWarnings({ "deprecation", "unused" })
+	@SuppressWarnings("deprecation")
 	@RequestMapping("/transaction.do")
 	public String transaction( HttpServletRequest request,Integer orderId ){
 		System.out.println("=========transaction============");
