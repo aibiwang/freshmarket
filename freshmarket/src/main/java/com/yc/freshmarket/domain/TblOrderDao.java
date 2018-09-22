@@ -52,7 +52,7 @@ public interface TblOrderDao  extends JpaRepository<TblOrder, Integer>{
 	@Query(nativeQuery=true,value="select count(tbl_order.order_pingjianeirong) ocnt from tbl_order")
 	int pingJiatotal();
 	
-	@Query(nativeQuery=true,value="select sum(order_totalprice) total from tbl_order")
+	@Query(nativeQuery=true,value="select sum(order_totalprice) total from tbl_order where tbl_order.tag !='待支付'")
 	int moneytotal();
 
 

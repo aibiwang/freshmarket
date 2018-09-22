@@ -1,6 +1,7 @@
 package com.yc.freshmarket.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Writer;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -9,6 +10,7 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.Gson;
 import com.yc.freshmarket.domain.TblCategory;
 import com.yc.freshmarket.domain.TblGoods;
 import com.yc.freshmarket.domain.TblOrder;
@@ -63,45 +66,71 @@ public class GoodsController {
 	 * @param picFile
 	 */
 	@RequestMapping("/addGoods.do")
-	public void addGoods(TblGoods tblGoods,HttpServletRequest request,HttpSession session,@RequestParam("picFile") MultipartFile picFile ){
+	public String addGoods(TblGoods tblGoods,HttpServletRequest request,HttpSession session,@RequestParam("picFile") MultipartFile picFile ){
+		
 		
 		String uploadPath = "/upload";
 
 		System.out.println("====188tblGoods====="+tblGoods);
 		
-		tblGoods.setGoodsPic(".."+uploadPath+ "/" + picFile.getOriginalFilename());
+		long suffix = System.currentTimeMillis();
+		
+		tblGoods.setGoodsPic(".."+uploadPath+ "/" + suffix+picFile.getOriginalFilename());
 		
 		
 		
 		uploadPath = session.getServletContext().getRealPath(uploadPath);
 		
+		System.out.println("-----uploadPath-----"+uploadPath);
+		
 		tblGoods.setGoodsPutdate(new Timestamp(System.currentTimeMillis()));
 		try {
-			goodsBiz.upload(uploadPath, picFile);
+			goodsBiz.upload(uploadPath, picFile,suffix);
 			
 			System.out.println(uploadPath+"-------------------");
 			
 			System.out.println(picFile.getOriginalFilename()+"*************");
 			goodsBiz.addGoods(tblGoods);
 			
+			TblCategory tblCategory = new TblCategory();
+			tblCategory.setCategoryName(tblGoods.getGoodsName());
+			tblCategory.setParentId(tblGoods.getCategoryId());
+			
+			//将商品加入类型表的第二层
+			goodsBiz.addCategory(tblCategory);
+			
 			System.out.println("----------------------"+tblGoods);
+			
 			
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}	
+		}
+		request.setAttribute("msg", "添加商品成功！！！");
+		return "/back/picture-add";
 	}
 	
 	
 	@RequestMapping("/findGoods.do")
-	public String findGoods(HttpServletRequest request,Model model){
+	public String findGoods(HttpServletRequest request,HttpSession session,Model model,PrintWriter out){
+		Gson gson = new Gson();
 		int goodtotal = goodsBiz.goodtotal();
 		
 		List<TblCategory> list = this.categoryBiz.findAll();
+		System.out.println("---------"+list);
+		
+		//model.addAttribute("gsonList", gson.toJson(list));
+		
+		System.out.println("^^^^^^^^^^^^^^^^^^^^^"+gson.toJson(list));
+		session.setAttribute("gsonlist", gson.toJson(list));
 		
 		for (int i = 0; i < list.size(); i++) {
 			System.out.println("===+++==="+list.get(i).getCategoryId());
+			//{ id:11, pId:1, name:"蔬菜水果"},
+			//String x = ""
+					
+					
 		}
 		
 		request.setAttribute("goodtotal", goodtotal);
@@ -169,7 +198,6 @@ public class GoodsController {
 		int goodLowerframe = goodsBiz.goodLowerframe();
 		
 		InetAddress addr = InetAddress.getLocalHost();// 网络适配器地址描述的类
-		
 		
 		
 		
