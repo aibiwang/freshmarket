@@ -19,7 +19,7 @@
 	}
 	
 	function ConfofRej(orderId) {/* 确认收货，修改订单状态 */
-		$.post("updateOrderTag.do?orderId=" + orderId, null, function(data) {
+		$.post("updateOrderTag.do?tag=待评价&orderId=" + orderId, null, function(data) {
 			if (data == '订单状态出现异常！！！') {
 				alert(data);
 			} else {
@@ -54,9 +54,8 @@
 	/* 2.支付订单 */
 	function Conf2(orderId) {
 		var value = document.getElementById("confB_"+orderId).innerText;
-		alert(value);
-		if('去付款'==value){
-			if (confirm("确认去付款？")) {
+		if('付款'==value){
+			if (confirm("确认付款？")) {
 				ConfofRej2(orderId);
 			} else {
 				$("confB_"+orderId).attr("href", "#");//确认收货的按钮
@@ -65,12 +64,11 @@
 	}
 	
 	function ConfofRej2(orderId) {
-		alert(orderId);
-		$.post("updateOrderTag.do?orderId=" + orderId, null, function(data) {
+		$.post("updateOrderTag.do?tag=待发货&orderId=" + orderId, null, function(data) {
 			if (data == '订单状态出现异常！！！') {
 				alert(data);
 			} else {
-				alert($('#conf_'+orderId));
+				window.location.href="find_allorder.do?op=待发货"
 				document.getElementById("chakanwuliu_"+orderId).innerText = null;//隐藏查看物流
 				document.getElementById("tag_"+orderId).innerText = '待评价';//订单栏状态修改  
 				document.getElementById("tag1_"+orderId).innerText = '待评价';//状态修改  
@@ -85,6 +83,7 @@
 	function Conf3(orderId) {
 		var value = document.getElementById("confC_"+orderId).innerText;
 		if('提醒发货'==value){
+			alert('提醒发货成功!')
 			$("confC_"+orderId).attr("href", "#");//确认收货的按钮
 		}
 	}
@@ -119,7 +118,7 @@
 			style="color: red;" id="daifahuo">&nbsp;&nbsp;${waitfahuocount}</span></a>
 	</div>
 	<div class="sub_page_name fl">
-		|&nbsp;&nbsp;&nbsp;&nbsp;<a href="find_allorder.do?op=待收货">待收货 <span
+		|&nbsp;&nbsp;&nbsp;&nbsp;<a href="find_allorder.do?op=已发货">待收货 <span
 			style="color: red;" id="daishouhuo">&nbsp;&nbsp;${waitshouhuo}</span></a>
 	</div>
 	<div class="sub_page_name fl">
@@ -166,13 +165,13 @@
 						<td width="15%" id="tag1_${order.getOrderId()}">${order.getTag()}</td>
 						<c:if test="${order.getTag()=='待支付'}">
 							<td width="15%"><a id="confB_${order.getOrderId()}" href="#"
-								class="oper_btn" onclick="Conf2(${order.getOrderId()})">去付款</a></td>
+								class="oper_btn" onclick="Conf2(${order.getOrderId()})">付款</a></td>
 						</c:if>
 						<c:if test="${order.getTag()=='待发货'}">
 							<td width="15%"><a id="confC_${order.getOrderId()}" href="#"
 								class="oper_btn" onclick="Conf3(${order.getOrderId()})">提醒发货</a></td>
 						</c:if>
-						<c:if test="${order.getTag()=='待收货'}">
+						<c:if test="${order.getTag()=='已发货'}">
 							<td width="15%"><a id="conf_${order.getOrderId()}" href="#"
 								class="oper_btn" onclick="Conf(${order.getOrderId()})">确认收货</a><br>
 								<a href="logistics" id="chakanwuliu_${order.getOrderId()}">查看物流</a></td>

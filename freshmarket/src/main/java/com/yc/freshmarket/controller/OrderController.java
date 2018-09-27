@@ -137,7 +137,7 @@ public class OrderController{
 				if("待支付".equals(status)){
 					waitpaycount++;
 					ordercount++;
-				}else if("待收货".equals(status)){
+				}else if("已发货".equals(status)){
 					waitshouhuo++;
 					ordercount++;
 				}else if("待评价".equals(status)){
@@ -200,8 +200,7 @@ public class OrderController{
 	 * @throws IOException 
 	 */
 	@RequestMapping("/updateOrderTag.do")
-	public void updateOrderTag(Integer orderId,Writer out) throws IOException {
-		String tag ="待评价";
+	public void updateOrderTag(Integer orderId,String tag,Writer out) throws IOException {
 		int result = orderBiz.updateTagByOrderId(tag,orderId);
 		System.out.println(result);
 		if(result>0){
