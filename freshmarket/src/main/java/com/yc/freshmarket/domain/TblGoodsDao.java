@@ -50,5 +50,11 @@ public interface TblGoodsDao extends JpaRepository<TblGoods, Integer> {
 	@Query(nativeQuery=true,value="SELECT * FROM tbl_goods WHERE goods_name LIKE ?1")
 	List<TblGoods> findByGoodsName(String contents);
 
+	/**
+	 * 查询上架的商品
+	 * @return
+	 */
+	@Query(nativeQuery=true,value="SELECT * FROM tbl_goods WHERE goods_putstatus='上架中'")
+	List<TblGoods> findGoodsByPutstatus();
 
 }
