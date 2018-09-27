@@ -20,10 +20,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yc.freshmarket.domain.TblGoods;
 import com.yc.freshmarket.domain.TblGoodsDao;
+import com.yc.freshmarket.domain.TblOpinion;
 import com.yc.freshmarket.domain.TblOrder;
 import com.yc.freshmarket.domain.TblOrderItem;
 import com.yc.freshmarket.domain.TblUser;
 import com.yc.freshmarket.service.GoodsBiz;
+import com.yc.freshmarket.service.OpinionBiz;
 import com.yc.freshmarket.service.OrderBiz;
 import com.yc.freshmarket.service.OrderitemBiz;
 
@@ -39,6 +41,8 @@ public class OrderController{
 	private TblGoodsDao tblGoodsDao;
 	@Resource
 	OrderitemBiz orderitemBiz; 
+	@Resource
+	OpinionBiz opinionBiz;
 
 	/**
 	 * 立即购买请求
@@ -303,6 +307,19 @@ public class OrderController{
 			int result = orderBiz.updateOrderManyiduByOrderId(tag,pingjiamanyidu,pingjianeirong,Pingjiashijian,orderId);
 			System.out.println(result);
 			if(result>0){
+				//将评价内容插入评价表
+				TblUser user = (TblUser) session.getAttribute("loginedUser");
+				
+				List<Integer> goodsIdList=orderitemBiz.findGoodsId(orderId);
+				List<TblOpinion> opinionList= new ArrayList<TblOpinion>();
+				
+				for(int goodsId:goodsIdList) {
+					TblOpinion opinion = new TblOpinion(null, goodsId, pingjianeirong, user.getUserId(), pingjiamanyidu, Pingjiashijian);
+					opinionList.add(opinion);
+				}
+				
+				opinionList=opinionBiz.insertOpinion(opinionList);
+				
 				return find_allorder("全部订单",session,model);
 			}
 		}

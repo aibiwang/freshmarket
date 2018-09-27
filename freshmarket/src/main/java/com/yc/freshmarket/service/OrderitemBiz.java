@@ -18,5 +18,7 @@ public interface OrderitemBiz {
 	 * @param goodsId
 	 */
 	public void deteleOrderitem(Integer	goodsId);
+	
+	public List<Integer> findGoodsId(Integer orderId);
 
 }
