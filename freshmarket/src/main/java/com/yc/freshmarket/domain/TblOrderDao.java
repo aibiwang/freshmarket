@@ -40,7 +40,7 @@ public interface TblOrderDao  extends JpaRepository<TblOrder, Integer>{
 	@Query(nativeQuery=true,value="select count(*) ocnt from tbl_order where tbl_order.tag='待发货'")
 	int daiFaHuototal();
 	
-	@Query(nativeQuery=true,value="select count(*) ocnt from tbl_order where tbl_order.tag='已发货'")
+	@Query(nativeQuery=true,value="select count(*) ocnt from tbl_order where tbl_order.tag='待评价' or tbl_order.tag='已评价' ")
 	int yiFaHuototal();
 	
 	@Query(nativeQuery=true,value="select count(*) ocnt from tbl_order where tbl_order.tag='已评价'")

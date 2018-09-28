@@ -178,8 +178,8 @@ function save_info(){
 			icon:1,		
 			  });
 			  
-			  $.post("updatePwd.do?pwd=" + $("#c_mew_pas").val(), null, function(data) {
-					alert(data);
+			  $.post("updateMagPwd.do?pwd=" + $("#c_mew_pas").val(), null, function(data) {
+					//alert(data);
 				});
 			  
 			  layer.close(index);      

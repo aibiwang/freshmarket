@@ -284,4 +284,26 @@ public class UserController {
 		
 	}
 	
+	/**
+	 * 修改管理员密码
+	 * @param phone
+	 * @param session
+	 * @param out
+	 * @throws IOException
+	 */
+	@RequestMapping(path="updateMagPwd.do",method=RequestMethod.POST)
+	public void updateMagPwd(@Param("pwd")String pwd,HttpSession session,Writer out) throws IOException{
+		TblUser user = (TblUser)session.getAttribute("loginedUser");
+		if(!"".equals(pwd)&& !pwd.isEmpty()&&!user.getUserPwd().equals(pwd)){
+			pwd = SHA.applySha256(pwd);
+			user.setUserPwd(pwd);
+			TblUser updateUser = userBiz.updateMagPwd(user);
+			if(updateUser!=null){
+				out.write("update pwd seccess");
+			}
+		}else{
+			out.write("update pwd fail");
+		}
+	}
+	
 }

@@ -93,5 +93,12 @@ public interface UserBiz {
 	 */
 	public int sendMsg(String phone, String code);
 
+	/**
+	 * 修改管理员密码
+	 * @param user
+	 * @return
+	 */
+	public TblUser updateMagPwd(TblUser user);
+
 
 }

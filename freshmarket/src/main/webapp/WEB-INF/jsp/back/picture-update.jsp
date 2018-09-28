@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="header.jsp" %>
 
 
@@ -59,10 +59,25 @@
 
 		<div class=" clearfix cl">
            
-            <div class="Add_p_s">
+            <%-- <div class="Add_p_s">
              <label class="form-label col-2">类&nbsp;&nbsp;&nbsp;&nbsp;别：</label>	
 			 <div class="formControls col-2"><input type="text" class="input-text" value="${tblGoods.getCategoryId() }" placeholder="" id="" name="categoryId"></div>
+			</div> --%>
+			
+			<div class="Add_p_s">
+             <label class="form-label col-2">类&nbsp;&nbsp;&nbsp;&nbsp;别：</label>	
+             <select name="categoryId" class="select">
+					<option>请选择</option>
+					
+					<c:forEach items="${categorylist}" var="category">
+						<option value="${category.getCategoryId() }">${category.getCategoryName() }</option>
+					
+					</c:forEach>	
+				</select>
+			 <!-- <div class="formControls col-2"><input type="text" class="input-text" value="" placeholder="" id="" name="categoryId"></div> -->
 			</div>
+			
+			
              <div class="Add_p_s">
              <label class="form-label col-2">库存数量：</label>	
 			 <div class="formControls col-2"><input type="text" class="input-text" value="${tblGoods.getGoodsReservenum() }" placeholder="" id="" name="goodsReservenum" >kg</div>

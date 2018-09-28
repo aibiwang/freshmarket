@@ -140,15 +140,15 @@ $(".order_list_style").width($(window).width()-220);
 });
 /**发货**/
 function Delivery_stop(obj,id,tag){
-	alert(id);
+	//alert(id);
 	if(tag=='待发货'){
-		alert(tag);
+		//alert(tag);
 		$.ajax({
 			  type: 'POST',
 			  url: "deliverGoods.do?orderId="+id,
 			  dataType: 'JSON',
 			  success: function( data ){
-				  alert(data);
+				  //alert(data);
 				  if(data=='1'){
 					 
 					  window.location.href="allOrder.do";

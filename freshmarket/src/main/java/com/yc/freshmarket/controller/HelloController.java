@@ -35,7 +35,10 @@ public class HelloController {
 	 * @return
 	 */
 	@RequestMapping("/TgoodsUpdate.do")
-	String goodsUpdate(){
+	String goodsUpdate(HttpServletRequest request){
+		List<TblCategory> categorylist = this.categoryBiz.findAll();
+		request.setAttribute("categorylist", categorylist);
+		
 		return "/back/picture-update";
 	}
 
