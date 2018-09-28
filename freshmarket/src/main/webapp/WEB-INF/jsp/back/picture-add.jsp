@@ -116,7 +116,7 @@
 			<label class="form-label col-2">图片上传：</label>
 			
 			<!-- 图片上传 -->
-			<input type="file" name="picFile" accept="image/png,image/jpg">
+			<input type="file" name="picFile" accept="image/*">
 			
 		</div>
         
