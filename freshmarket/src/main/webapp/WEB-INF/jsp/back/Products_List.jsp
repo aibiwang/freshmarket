@@ -52,7 +52,7 @@
     </div>
      <div class="border clearfix">
        <span class="l_f">
-        <a href="TgoodsAdd.do?list=${list }" title="添加商品" class="btn btn-warning Order_form"><i class="icon-plus"></i>添加商品</a>
+        <a href="TgoodsAdd.do" title="添加商品" class="btn btn-warning Order_form"><i class="icon-plus"></i>添加商品</a>
         
        </span>
        <span class="r_f">共：<b>${goodtotal}</b>件商品</span>
