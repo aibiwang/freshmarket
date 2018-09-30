@@ -10,6 +10,7 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -29,6 +30,7 @@ import com.yc.freshmarket.domain.TblGoods;
 import com.yc.freshmarket.domain.TblOrder;
 import com.yc.freshmarket.service.CategoryBiz;
 import com.yc.freshmarket.service.GoodsBiz;
+import com.yc.freshmarket.service.OpinionBiz;
 import com.yc.freshmarket.service.OrderBiz;
 import com.yc.freshmarket.service.OrderitemBiz;
 import com.yc.freshmarket.service.UserBiz;
@@ -47,12 +49,19 @@ public class GoodsController {
 	private OrderBiz orderBiz;
 	@Resource
 	private OrderitemBiz orderitemBiz;
+	@Resource
+	private OpinionBiz opinionBiz;
 	
 	@RequestMapping("/detail.do")
 	public String goodsDetail(Integer goodsId,Model model) {
 		
-		model.addAttribute("DetailGoods",goodsBiz.findTblGoodsBygoodsId(goodsId));
 		
+		List<Map<String,Object>> opinionList = opinionBiz.findOpinionByGoodsId(goodsId);
+		
+		System.out.println(opinionList);
+		
+		model.addAttribute("DetailGoods",goodsBiz.findTblGoodsBygoodsId(goodsId));
+		model.addAttribute("opinionList",opinionList);
 		return "forward/detail";
 		
 	}

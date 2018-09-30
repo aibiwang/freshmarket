@@ -142,4 +142,9 @@ public class UserBizImpl implements UserBiz{
 		return result;
 	}
 
+	@Override
+	public TblUser updateMagPwd(TblUser user) {
+		return dao.saveAndFlush(user);
+	}
+
 }

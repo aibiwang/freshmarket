@@ -45,7 +45,7 @@ public class GoodsBizImpl implements GoodsBiz{
 	@Override
 	public List<TblGoods> findAllGoods() {
 		
-		return tblGoodsDao.findAll();
+		return tblGoodsDao.findGoodsByPutstatus();
 		
 		
 	}

@@ -52,7 +52,7 @@
     </div>
      <div class="border clearfix">
        <span class="l_f">
-        <a href="TgoodsAdd.do?list=${list }" title="添加商品" class="btn btn-warning Order_form"><i class="icon-plus"></i>添加商品</a>
+        <a href="TgoodsAdd.do" title="添加商品" class="btn btn-warning Order_form"><i class="icon-plus"></i>添加商品</a>
         
        </span>
        <span class="r_f">共：<b>${goodtotal}</b>件商品</span>
@@ -280,8 +280,8 @@ function member_start(obj,id){
 }
 /*产品-编辑*/
 function member_edit(a,b,c,d,e,f,g,h,i){
-	alert(a);
-	alert(h);
+	//alert(a);
+	//alert(h);
 	$.ajax({
 		  type: 'POST',
 		  url: "updategoods.do",
@@ -301,7 +301,7 @@ function member_edit(a,b,c,d,e,f,g,h,i){
 		  success: function( data ){
 			 
 			  if(data=='1'){
-				  alert(i);
+				 // alert(i);
 				  window.location.href="TgoodsUpdate.do";
 				  
 			  }
@@ -314,7 +314,7 @@ function member_edit(a,b,c,d,e,f,g,h,i){
 
 /*产品-删除*/
 function member_del(obj,id){
-	alert(id);
+	//alert(id);
 	
 	
 	layer.confirm('确认要删除吗？',function(index){

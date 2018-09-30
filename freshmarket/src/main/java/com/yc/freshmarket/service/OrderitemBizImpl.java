@@ -28,4 +28,11 @@ public class OrderitemBizImpl implements OrderitemBiz{
 		Dao.delete(goodsId);
 	}
 
+	@Override
+	public List<Integer> findGoodsId(Integer orderId) {
+		
+		
+		return Dao.findGoodsId(orderId);
+	}
+
 }

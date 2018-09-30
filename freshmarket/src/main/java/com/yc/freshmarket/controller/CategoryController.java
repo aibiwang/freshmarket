@@ -20,6 +20,8 @@ public class CategoryController {
 	@RequestMapping("addCategory.do")
 	public String addCategory(TblCategory tblCategory,HttpServletRequest request){
 		
+		System.out.println("----tblCategory----"+tblCategory);
+		
 		categoryBiz.addCategory(tblCategory);
 		
 		request.setAttribute("msg", "添加类型成功！！！");
