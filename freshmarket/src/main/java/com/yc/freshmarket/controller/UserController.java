@@ -68,6 +68,7 @@ public class UserController {
 		}
 		return "/forward/index";
 	}
+	
 	/**
 	 * 注册检验用户名是否已经存在
 	 * @param username

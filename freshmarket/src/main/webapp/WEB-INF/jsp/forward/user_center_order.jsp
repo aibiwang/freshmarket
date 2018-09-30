@@ -51,7 +51,7 @@
 		});
 	}
 	
-	/* 2.支付订单 */
+	/*  2.支付订单
 	function Conf2(orderId) {
 		var value = document.getElementById("confB_"+orderId).innerText;
 		alert(value);
@@ -66,21 +66,16 @@
 	
 	function ConfofRej2(orderId) {
 		alert(orderId);
-		$.post("updateOrderTag.do?orderId=" + orderId, null, function(data) {
+		$.post("cartOrder.do?totalPrice=14.5", null, function(data) {
 			if (data == '订单状态出现异常！！！') {
-				alert(data);
+				window.location.href="cart_order";
 			} else {
-				alert($('#conf_'+orderId));
-				document.getElementById("chakanwuliu_"+orderId).innerText = null;//隐藏查看物流
-				document.getElementById("tag_"+orderId).innerText = '待评价';//订单栏状态修改  
-				document.getElementById("tag1_"+orderId).innerText = '待评价';//状态修改  
-				document.getElementById("conf_"+orderId).innerText = data;//确认收货的
-				document.getElementById("daipingjia").innerText = 1+parseInt(document.getElementById("daipingjia").innerText);//待评价数量加1
-				document.getElementById("daishouhuo").innerText = parseInt(document.getElementById("daishouhuo").innerText)-1;
+				window.location.href="cart_order";
+				
 			}
 		});
 	}
-	
+	 */
 	/* 3.提醒商家发货 */
 	function Conf3(orderId) {
 		var value = document.getElementById("confC_"+orderId).innerText;
@@ -165,8 +160,8 @@
 						<td width="15%">${order.getOrderTotalprice()}元</td>
 						<td width="15%" id="tag1_${order.getOrderId()}">${order.getTag()}</td>
 						<c:if test="${order.getTag()=='待支付'}">
-							<td width="15%"><a id="confB_${order.getOrderId()}" href="#"
-								class="oper_btn" onclick="Conf2(${order.getOrderId()})">去付款</a></td>
+							<td width="15%"><a id="confB_${order.getOrderId()}" href="cartOrder.do?totalPrice=${order.getOrderTotalprice()}"
+								class="oper_btn" >去付款</a></td><%-- onclick="Conf2(${order.getOrderId()})" --%>
 						</c:if>
 						<c:if test="${order.getTag()=='待发货'}">
 							<td width="15%"><a id="confC_${order.getOrderId()}" href="#"

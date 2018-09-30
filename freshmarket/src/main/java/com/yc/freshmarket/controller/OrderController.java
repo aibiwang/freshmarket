@@ -261,7 +261,6 @@ public class OrderController{
 	 */
 	@RequestMapping("/selectPingjia.do")
 	public void selectPingjia(Integer op,Integer orderId,Writer out,HttpSession session) throws IOException {
-		System.out.println(op);
 		TblOrder order = orderBiz.findByOrderId(orderId);
 		System.out.println(order);
 		if(order!=null){
@@ -317,8 +316,6 @@ public class OrderController{
 	 */
 	@RequestMapping("/orderDetails.do")
 	public String orderDetails( HttpServletRequest request,Integer orderId ){
-		
-		System.out.println("---------opopopopooooooooo--------"+orderId);
 		
 		List<Object[]> orderDetails = orderBiz.findorderDetails(orderId);
 		

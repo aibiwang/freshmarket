@@ -70,8 +70,6 @@ public class GoodsController {
 		
 		String uploadPath = "/upload";
 
-		System.out.println("====188tblGoods====="+tblGoods);
-		
 		long suffix = System.currentTimeMillis();
 		
 		tblGoods.setGoodsPic(".."+uploadPath+ "/" + suffix+picFile.getOriginalFilename());
@@ -80,15 +78,10 @@ public class GoodsController {
 		
 		uploadPath = session.getServletContext().getRealPath(uploadPath);
 		
-		System.out.println("-----uploadPath-----"+uploadPath);
-		
 		tblGoods.setGoodsPutdate(new Timestamp(System.currentTimeMillis()));
 		try {
 			goodsBiz.upload(uploadPath, picFile,suffix);
 			
-			System.out.println(uploadPath+"-------------------");
-			
-			System.out.println(picFile.getOriginalFilename()+"*************");
 			goodsBiz.addGoods(tblGoods);
 			
 			TblCategory tblCategory = new TblCategory();
@@ -97,9 +90,6 @@ public class GoodsController {
 			
 			//将商品加入类型表的第二层
 			goodsBiz.addCategory(tblCategory);
-			
-			System.out.println("----------------------"+tblGoods);
-			
 			
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
@@ -117,19 +107,11 @@ public class GoodsController {
 		int goodtotal = goodsBiz.goodtotal();
 		
 		List<TblCategory> list = this.categoryBiz.findAll();
-		System.out.println("---------"+list);
 		
-		//model.addAttribute("gsonList", gson.toJson(list));
-		
-		System.out.println("^^^^^^^^^^^^^^^^^^^^^"+gson.toJson(list));
 		session.setAttribute("gsonlist", gson.toJson(list));
 		
 		for (int i = 0; i < list.size(); i++) {
 			System.out.println("===+++==="+list.get(i).getCategoryId());
-			//{ id:11, pId:1, name:"蔬菜水果"},
-			//String x = ""
-					
-					
 		}
 		
 		request.setAttribute("goodtotal", goodtotal);
@@ -141,8 +123,6 @@ public class GoodsController {
 	@RequestMapping("/detelegoods.do")
 	public String detelegoods(@RequestParam("goodsId") Integer	goodsId,HttpServletRequest request, Model mav){
 		
-		System.out.println("-----goodsId------"+goodsId);
-		
 		goodsBiz.detelegoods(goodsId);
 		orderitemBiz.deteleOrderitem(goodsId);
 		return "/back/Products_List";
@@ -151,15 +131,9 @@ public class GoodsController {
 	@RequestMapping("/updategoods.do")
 	public void updategoods(TblGoods tblGoods,HttpServletRequest request,HttpSession session,Writer write,Model mav ) throws IOException{
 		
-		System.out.println("-----------tblGoods-----------"+tblGoods);
-		
-		
 		write.write("1");
 		
 		session.setAttribute("tblGoods", tblGoods);
-		
-		System.out.println("111111111111");
-		
 		
 	}
 	
@@ -167,14 +141,10 @@ public class GoodsController {
 	@RequestMapping("/doUpdate.do")
 	public void doUpdate(TblGoods tblGoods,HttpServletRequest request,HttpSession session ){
 		
-		System.out.println("-------8778-----------"+tblGoods.getGoodsId());
-		System.out.println("-------87780000-----------"+tblGoods.getGoodsPic());
 		tblGoods.setGoodsPutdate(new Timestamp(System.currentTimeMillis()));
 		try {
 		
 			goodsBiz.updategoods(tblGoods);
-			
-			System.out.println("----------------------"+tblGoods);
 			
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
@@ -204,9 +174,6 @@ public class GoodsController {
 		DecimalFormat df = new DecimalFormat("#,###.00"); 
 		String moneytotal = df.format(orderBiz.moneytotal());
 		
-		System.out.println("---------moneytotal------------"+moneytotal);
-		
-		
 		SimpleDateFormat sdft = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");//设置日期格式
 		
 		session.setAttribute("timea", sdft.format(new Date()));
@@ -234,10 +201,6 @@ public class GoodsController {
 	public String allOrder(HttpServletRequest request){
 		
 		List<TblOrder> allOrderlist = orderBiz.findAllOrder();
-		
-		
-		
-		System.out.println("----allOrderlist-----"+allOrderlist);
 		
 		request.setAttribute("allOrderlist", allOrderlist);
 		
